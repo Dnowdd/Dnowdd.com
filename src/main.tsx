@@ -12,6 +12,7 @@ import "./index.css";
 import Dashboard from "./routes/dashboard";
 import Home from "./routes/home";
 import { ThemeProvider } from "./components/theme/theme-provider";
+import Social from "./routes/social";
 
 interface PageTransitionProps {
   children: React.ReactNode;
@@ -59,10 +60,7 @@ const router = createBrowserRouter([
     // ROTAS SEM DASHBOARD
     path: "/",
     element: <Outlet />,
-    children: [
-      /* { path: "/login", element: <Login /> },
-      { path: "/registro", element: <Register /> }, */
-    ],
+    children: [{ path: "/social/:id", element: <Social /> }],
   },
 ]);
 
