@@ -102,6 +102,7 @@ export default function Home() {
                     display: "-webkit-box",
                     WebkitLineClamp: "1",
                     WebkitBoxOrient: "vertical",
+                    lineHeight: "1.5",
                   }}
                   className="text-ellipsis overflow-hidden"
                 >
@@ -125,6 +126,7 @@ export default function Home() {
                     display: "-webkit-box",
                     WebkitLineClamp: "1",
                     WebkitBoxOrient: "vertical",
+                    lineHeight: "1.5",
                   }}
                   className="text-ellipsis overflow-hidden"
                 >
@@ -133,7 +135,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="hidden sm:block">Jan. 2023 - Dec. 2025</div>
+            <div className="hidden sm:block">Jan. 2020 - Dec. 2022</div>
           </div>
         </div>
       </div>
