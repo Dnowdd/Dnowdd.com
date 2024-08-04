@@ -1,4 +1,7 @@
-import { BorderBeam } from "@/components/magicui/border-beam";
+import EtecImage from "@/assets/education/etec.jpg";
+import FatecImage from "@/assets/education/fatec.jpg";
+import GenialogicImage from "@/assets/works/genialogic.png";
+import CardExperience from "@/components/cardExperience";
 import GradualSpacing from "@/components/magicui/gradual-spacing";
 import NumberTicker from "@/components/magicui/number-ticker";
 import { Badge } from "@/components/ui/badge";
@@ -15,10 +18,6 @@ import {
 } from "react-icons/fa6";
 import { GrMysql } from "react-icons/gr";
 import { SiMariadb, SiNextdotjs, SiSqlite } from "react-icons/si";
-import GenialogicImage from "@/assets/works/genialogic.png";
-import EtecImage from "@/assets/education/etec.jpg";
-import FatecImage from "@/assets/education/fatec.jpg";
-import CardExperience from "@/components/cardExperience";
 
 export default function Home() {
   return (
