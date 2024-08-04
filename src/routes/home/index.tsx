@@ -18,6 +18,7 @@ import { SiMariadb, SiNextdotjs, SiSqlite } from "react-icons/si";
 import GenialogicImage from "@/assets/works/genialogic.png";
 import EtecImage from "@/assets/education/etec.jpg";
 import FatecImage from "@/assets/education/fatec.jpg";
+import CardExperience from "@/components/cardExperience";
 
 export default function Home() {
   return (
@@ -57,30 +58,13 @@ export default function Home() {
         <h2 className="font-bold text-xl">Work Experience</h2>
 
         <div>
-          <div className="relative flex justify-between items-center px-4 py-3 rounded-xl w-full border overflow-hidden">
-            <BorderBeam size={120} />
-            <div className="flex gap-2 items-center">
-              <img
-                className="w-10 h-10 bg-slate-100 rounded-full border"
-                src={GenialogicImage}
-              />
-              <div className="flex flex-col leading-3">
-                <h1 className="font-semibold">Genialogic</h1>
-                <h2
-                  style={{
-                    display: "-webkit-box",
-                    WebkitLineClamp: "1",
-                    WebkitBoxOrient: "vertical",
-                  }}
-                  className="text-ellipsis overflow-hidden"
-                >
-                  Intern - Software Engineer
-                </h2>
-              </div>
-            </div>
-
-            <div className="hidden sm:block">Feb. 2024 - Aug. 2024</div>
-          </div>
+          <CardExperience
+            image={GenialogicImage}
+            title="Genialogic"
+            subtitle="Intern - Software Engineer"
+            dateStart={new Date(2024, 1)}
+            active
+          />
         </div>
       </div>
 
@@ -88,55 +72,21 @@ export default function Home() {
         <h2 className="font-bold text-xl">Education</h2>
 
         <div className="flex flex-col gap-4">
-          <div className="relative flex justify-between items-center border px-4 py-3 rounded-xl w-full overflow-hidden">
-            <BorderBeam size={120} delay={40} />
-            <div className="flex gap-2 items-center">
-              <img
-                className="w-10 h-10 bg-slate-100 rounded-full border"
-                src={FatecImage}
-              />
-              <div className="flex flex-col leading-4">
-                <h1 className="font-semibold">FATEC Campinas</h1>
-                <h2
-                  style={{
-                    display: "-webkit-box",
-                    WebkitLineClamp: "1",
-                    WebkitBoxOrient: "vertical",
-                    lineHeight: "1.5",
-                  }}
-                  className="text-ellipsis overflow-hidden"
-                >
-                  Information Technology Management
-                </h2>
-              </div>
-            </div>
-
-            <div className="hidden sm:block">Jan. 2023 - Dec. 2025</div>
-          </div>
-          <div className="flex justify-between items-center border px-4 py-3 rounded-xl w-full">
-            <div className="flex gap-2 items-center">
-              <img
-                className="w-10 h-10 bg-slate-100 rounded-full border"
-                src={EtecImage}
-              />
-              <div className="flex flex-col leading-4">
-                <h1 className="font-semibold">ETEC de Hortolândia</h1>
-                <h2
-                  style={{
-                    display: "-webkit-box",
-                    WebkitLineClamp: "1",
-                    WebkitBoxOrient: "vertical",
-                    lineHeight: "1.5",
-                  }}
-                  className="text-ellipsis overflow-hidden"
-                >
-                  Systems Development
-                </h2>
-              </div>
-            </div>
-
-            <div className="hidden sm:block">Jan. 2020 - Dec. 2022</div>
-          </div>
+          <CardExperience
+            image={FatecImage}
+            title="FATEC Campinas"
+            subtitle="Information Technology Management"
+            dateStart={new Date(2023, 0)}
+            dateEnd={new Date(2025, 11)}
+            active
+          />
+          <CardExperience
+            image={EtecImage}
+            title="ETEC de Hortolândia"
+            subtitle="Systems Development"
+            dateStart={new Date(2020, 0)}
+            dateEnd={new Date(2022, 11)}
+          />
         </div>
       </div>
 
