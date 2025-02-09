@@ -9,7 +9,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { CalendarIcon, HomeIcon, MailIcon } from "lucide-react";
+import { CalendarIcon, MailIcon } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -60,7 +60,6 @@ const Icons = {
 };
 
 const DATA = {
-  navbar: [{ href: "#", icon: HomeIcon, label: "Home" }],
   contact: {
     social: {
       GitHub: {
@@ -74,8 +73,8 @@ const DATA = {
         icon: Icons.linkedin,
       },
       email: {
-        name: "Send Email",
-        url: "#",
+        name: "Email",
+        url: "/social/email",
         icon: Icons.email,
       },
     },
@@ -84,30 +83,9 @@ const DATA = {
 
 export function DockLinks() {
   return (
-    <div className="fixed bottom-25 left-1/2 translate-x-[-50%] z-50">
+    <div className="fixed bottom-4 left-1/2 translate-x-[-50%] z-50">
       <TooltipProvider>
         <Dock direction="middle">
-          {DATA.navbar.map((item) => (
-            <DockIcon key={item.label}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Link
-                    to={item.href}
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full"
-                    )}
-                  >
-                    <item.icon className="size-4" />
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{item.label}</p>
-                </TooltipContent>
-              </Tooltip>
-            </DockIcon>
-          ))}
-          <Separator orientation="vertical" className="h-full" />
           {Object.entries(DATA.contact.social).map(([name, social]) => (
             <DockIcon key={name}>
               <Tooltip>
