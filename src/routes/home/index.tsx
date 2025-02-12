@@ -22,6 +22,7 @@ import LicensesAWS from "@/assets/licenses/AWS.png";
 import LicensesCisco from "@/assets/licenses/Cisco.png";
 import LicensesEF from "@/assets/licenses/EF.png";
 import LicensesFreeCodeCamp from "@/assets/licenses/FreeCodeCamp.png";
+import LicensesETS from "@/assets/licenses/ETS.png";
 import LicensesSantanderOpenAcademy from "@/assets/licenses/SantanderOpenAcademy.png";
 import CurrentSection from "@/components/currentSection";
 /* import { useToast } from "@/components/ui/use-toast"; */
@@ -390,6 +391,13 @@ export default function Home() {
               img={LicensesSantanderOpenAcademy}
               issued={new Date("2025-01-02")}
               link="/licenses/SantanderOpenAcademy_001.pdf"
+            />
+            <CardLicenses
+              title="ETS Toeic | 720"
+              company="ETS + MasterTest Global"
+              img={LicensesETS}
+              issued={new Date("2024-10-17")}
+              link="/licenses/ETSToeic_001.pdf"
             />
             <CardLicenses
               title="Intercultural discussions: Brazil and China"
