@@ -9,9 +9,10 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { CalendarIcon, MailIcon } from "lucide-react";
+import { CalendarIcon, Languages, MailIcon } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { LanguageToggle } from "../theme/language-toggle";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -86,6 +87,17 @@ export function DockLinks() {
     <div className="fixed bottom-4 left-1/2 translate-x-[-50%] z-50">
       <TooltipProvider>
         <Dock direction="middle">
+          <DockIcon>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <LanguageToggle />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Languages</p>
+              </TooltipContent>
+            </Tooltip>
+          </DockIcon>
+          <Separator orientation="vertical" className="h-full py-2" />
           {Object.entries(DATA.contact.social).map(([name, social]) => (
             <DockIcon key={name}>
               <Tooltip>

@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 interface CardLicensesProps {
   img: any;
   title: string;
@@ -19,6 +21,8 @@ export default function CardLicenses({
   issued,
   link,
 }: CardLicensesProps) {
+  const { t } = useTranslation();
+
   return (
     <div
       className={`flex gap-4 border rounded-xl px-8 py-6 transition ${
@@ -35,7 +39,7 @@ export default function CardLicenses({
           {company}
         </h2>
         <h3 className="text-neutral-500 dark:text-neutral-400">
-          Issued {formatDate(issued)}
+          {t("system.issued")} {formatDate(issued)}
         </h3>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { useTranslation } from "react-i18next";
 
 interface CardExperienceProps {
   image: any;
@@ -10,12 +11,6 @@ interface CardExperienceProps {
   tags?: string[];
 }
 
-function formatDate(date: Date): string {
-  return date
-    .toLocaleString("en-US", { month: "short", year: "numeric" })
-    .replace(/(\w+)\s(\d+)/, "$1. $2");
-}
-
 export default function CardExperience({
   image,
   role,
@@ -25,6 +20,19 @@ export default function CardExperience({
   description,
   tags,
 }: CardExperienceProps) {
+  const { t } = useTranslation();
+
+  const formatDate = (date: Date): string => {
+    return date
+      .toLocaleString(t("system.localeDate"), {
+        month: "short",
+        year: "numeric",
+      })
+      .replace(/\bde\b\s/g, "") // Remove o "de " quando presente
+      .replace(/(\w+)\s(\d+)/, "$1. $2") // Mantém o formato desejado
+      .replace(/^./, (char) => char.toUpperCase()); // Capitaliza a primeira letra
+  };
+
   return (
     <div className="flex gap-4 border rounded-xl p-6 lg:p-8 select-none transition hover:scale-[1.01] hover:shadow-lg relative">
       <div className="absolute lg:relative top-2 right-2 transform translate-x-1/4 -translate-y-1/4 lg:translate-x-0 lg:translate-y-0">
@@ -46,7 +54,7 @@ export default function CardExperience({
         <h2 className="flex gap-2 items-center text-base xl:text-lg text-neutral-600 dark:text-neutral-300">
           <span>{formatDate(dateStart)}</span>
           <span className="w-2 h-0.5 bg-neutral-800 dark:bg-neutral-600"></span>
-          <span>{dateEnd ? formatDate(dateEnd) : "Present"}</span>
+          <span>{dateEnd ? formatDate(dateEnd) : t("system.present")}</span>
         </h2>
         <p className="text-neutral-500 dark:text-neutral-400 text-sm xl:text-base">
           {description}

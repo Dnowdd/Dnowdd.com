@@ -1,0 +1,26 @@
+{
+    "title": "Olá, eu sou o David Queiroz.",
+    "role": "Desenvolvedor Full-stack",
+    "description": "Desenvolvedor full-stack focado em soluções inovadoras, atualmente estudante de Gestão da Tecnologia da Informação e estagiário em desenvolvimento de softwares, sempre em busca de crescimento na área de tecnologia. 🚀",
+    "aboutme_title": "Sobre mim",
+    "aboutme_content_1": "Sou um desenvolvedor full-stack brasileiro com experiência prática desde 2020, comprometido em transformar ideias criativas em soluções tecnológicas impactantes. Ao longo dessa jornada, desenvolvi uma paixão por explorar como o código pode ser usado como uma ferramenta para resolver problemas e melhorar a qualidade de vida das pessoas. Meu principal objetivo é criar soluções inovadoras que não apenas atendam às necessidades dos usuários, mas também inspirem e capacitem indivíduos e organizações a alcançar seus objetivos de forma eficiente.",
+    "aboutme_content_2": "Atualmente, sou estagiário como desenvolvedor de software na Genialogic desde fevereiro de 2024, onde tenho aprofundado minhas habilidades práticas e adquirido experiência no setor. Ao mesmo tempo, estou cursando Gestão da Tecnologia da Informação na FATEC Campinas, curso que iniciei em 2023 e pretendo concluir até o final de 2025. Ao longo dessa jornada, desenvolvi uma paixão ainda maior pela área de TI, impulsionado pela possibilidade de criar soluções inovadoras e impactantes com criatividade e qualidade. Estou altamente engajado no meu desenvolvimento profissional, buscando aprendizado contínuo para contribuir significativamente para o setor de tecnologia.",
+    "experience_title": "Experiência",
+    "experience_genialogic_role": "Estagiário em desenvolvimento de softwares",
+    "experience_genialogic_description": "Desenvolvo e mantenho sistemas CRM e ERP utilizando React.js e Node.js, contribuindo para o desenvolvimento full-stack e entregando soluções escaláveis.",
+    "education_title": "Educação",
+    "education_fatec_role": "Gestão da Tecnologia da Informação",
+    "education_fatec_description": "Curso superior público focado em estratégia de TI, gerenciamento de projetos e soluções empresariais, combinando habilidades técnicas e administrativas.",
+    "education_etec_role": "Técnico em Desenvolvimento de Sistemas",
+    "education_etec_description": "Curso técnico público voltado para o desenvolvimento de software, programação e análise de sistemas, preparando os alunos para a indústria de TI.",
+    "projects_title": "Projetos",
+    "projects_creditcard_title": "Gerador de Cartão Bancário",
+    "projects_creditcard_description": "Este é um projeto simples em HTML, CSS e JS para criar um cartão bancário fictício personalizado, permitindo que o usuário altere tudo o que quiser.",
+    "projects_questvest_title": "Quest Vest",
+    "projects_questvest_description": "Projeto freelancer para um cliente que precisava de um site estático para apresentar um projeto educacional.",
+    "licenses_title": "Licenças e certificações",
+    "system.present": "Atualmente",
+    "system.issued": "Emitido em",
+    "system.localeDate": "pt-BR"
+  }
+  

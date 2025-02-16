@@ -25,11 +25,12 @@ import LicensesFreeCodeCamp from "@/assets/licenses/FreeCodeCamp.png";
 import LicensesETS from "@/assets/licenses/ETS.png";
 import LicensesSantanderOpenAcademy from "@/assets/licenses/SantanderOpenAcademy.png";
 import CurrentSection from "@/components/currentSection";
-/* import { useToast } from "@/components/ui/use-toast"; */
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
+  const { t } = useTranslation();
+
   const [projectImage, setProjectImage] = useState<any>(null);
-  /* const { toast } = useToast(); */
   const [currentSection, setCurrentSection] = useState("");
 
   const sectionRefs = {
@@ -79,19 +80,6 @@ export default function Home() {
     };
   }, [currentSection]); // Adicione a dependência para evitar loops infinitos
 
-  /* const handleCopyClick = (text: string) => {
-    const textarea = document.createElement("textarea");
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textarea);
-
-    toast({
-      description: "Link copied to clipboard",
-    });
-  }; */
-
   return (
     <div className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-0 pb-24 lg:pb-0">
       <div className="fixed bottom-0 left-0 w-full h-[90px] bg-gradient-to-t from-background to-transparent"></div>
@@ -100,121 +88,45 @@ export default function Home() {
       <div className="w-full lg:w-1/2 h-auto lg:h-screen lg:fixed left-0 bottom-0 pt-20 lg:py-10 xl:py-20 lg:pl-20 xl:pl-40 flex flex-col justify-between">
         <div className="gap-2 flex flex-col">
           <h1 className="font-bold text-5xl text-center lg:text-left lg:pr-20">
-            Hi, I'm David Queiroz.
+            {t("title")}
           </h1>
           <h2 className="font-semibold text-xl text-neutral-600 dark:text-neutral-300 text-center lg:text-left">
-            Full-stack developer
+            {t("role")}
           </h2>
           <p className="px-6 sm:px-14 lg:px-0 lg:pr-32 text-neutral-500 dark:text-neutral-400 text-center lg:text-left">
-            Full-stack developer focused on innovative solutions, currently an
-            IT Management student and software engineering intern, always
-            seeking growth in tech.
+            {t("description")}
           </p>
-          {/* <div className="flex gap-2 flex-wrap pr-32 mt-8">
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-              <FaHtml5 /> HTML
-            </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-              <FaCss3Alt /> CSS
-            </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-              <FaJs /> Javascript
-            </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-              <FaPhp /> PHP
-            </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-              <FaPython /> Python
-            </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-              <DiJqueryLogo /> jQuery
-            </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-              <FaReact /> React
-            </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-              <BiLogoTypescript /> Typescript
-            </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-              <FaNodeJs /> Node.js
-            </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-              <SiNextdotjs /> Next.js
-            </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-              <GrMysql /> MySQL
-            </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-              <SiMariadb /> MariaDB
-            </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-              <SiSqlite /> SQLite
-            </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-              <SiSupabase /> Supabase
-            </Badge>
-          </div>
-          <div className="flex flex-col gap-2 mt-8">
-            <div className="flex gap-2 mr-auto flex items-center">
-              <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
-                <MdEmail /> david.queiroz@dnowdd.com
-              </Badge>
-              <a href="mailto:david.queiroz@dnowdd.com">
-                <FiExternalLink
-                  size={12}
-                  className="text-neutral-400 dark:text-neutral-200 transition hover:text-neutral-900"
-                />
-              </a>
-            </div>
-            <div className="flex gap-2 mr-auto flex items-center">
-              <Badge
-                variant="outline"
-                className="gap-1 text-neutral-500 dark:text-neutral-400 mr-auto"
-              >
-                <TbWorld /> dnowdd.com
-              </Badge>
-              <span onClick={() => handleCopyClick("https://dnowdd.com")}>
-                <FaCopy
-                  size={12}
-                  className="text-neutral-400 dark:text-neutral-200 cursor-pointer transition hover:text-neutral-900"
-                />
-              </span>
-            </div>
-            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400 mr-auto">
-              <FaMapPin /> Hortolândia, SP - Brazil
-            </Badge>
-          </div> */}
         </div>
         {!projectImage && (
           <div className="hidden lg:flex flex-col gap-4 pr-32">
             <CurrentSection
               currentSection={currentSection}
               section="aboutMe"
-              title="About me"
+              title={t("aboutme_title")}
               sectionRef={sectionRefs.aboutMe}
             />
             <CurrentSection
               currentSection={currentSection}
               section="experience"
-              title="Experience"
+              title={t("experience_title")}
               sectionRef={sectionRefs.experience}
             />
             <CurrentSection
               currentSection={currentSection}
               section="education"
-              title="Education"
+              title={t("education_title")}
               sectionRef={sectionRefs.education}
             />
             <CurrentSection
               currentSection={currentSection}
               section="projects"
-              title="Projects"
+              title={t("projects_title")}
               sectionRef={sectionRefs.projects}
             />
             <CurrentSection
               currentSection={currentSection}
               section="licenses"
-              title="Licenses & certifications"
+              title={t("licenses_title")}
               sectionRef={sectionRefs.licenses}
             />
           </div>
@@ -245,32 +157,12 @@ export default function Home() {
         >
           <div>
             <h1 className="font-semibold text-2xl text-neutral-400 dark:text-neutral-200">
-              About me
+              {t("aboutme_title")}
             </h1>
           </div>
           <div className="flex flex-col gap-4">
-            <p>
-              I am a Brazilian full-stack developer with hands-on experience
-              since 2020, committed to transforming creative ideas into
-              impactful technological solutions. Throughout this journey, I have
-              developed a passion for exploring how code can be used as a tool
-              to solve problems and enhance people's quality of life. My primary
-              goal is to create innovative solutions that not only meet users'
-              needs but also inspire and empower individuals and organizations
-              to achieve their objectives efficiently.
-            </p>
-            <p>
-              I am currently an intern in software engineering at Genialogic
-              since February 2024, where I have been deepening my practical
-              skills and gaining industry experience. At the same time, I am
-              pursuing a degree in Information Technology Management at FATEC
-              Campinas, which I began in 2023 and expect to complete by the end
-              of 2025. Throughout this journey, I have developed an even greater
-              passion for the IT field, driven by the opportunity to create
-              innovative and impactful solutions. I am highly engaged in my
-              professional development, continuously seeking growth and learning
-              to make a meaningful contribution to the field.
-            </p>
+            <p>{t("aboutme_content_1")}</p>
+            <p>{t("aboutme_content_2")}</p>
           </div>
         </div>
 
@@ -281,16 +173,16 @@ export default function Home() {
         >
           <div>
             <h1 className="font-semibold text-2xl text-neutral-400 dark:text-neutral-200">
-              Experience
+              {t("experience_title")}
             </h1>
           </div>
           <div className="flex flex-col gap-6">
             <CardBackground
               image={ExperienceGenialogic}
-              role="Intern in software engineering"
+              role={t("experience_genialogic_role")}
               company="Genialogic"
               dateStart={new Date("2024-02-02")}
-              description="I develop and maintain CRM and ERP systems using React.js and Node.js, contributing to full-stack development and delivering scalable solutions."
+              description={t("experience_genialogic_description")}
               tags={[
                 "React.js",
                 "Node.js",
@@ -309,17 +201,17 @@ export default function Home() {
         >
           <div>
             <h1 className="font-semibold text-2xl text-neutral-400 dark:text-neutral-200">
-              Education
+              {t("education_title")}
             </h1>
           </div>
           <div className="flex flex-col gap-6">
             <CardBackground
               image={EducationFatec}
-              role="Information Technology Management"
+              role={t("education_fatec_role")}
               company="FATEC Campinas"
               dateStart={new Date("2023-01-02")}
               dateEnd={new Date("2025-12-02")}
-              description="A comprehensive program focused on IT strategy, project management, and business solutions, combining technical and administrative skills."
+              description={t("education_fatec_description")}
               tags={[
                 "IT Strategy",
                 "Project Management",
@@ -329,11 +221,11 @@ export default function Home() {
             />
             <CardBackground
               image={EducationEtec}
-              role="Systems Development Technician"
+              role={t("education_etec_role")}
               company="ETEC de Hortolândia"
               dateStart={new Date("2020-01-02")}
               dateEnd={new Date("2022-12-02")}
-              description="A technical course centered on software development, programming, and systems analysis, preparing students for the IT industry."
+              description={t("education_etec_description")}
               tags={[
                 "Software Development",
                 "Technical Documentation",
@@ -350,13 +242,13 @@ export default function Home() {
         >
           <div>
             <h1 className="font-semibold text-2xl text-neutral-400 dark:text-neutral-200">
-              Projects
+              {t("projects_title")}
             </h1>
           </div>
           <div className="flex flex-col md:grid lg:flex xl:grid grid-cols-2 gap-6 md:gap-2 lg:gap-6 xl:gap-2">
             <CardProject
-              title="Credit-Card Generator"
-              description="This is a simple HTML, CSS and JS project to make a fake credit card, allowing the user to change everything they want."
+              title={t("projects_creditcard_title")}
+              description={t("projects_creditcard_description")}
               tags={["HTML", "CSS", "JavaScript"]}
               onMouseEnter={() => setProjectImage(ProjectCreditCardGenerator)}
               onMouseLeave={() => setProjectImage(null)}
@@ -364,8 +256,8 @@ export default function Home() {
               website="https://dnowdd.github.io/CreditCard-Image-Generator/"
             />
             <CardProject
-              title="Quest Vest"
-              description="Freelance project for a client who needed a static website to showcase an educational project."
+              title={t("projects_questvest_title")}
+              description={t("projects_questvest_description")}
               tags={["React.JS", "TypeScript", "Tailwind"]}
               onMouseEnter={() => setProjectImage(ProjectQuestVest)}
               onMouseLeave={() => setProjectImage(null)}
@@ -381,7 +273,7 @@ export default function Home() {
         >
           <div>
             <h1 className="font-semibold text-2xl text-neutral-400 dark:text-neutral-200">
-              Licenses & certifications
+              {t("licenses_title")}
             </h1>
           </div>
           <div className="flex flex-col gap-6">
