@@ -9,7 +9,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { CalendarIcon, Languages, MailIcon } from "lucide-react";
+import { CalendarIcon, MailIcon } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import { LanguageToggle } from "../theme/language-toggle";
