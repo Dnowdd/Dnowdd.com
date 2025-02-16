@@ -28,7 +28,7 @@ export default function CurrentSection({
       onClick={handleScroll}
     >
       <motion.div
-        className="h-0.5 bg-neutral-500 rounded"
+        className="h-0.5 bg-neutral-500 dark:bg-neutral-400 rounded"
         initial={{ width: "0.125rem" }} // Largura inicial
         animate={{
           width: currentSection === section ? "1.25rem" : "0.125rem", // Largura dinâmica
@@ -39,10 +39,10 @@ export default function CurrentSection({
         }}
       />
       <h1
-        className={`text-xl ${
+        className={`text-xl transition ${
           currentSection === section
-            ? "text-neutral-700"
-            : "text-neutral-500 hover:text-neutral-600"
+            ? "text-neutral-700 dark:text-neutral-100"
+            : "text-neutral-500 hover:text-neutral-600 dark:hover:text-neutral-400"
         }`}
       >
         {title}

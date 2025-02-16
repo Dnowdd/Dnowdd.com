@@ -102,85 +102,85 @@ export default function Home() {
           <h1 className="font-bold text-5xl text-center lg:text-left lg:pr-20">
             Hi, I'm David Queiroz.
           </h1>
-          <h2 className="font-semibold text-xl text-neutral-600 text-center lg:text-left">
+          <h2 className="font-semibold text-xl text-neutral-600 dark:text-neutral-300 text-center lg:text-left">
             Full-stack developer
           </h2>
-          <p className="px-6 sm:px-14 lg:px-0 lg:pr-32 text-neutral-500 text-center lg:text-left">
+          <p className="px-6 sm:px-14 lg:px-0 lg:pr-32 text-neutral-500 dark:text-neutral-400 text-center lg:text-left">
             Full-stack developer focused on innovative solutions, currently an
             IT Management student and software engineering intern, always
             seeking growth in tech.
           </p>
           {/* <div className="flex gap-2 flex-wrap pr-32 mt-8">
-            <Badge variant="outline" className="gap-1 text-neutral-500">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
               <FaHtml5 /> HTML
             </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
               <FaCss3Alt /> CSS
             </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
               <FaJs /> Javascript
             </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
               <FaPhp /> PHP
             </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
               <FaPython /> Python
             </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
               <DiJqueryLogo /> jQuery
             </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
               <FaReact /> React
             </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
               <BiLogoTypescript /> Typescript
             </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
               <FaNodeJs /> Node.js
             </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
               <SiNextdotjs /> Next.js
             </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
               <GrMysql /> MySQL
             </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
               <SiMariadb /> MariaDB
             </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
               <SiSqlite /> SQLite
             </Badge>
-            <Badge variant="outline" className="gap-1 text-neutral-500">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
               <SiSupabase /> Supabase
             </Badge>
           </div>
           <div className="flex flex-col gap-2 mt-8">
             <div className="flex gap-2 mr-auto flex items-center">
-              <Badge variant="outline" className="gap-1 text-neutral-500">
+              <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400">
                 <MdEmail /> david.queiroz@dnowdd.com
               </Badge>
               <a href="mailto:david.queiroz@dnowdd.com">
                 <FiExternalLink
                   size={12}
-                  className="text-neutral-400 transition hover:text-neutral-900"
+                  className="text-neutral-400 dark:text-neutral-200 transition hover:text-neutral-900"
                 />
               </a>
             </div>
             <div className="flex gap-2 mr-auto flex items-center">
               <Badge
                 variant="outline"
-                className="gap-1 text-neutral-500 mr-auto"
+                className="gap-1 text-neutral-500 dark:text-neutral-400 mr-auto"
               >
                 <TbWorld /> dnowdd.com
               </Badge>
               <span onClick={() => handleCopyClick("https://dnowdd.com")}>
                 <FaCopy
                   size={12}
-                  className="text-neutral-400 cursor-pointer transition hover:text-neutral-900"
+                  className="text-neutral-400 dark:text-neutral-200 cursor-pointer transition hover:text-neutral-900"
                 />
               </span>
             </div>
-            <Badge variant="outline" className="gap-1 text-neutral-500 mr-auto">
+            <Badge variant="outline" className="gap-1 text-neutral-500 dark:text-neutral-400 mr-auto">
               <FaMapPin /> Hortolândia, SP - Brazil
             </Badge>
           </div> */}
@@ -244,7 +244,7 @@ export default function Home() {
           data-section="aboutMe"
         >
           <div>
-            <h1 className="font-semibold text-2xl text-neutral-400">
+            <h1 className="font-semibold text-2xl text-neutral-400 dark:text-neutral-200">
               About me
             </h1>
           </div>
@@ -280,7 +280,7 @@ export default function Home() {
           data-section="experience"
         >
           <div>
-            <h1 className="font-semibold text-2xl text-neutral-400">
+            <h1 className="font-semibold text-2xl text-neutral-400 dark:text-neutral-200">
               Experience
             </h1>
           </div>
@@ -308,7 +308,7 @@ export default function Home() {
           data-section="education"
         >
           <div>
-            <h1 className="font-semibold text-2xl text-neutral-400">
+            <h1 className="font-semibold text-2xl text-neutral-400 dark:text-neutral-200">
               Education
             </h1>
           </div>
@@ -349,7 +349,7 @@ export default function Home() {
           data-section="projects"
         >
           <div>
-            <h1 className="font-semibold text-2xl text-neutral-400">
+            <h1 className="font-semibold text-2xl text-neutral-400 dark:text-neutral-200">
               Projects
             </h1>
           </div>
@@ -380,7 +380,7 @@ export default function Home() {
           data-section="licenses"
         >
           <div>
-            <h1 className="font-semibold text-2xl text-neutral-400">
+            <h1 className="font-semibold text-2xl text-neutral-400 dark:text-neutral-200">
               Licenses & certifications
             </h1>
           </div>

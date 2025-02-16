@@ -31,8 +31,12 @@ export default function CardLicenses({
       </div>
       <div>
         <h1 className="font-semibold text-xl">{title}</h1>
-        <h2 className="font-medium text-neutral-600">{company}</h2>
-        <h3 className="text-neutral-500">Issued {formatDate(issued)}</h3>
+        <h2 className="font-medium text-neutral-600 dark:text-neutral-300">
+          {company}
+        </h2>
+        <h3 className="text-neutral-500 dark:text-neutral-400">
+          Issued {formatDate(issued)}
+        </h3>
       </div>
     </div>
   );

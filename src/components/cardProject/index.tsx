@@ -36,7 +36,7 @@ export default function CardProject({
         >
           <div className="flex flex-col gap-2">
             <h1 className="font-semibold text-xl">{title}</h1>
-            <p className="line-clamp-2 overflow-hidden text-ellipsis text-neutral-500">
+            <p className="line-clamp-2 overflow-hidden text-ellipsis text-neutral-500 dark:text-neutral-400">
               {description}
             </p>
           </div>

@@ -38,17 +38,19 @@ export default function CardExperience({
       <div>
         <h1 className="font-semibold text-lg xl:text-xl pr-10 lg:pr-0">
           <span>{role}</span>
-          <div className="w-1 h-1 hidden 2xl:inline-block bg-neutral-800 rounded-full my-1 mx-2"></div>
-          <span className="block 2xl:inline-block text-sm 2xl:text-xl text-neutral-500 2xl:text-black">
+          <div className="w-1 h-1 hidden 2xl:inline-block bg-neutral-800 dark:bg-neutral-600 rounded-full my-1 mx-2"></div>
+          <span className="block 2xl:inline-block text-sm 2xl:text-xl text-neutral-500 dark:text-neutral-400 2xl:text-black">
             {company}
           </span>
         </h1>
-        <h2 className="flex gap-2 items-center text-base xl:text-lg text-neutral-600">
+        <h2 className="flex gap-2 items-center text-base xl:text-lg text-neutral-600 dark:text-neutral-300">
           <span>{formatDate(dateStart)}</span>
-          <span className="w-2 h-0.5 bg-neutral-800"></span>
+          <span className="w-2 h-0.5 bg-neutral-800 dark:bg-neutral-600"></span>
           <span>{dateEnd ? formatDate(dateEnd) : "Present"}</span>
         </h2>
-        <p className="text-neutral-500 text-sm xl:text-base">{description}</p>
+        <p className="text-neutral-500 dark:text-neutral-400 text-sm xl:text-base">
+          {description}
+        </p>
         <div className="mt-2 xl:mt-4 flex gap-1 xl:gap-2 flex-wrap">
           {tags &&
             tags.map((tag, index) => (
