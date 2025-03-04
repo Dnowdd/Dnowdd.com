@@ -21,6 +21,12 @@
     "licenses_title": "Licenças e certificações",
     "system.present": "Atualmente",
     "system.issued": "Emitido em",
-    "system.localeDate": "pt-BR"
+    "system.localeDate": "pt-BR",
+    "system.theme": "Tema",
+    "system.languages": "Idiomas",
+    "system.languages.search": "Procure idiomas...",
+    "system.copy": "Copiar",
+    "system.copy.title": "Copiado com sucesso ✅🚀",
+    "system.copy.description": "O conteúdo foi copiado para a área de transferência."
   }
   

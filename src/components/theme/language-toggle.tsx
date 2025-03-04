@@ -75,7 +75,7 @@ export function LanguageToggle() {
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search language..." />
+          <CommandInput placeholder={t("system.languages.search")} />
           <CommandList>
             <CommandEmpty>No language found.</CommandEmpty>
             <CommandGroup>

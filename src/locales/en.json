@@ -28,5 +28,11 @@
     "licenses_title": "Licenses & certifications",
     "system.present": "Present",
     "system.issued": "Issued",
-    "system.localeDate": "en-US"
+    "system.localeDate": "en-US",
+    "system.theme": "Theme",
+    "system.languages": "Languages",
+    "system.languages.search": "Search language...",
+    "system.copy": "Copy",
+    "system.copy.title": "Successfully copied ✅🚀",
+    "system.copy.description": "The content has been copied to the clipboard."
   }

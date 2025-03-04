@@ -1,6 +1,12 @@
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { ModeToggle } from "@/components/theme/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
@@ -8,9 +14,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useToast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
-import { CalendarIcon, MailIcon } from "lucide-react";
+import { CalendarIcon, Copy, MailIcon } from "lucide-react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { LanguageToggle } from "../theme/language-toggle";
 
@@ -67,22 +75,36 @@ const DATA = {
         name: "GitHub",
         url: "/social/github",
         icon: Icons.github,
+        copy: null,
       },
       LinkedIn: {
         name: "LinkedIn",
         url: "/social/linkedin",
         icon: Icons.linkedin,
+        copy: null,
       },
-      email: {
-        name: "Email",
+      Email: {
+        name: "E-mail",
         url: "/social/email",
         icon: Icons.email,
+        copy: "david.queiroz@dnowdd.com",
       },
     },
   },
 };
 
 export function DockLinks() {
+  const { t } = useTranslation();
+  const { toast } = useToast();
+
+  const CopyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    toast({
+      title: t("system.copy.title"),
+      description: t("system.copy.description"),
+    });
+  };
+
   return (
     <div className="fixed bottom-4 left-1/2 translate-x-[-50%] z-50">
       <TooltipProvider>
@@ -93,7 +115,7 @@ export function DockLinks() {
                 <LanguageToggle />
               </TooltipTrigger>
               <TooltipContent>
-                <p>Languages</p>
+                <p>{t("system.languages")}</p>
               </TooltipContent>
             </Tooltip>
           </DockIcon>
@@ -102,19 +124,50 @@ export function DockLinks() {
             <DockIcon key={name}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link
-                    to={social.url}
-                    target="_blank"
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full"
-                    )}
-                  >
-                    <social.icon className="size-4" />
-                  </Link>
+                  {social.copy ? (
+                    <DropdownMenu>
+                      <DropdownMenuTrigger>
+                        <Link
+                          to={""}
+                          className={cn(
+                            buttonVariants({ variant: "ghost", size: "icon" }),
+                            "size-12 rounded-full"
+                          )}
+                        >
+                          <social.icon className="size-4" />
+                        </Link>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent>
+                        <DropdownMenuItem
+                          className="cursor-pointer"
+                          onClick={() => CopyToClipboard(social.copy)}
+                        >
+                          <Copy className="size-4" />
+                          {t("system.copy")}
+                        </DropdownMenuItem>
+                        <Link to={social.url} target="_blank">
+                          <DropdownMenuItem className="cursor-pointer">
+                            <social.icon className="size-4" />
+                            {social.name}
+                          </DropdownMenuItem>
+                        </Link>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  ) : (
+                    <Link
+                      to={social.url}
+                      target="_blank"
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "icon" }),
+                        "size-12 rounded-full"
+                      )}
+                    >
+                      <social.icon className="size-4" />
+                    </Link>
+                  )}
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{name}</p>
+                  <p>{social.name}</p>
                 </TooltipContent>
               </Tooltip>
             </DockIcon>
@@ -126,7 +179,7 @@ export function DockLinks() {
                 <ModeToggle />
               </TooltipTrigger>
               <TooltipContent>
-                <p>Theme</p>
+                <p>{t("system.theme")}</p>
               </TooltipContent>
             </Tooltip>
           </DockIcon>
