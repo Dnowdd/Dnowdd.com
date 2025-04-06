@@ -18,6 +18,12 @@
     "projects_creditcard_description": "Este é um projeto simples em HTML, CSS e JS para criar um cartão bancário fictício personalizado, permitindo que o usuário altere tudo o que quiser.",
     "projects_questvest_title": "Quest Vest",
     "projects_questvest_description": "Projeto freelancer para um cliente que precisava de um site estático para apresentar um projeto educacional.",
+    "projects_hidrata_title": "Hidrata+",
+    "projects_hidrata_description":
+      "Meu primeiro aplicativo mobile, projetado para ajudar os usuários a monitorar sua ingestão diária de água e se manterem hidratados. Desenvolvido com Flutter, é compatível com as plataformas Android e iOS.",
+    "projects_deepchat_title": "DeepChat",
+    "projects_deepchat_description":
+      "Este é um projeto de chatbot local integrado a uma interface web moderna, desenvolvido com React.js. O sistema utiliza o modelo de inteligência artificial DeepSeek-R1, processado via Ollama.",
     "licenses_title": "Licenças e certificações",
     "system.present": "Atualmente",
     "system.issued": "Emitido em",

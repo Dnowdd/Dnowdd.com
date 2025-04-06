@@ -25,6 +25,12 @@
     "projects_questvest_title": "Quest Vest",
     "projects_questvest_description":
       "Freelance project for a client who needed a static website to showcase an educational project.",
+    "projects_hidrata_title": "Hidrata+",
+    "projects_hidrata_description":
+      "My first mobile application designed to help users track their daily water intake and stay hydrated. Built with Flutter, it supports both Android and iOS platforms.",
+    "projects_deepchat_title": "DeepChat",
+    "projects_deepchat_description":
+      "This is a local chatbot project integrated with a modern web interface, developed with React.js. The system utilizes the DeepSeek-R1 artificial intelligence model, processed via Ollama.",
     "licenses_title": "Licenses & certifications",
     "system.present": "Present",
     "system.issued": "Issued",

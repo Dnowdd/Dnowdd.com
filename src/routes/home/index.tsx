@@ -3,7 +3,6 @@ import CardBackground from "@/components/cardBackground";
 import CardProject from "@/components/cardProject";
 
 import CardLicenses from "@/components/cardLicenses";
-import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 // Experience
@@ -16,6 +15,8 @@ import EducationFatec from "@/assets/education/Fatec.png";
 // Projects
 import ProjectCreditCardGenerator from "@/assets/projects/CreditCardGenerator.png";
 import ProjectQuestVest from "@/assets/projects/QuestVest.png";
+import ProjectHidrata from "@/assets/projects/Hidrata.png";
+import ProjectDeepChat from "@/assets/projects/DeepChat.png";
 
 // Licenses & certifications
 import LicensesAWS from "@/assets/licenses/AWS.png";
@@ -30,7 +31,6 @@ import { useTranslation } from "react-i18next";
 export default function Home() {
   const { t } = useTranslation();
 
-  const [projectImage, setProjectImage] = useState<any>(null);
   const [currentSection, setCurrentSection] = useState("");
 
   const sectionRefs = {
@@ -97,56 +97,38 @@ export default function Home() {
             {t("description")}
           </p>
         </div>
-        {!projectImage && (
-          <div className="hidden lg:flex flex-col gap-4 pr-32">
-            <CurrentSection
-              currentSection={currentSection}
-              section="aboutMe"
-              title={t("aboutme_title")}
-              sectionRef={sectionRefs.aboutMe}
-            />
-            <CurrentSection
-              currentSection={currentSection}
-              section="experience"
-              title={t("experience_title")}
-              sectionRef={sectionRefs.experience}
-            />
-            <CurrentSection
-              currentSection={currentSection}
-              section="education"
-              title={t("education_title")}
-              sectionRef={sectionRefs.education}
-            />
-            <CurrentSection
-              currentSection={currentSection}
-              section="projects"
-              title={t("projects_title")}
-              sectionRef={sectionRefs.projects}
-            />
-            <CurrentSection
-              currentSection={currentSection}
-              section="licenses"
-              title={t("licenses_title")}
-              sectionRef={sectionRefs.licenses}
-            />
-          </div>
-        )}
-
-        <AnimatePresence>
-          {projectImage && (
-            <div className="fixed bottom-0 left-0 w-1/2 py-20 px-40">
-              <motion.div
-                className="aspect-radio w-full rounded-xl overflow-auto shadow-2xl max-h-[330px] overflow-hidden"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.2 }}
-              >
-                <img src={projectImage} alt="Project Cape" />
-              </motion.div>
-            </div>
-          )}
-        </AnimatePresence>
+        <div className="hidden lg:flex flex-col gap-4 pr-32">
+          <CurrentSection
+            currentSection={currentSection}
+            section="aboutMe"
+            title={t("aboutme_title")}
+            sectionRef={sectionRefs.aboutMe}
+          />
+          <CurrentSection
+            currentSection={currentSection}
+            section="experience"
+            title={t("experience_title")}
+            sectionRef={sectionRefs.experience}
+          />
+          <CurrentSection
+            currentSection={currentSection}
+            section="education"
+            title={t("education_title")}
+            sectionRef={sectionRefs.education}
+          />
+          <CurrentSection
+            currentSection={currentSection}
+            section="projects"
+            title={t("projects_title")}
+            sectionRef={sectionRefs.projects}
+          />
+          <CurrentSection
+            currentSection={currentSection}
+            section="licenses"
+            title={t("licenses_title")}
+            sectionRef={sectionRefs.licenses}
+          />
+        </div>
       </div>
       <div className="w-1/2 h-full hidden lg:block"></div>
       <div className="w-full lg:w-1/2 h-full lg:py-20 px-6 sm:px-14 lg:px-0 lg:pr-20 xl:pr-40 2xl:pr-80 flex flex-col gap-24">
@@ -247,21 +229,34 @@ export default function Home() {
           </div>
           <div className="flex flex-col md:grid lg:flex xl:grid grid-cols-2 gap-6 md:gap-2 lg:gap-6 xl:gap-2">
             <CardProject
-              title={t("projects_creditcard_title")}
-              description={t("projects_creditcard_description")}
-              tags={["HTML", "CSS", "JavaScript"]}
-              onMouseEnter={() => setProjectImage(ProjectCreditCardGenerator)}
-              onMouseLeave={() => setProjectImage(null)}
-              github="https://github.com/Dnowdd/CreditCard-Image-Generator"
-              website="https://dnowdd.github.io/CreditCard-Image-Generator/"
+              title={t("projects_hidrata_title")}
+              description={t("projects_hidrata_description")}
+              tags={["Flutter", "Dart", "Android", "IOS"]}
+              projectImage={ProjectHidrata}
+              mobile
+              github="https://github.com/Dnowdd/Hidrata"
+            />
+            <CardProject
+              title={t("projects_deepchat_title")}
+              description={t("projects_deepchat_description")}
+              tags={["React.JS", "JavaScript", "DeepSeek"]}
+              projectImage={ProjectDeepChat}
+              github="https://github.com/Dnowdd/DeepChat"
             />
             <CardProject
               title={t("projects_questvest_title")}
               description={t("projects_questvest_description")}
               tags={["React.JS", "TypeScript", "Tailwind"]}
-              onMouseEnter={() => setProjectImage(ProjectQuestVest)}
-              onMouseLeave={() => setProjectImage(null)}
+              projectImage={ProjectQuestVest}
               github="https://github.com/Dnowdd/QuestVest"
+            />
+            <CardProject
+              title={t("projects_creditcard_title")}
+              description={t("projects_creditcard_description")}
+              tags={["HTML", "CSS", "JavaScript"]}
+              projectImage={ProjectCreditCardGenerator}
+              github="https://github.com/Dnowdd/CreditCard-Image-Generator"
+              website="https://dnowdd.github.io/CreditCard-Image-Generator/"
             />
           </div>
         </div>
