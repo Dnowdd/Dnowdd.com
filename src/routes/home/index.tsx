@@ -20,6 +20,7 @@ import ProjectDeepChat from "@/assets/projects/DeepChat.png";
 
 // Licenses & certifications
 import LicensesAWS from "@/assets/licenses/AWS.png";
+import LicensesCanva from "@/assets/licenses/Canva.png";
 import LicensesCisco from "@/assets/licenses/Cisco.png";
 import LicensesEF from "@/assets/licenses/EF.png";
 import LicensesFreeCodeCamp from "@/assets/licenses/FreeCodeCamp.png";
@@ -272,6 +273,13 @@ export default function Home() {
             </h1>
           </div>
           <div className="flex flex-col gap-6">
+            <CardLicenses
+              title="The field guide to Human-Centered Design"
+              company="Canva"
+              img={LicensesCanva}
+              issued={new Date("2025-04-02")}
+              link="https://www.canva.com/design-school/certification-award/f9302937-29c9-4f74-a6db-60092bffd61e"
+            />
             <CardLicenses
               title="Python"
               company="Santander Open Academy"
