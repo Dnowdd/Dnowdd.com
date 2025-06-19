@@ -8,12 +8,6 @@ interface CardLicensesProps {
   link?: string;
 }
 
-function formatDate(date: Date): string {
-  return date
-    .toLocaleString("en-US", { month: "short", year: "numeric" })
-    .replace(/(\w+)\s(\d+)/, "$1. $2");
-}
-
 export default function CardLicenses({
   img,
   title,
@@ -21,7 +15,22 @@ export default function CardLicenses({
   issued,
   link,
 }: CardLicensesProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  function formatDate(date: Date): string {
+    const localeMap: { [key: string]: string } = {
+      pt: "pt-BR",
+      en: "en-US",
+    };
+
+    const currentLocale = localeMap[i18n.language] || "en-US";
+
+    const formatted = date
+      .toLocaleString(currentLocale, { month: "short", year: "numeric" })
+      .replace(/(\w+)\s(\d+)/, "$1. $2");
+
+    return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+  }
 
   return (
     <div

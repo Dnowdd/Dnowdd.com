@@ -1,44 +1,35 @@
 {
-    "title": "Hi, I'm David Queiroz.",
-    "role": "Full-stack developer",
-    "description": "Full-stack developer focused on innovative solutions, currently an IT Management student and software engineering intern, always seeking growth in tech. 🚀",
-    "aboutme_title": "About me",
-    "aboutme_content_1":
-      "I am a Brazilian full-stack developer with hands-on experience since 2020, committed to transforming creative ideas into impactful technological solutions. Throughout this journey, I have developed a passion for exploring how code can be used as a tool to solve problems and enhance people's quality of life. My primary goal is to create innovative solutions that not only meet users' needs but also inspire and empower individuals and organizations to achieve their objectives efficiently.",
-    "aboutme_content_2":
-      "I am currently an intern in software engineering at Genialogic since February 2024, where I have been deepening my practical skills and gaining industry experience. At the same time, I am pursuing a degree in Information Technology Management at FATEC Campinas, which I began in 2023 and expect to complete by the end of 2025. Throughout this journey, I have developed an even greater passion for the IT field, driven by the opportunity to create innovative and impactful solutions. I am highly engaged in my professional development, continuously seeking growth and learning to make a meaningful contribution to the field.",
-    "experience_title": "Experience",
-    "experience_genialogic_role": "Intern in software engineering",
-    "experience_genialogic_description":
-      "I develop and maintain CRM and ERP systems using React.js and Node.js, contributing to full-stack development and delivering scalable solutions.",
-    "education_title": "Education",
-    "education_fatec_role": "Information Technology Management",
-    "education_fatec_description":
-      "A comprehensive program focused on IT strategy, project management, and business solutions, combining technical and administrative skills.",
-    "education_etec_role": "Systems Development Technician",
-    "education_etec_description":
-      "A technical course centered on software development, programming, and systems analysis, preparing students for the IT industry.",
-    "projects_title": "Projects",
-    "projects_creditcard_title": "Credit-Card Generator",
-    "projects_creditcard_description":
-      "This is a simple HTML, CSS and JS project to make a fake credit card, allowing the user to change everything they want.",
-    "projects_questvest_title": "Quest Vest",
-    "projects_questvest_description":
-      "Freelance project for a client who needed a static website to showcase an educational project.",
-    "projects_hidrata_title": "Hidrata+",
-    "projects_hidrata_description":
-      "My first mobile application designed to help users track their daily water intake and stay hydrated. Built with Flutter, it supports both Android and iOS platforms.",
-    "projects_deepchat_title": "DeepChat",
-    "projects_deepchat_description":
-      "This is a local chatbot project integrated with a modern web interface, developed with React.js. The system utilizes the DeepSeek-R1 artificial intelligence model, processed via Ollama.",
-    "licenses_title": "Licenses & certifications",
-    "system.present": "Present",
-    "system.issued": "Issued",
-    "system.localeDate": "en-US",
-    "system.theme": "Theme",
-    "system.languages": "Languages",
-    "system.languages.search": "Search language...",
-    "system.copy": "Copy",
-    "system.copy.title": "Successfully copied ✅🚀",
-    "system.copy.description": "The content has been copied to the clipboard."
-  }
+  "title": "Hi, I'm David Queiroz.",
+  "role": "Full-stack developer",
+  "description": "Full-stack developer focused on innovative solutions, currently an IT Management student and software engineering intern, always seeking growth in tech. 🚀",
+  "aboutme_title": "About me",
+  "aboutme_content_1": "I am a Brazilian full-stack developer with hands-on experience since 2020, committed to transforming creative ideas into impactful technological solutions. Throughout this journey, I have developed a passion for exploring how code can be used as a tool to solve problems and enhance people's quality of life. My primary goal is to create innovative solutions that not only meet users' needs but also inspire and empower individuals and organizations to achieve their objectives efficiently.",
+  "aboutme_content_2": "I am currently an intern in software engineering at Genialogic since February 2024, where I have been deepening my practical skills and gaining industry experience. At the same time, I am pursuing a degree in Information Technology Management at FATEC Campinas, which I began in 2023 and expect to complete by the end of 2025. Throughout this journey, I have developed an even greater passion for the IT field, driven by the opportunity to create innovative and impactful solutions. I am highly engaged in my professional development, continuously seeking growth and learning to make a meaningful contribution to the field.",
+  "experience_title": "Experience",
+  "experience_genialogic_role": "Intern in software engineering",
+  "experience_genialogic_description": "I develop and maintain CRM and ERP systems using React.js and Node.js, contributing to full-stack development and delivering scalable solutions.",
+  "education_title": "Education",
+  "education_fatec_role": "Information Technology Management",
+  "education_fatec_description": "A comprehensive program focused on IT strategy, project management, and business solutions, combining technical and administrative skills.",
+  "education_etec_role": "Systems Development Technician",
+  "education_etec_description": "A technical course centered on software development, programming, and systems analysis, preparing students for the IT industry.",
+  "projects_title": "Projects",
+  "projects_creditcard_title": "Credit-Card Generator",
+  "projects_creditcard_description": "This is a simple HTML, CSS and JS project to make a fake credit card, allowing the user to change everything they want.",
+  "projects_questvest_title": "Quest Vest",
+  "projects_questvest_description": "Freelance project for a client who needed a static website to showcase an educational project.",
+  "projects_hidrata_title": "Hidrata+",
+  "projects_hidrata_description": "My first mobile application designed to help users track their daily water intake and stay hydrated. Built with Flutter, it supports both Android and iOS platforms.",
+  "projects_deepchat_title": "DeepChat",
+  "projects_deepchat_description": "This is a local chatbot project integrated with a modern web interface, developed with React.js. The system utilizes the DeepSeek-R1 artificial intelligence model, processed via Ollama.",
+  "licenses_title": "Licenses & certifications",
+  "system.present": "Present",
+  "system.issued": "Issued",
+  "system.localeDate": "en-US",
+  "system.theme": "Theme",
+  "system.languages": "Languages",
+  "system.languages.search": "Search language...",
+  "system.copy": "Copy",
+  "system.copy.title": "Successfully copied ✅🚀",
+  "system.copy.description": "The content has been copied to the clipboard."
+}
