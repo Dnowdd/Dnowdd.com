@@ -1,6 +1,5 @@
 // Icons
 import CardBackground from "@/components/cardBackground";
-import CardProject from "@/components/cardProject";
 
 import CardLicenses from "@/components/cardLicenses";
 import { useEffect, useRef, useState } from "react";
@@ -12,21 +11,16 @@ import ExperienceGenialogic from "@/assets/experience/genialogic.png";
 import EducationEtec from "@/assets/education/Etec.png";
 import EducationFatec from "@/assets/education/Fatec.png";
 
-// Projects
-import ProjectCreditCardGenerator from "@/assets/projects/CreditCardGenerator.png";
-import ProjectQuestVest from "@/assets/projects/QuestVest.png";
-import ProjectHidrata from "@/assets/projects/Hidrata.png";
-import ProjectDeepChat from "@/assets/projects/DeepChat.png";
-
 // Licenses & certifications
 import LicensesAWS from "@/assets/licenses/AWS.png";
 import LicensesCanva from "@/assets/licenses/Canva.png";
 import LicensesCisco from "@/assets/licenses/Cisco.png";
 import LicensesEF from "@/assets/licenses/EF.png";
-import LicensesFreeCodeCamp from "@/assets/licenses/FreeCodeCamp.png";
 import LicensesETS from "@/assets/licenses/ETS.png";
+import LicensesFreeCodeCamp from "@/assets/licenses/FreeCodeCamp.png";
 import LicensesSantanderOpenAcademy from "@/assets/licenses/SantanderOpenAcademy.png";
 import CurrentSection from "@/components/currentSection";
+import ProjectsContainer from "@/components/projectsContainer";
 import { useTranslation } from "react-i18next";
 
 export default function Home() {
@@ -228,6 +222,19 @@ export default function Home() {
               {t("projects_title")}
             </h1>
           </div>
+          <ProjectsContainer />
+        </div>
+
+        {/* <div
+          className="flex flex-col gap-4"
+          ref={sectionRefs.projects}
+          data-section="projects"
+        >
+          <div>
+            <h1 className="font-semibold text-2xl text-neutral-400 dark:text-neutral-200">
+              {t("projects_title")}
+            </h1>
+          </div>
           <div className="flex flex-col md:grid lg:flex xl:grid grid-cols-2 gap-6 md:gap-2 lg:gap-6 xl:gap-2">
             <CardProject
               title={t("projects_hidrata_title")}
@@ -260,7 +267,7 @@ export default function Home() {
               website="https://dnowdd.github.io/CreditCard-Image-Generator/"
             />
           </div>
-        </div>
+        </div> */}
 
         <div
           className="flex flex-col gap-4"
