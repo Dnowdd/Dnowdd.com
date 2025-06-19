@@ -14,6 +14,8 @@ import EducationFatec from "@/assets/education/Fatec.png";
 // Licenses & certifications
 import LicensesAWS from "@/assets/licenses/AWS.png";
 import LicensesCanva from "@/assets/licenses/Canva.png";
+import LicensesGithub from "@/assets/licenses/Github.png";
+import LicensesIBM from "@/assets/licenses/IBM.png";
 import LicensesCisco from "@/assets/licenses/Cisco.png";
 import LicensesEF from "@/assets/licenses/EF.png";
 import LicensesETS from "@/assets/licenses/ETS.png";
@@ -280,6 +282,20 @@ export default function Home() {
             </h1>
           </div>
           <div className="flex flex-col gap-6">
+            <CardLicenses
+              title="Artificial Intelligence Fundamentals with Capstone Project"
+              company="IBM SkillsBuild"
+              img={LicensesIBM}
+              issued={new Date("2025-05-02")}
+              link="https://www.credly.com/badges/554418be-38af-4fb1-9680-560539084a70"
+            />
+            <CardLicenses
+              title="GitHub Foundations"
+              company="GitHub"
+              img={LicensesGithub}
+              issued={new Date("2025-04-02")}
+              link="https://www.credly.com/badges/77c2d644-44be-44f4-9d2c-80d10e5add47"
+            />
             <CardLicenses
               title="The field guide to Human-Centered Design"
               company="Canva"
