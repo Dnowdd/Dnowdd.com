@@ -208,7 +208,9 @@ const ProjectsContainer = () => {
                 setPausedTime(0); // Reset quando muda projeto manualmente
               }}
             >
-              <h1 className="font-semibold text-md">{project.title}</h1>
+              <h1 className="font-semibold text-md truncate">
+                {project.title}
+              </h1>
               <p className="text-xs line-clamp-2 text-neutral-500 dark:text-neutral-400">
                 {project.description}
               </p>
