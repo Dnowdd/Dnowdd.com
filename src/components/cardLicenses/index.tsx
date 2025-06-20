@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 interface CardLicensesProps {
-  img: any;
+  img: string;
   title: string;
   company: string;
   issued: Date;
@@ -15,18 +15,14 @@ export default function CardLicenses({
   issued,
   link,
 }: CardLicensesProps) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   function formatDate(date: Date): string {
-    const localeMap: { [key: string]: string } = {
-      pt: "pt-BR",
-      en: "en-US",
-    };
-
-    const currentLocale = localeMap[i18n.language] || "en-US";
-
     const formatted = date
-      .toLocaleString(currentLocale, { month: "short", year: "numeric" })
+      .toLocaleString(t("system.localeDate"), {
+        month: "short",
+        year: "numeric",
+      })
       .replace(/(\w+)\s(\d+)/, "$1. $2");
 
     return formatted.charAt(0).toUpperCase() + formatted.slice(1);

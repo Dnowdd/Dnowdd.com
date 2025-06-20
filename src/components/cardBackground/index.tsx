@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { useTranslation } from "react-i18next";
 
 interface CardExperienceProps {
-  image: any;
+  image: string;
   role: string;
   company?: string;
   dateStart: Date;
