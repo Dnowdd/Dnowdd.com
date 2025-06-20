@@ -79,8 +79,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-0 pb-24 lg:pb-0">
-      <div className="fixed bottom-0 left-0 w-full h-[90px] bg-gradient-to-t from-background to-transparent"></div>
-      <div className="fixed top-0 left-0 w-full h-[90px] bg-gradient-to-b from-background to-transparent"></div>
+      <div className="fixed bottom-0 left-0 w-full h-[90px] bg-gradient-to-t from-background to-transparent z-20"></div>
+      <div className="fixed top-0 left-0 w-full h-[90px] bg-gradient-to-b from-background to-transparent z-20"></div>
 
       <div className="w-full lg:w-1/2 h-auto lg:h-screen lg:fixed left-0 bottom-0 pt-20 lg:py-10 xl:py-20 lg:pl-20 xl:pl-40 flex flex-col justify-between">
         <div className="gap-2 flex flex-col">

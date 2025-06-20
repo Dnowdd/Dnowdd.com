@@ -130,7 +130,7 @@ const ProjectsContainer = () => {
     <div className="flex flex-col gap-4">
       <div className="rounded-xl border p-4 flex flex-col gap-4 w-full">
         <div
-          className="aspect-video w-full rounded-lg bg-cover bg-top bg-no-repeat shadow"
+          className="aspect-video w-full bg-cover bg-top bg-no-repeat z-10"
           style={{
             backgroundImage: `url(${projects[selectedProject].image})`,
           }}
