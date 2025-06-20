@@ -50,6 +50,10 @@ export function LanguageToggle() {
 
   useEffect(() => {
     document.title = t("title");
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", t("description"));
+    }
   }, [lang]);
 
   return (
