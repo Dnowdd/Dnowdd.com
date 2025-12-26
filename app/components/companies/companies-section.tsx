@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { StarsBackground } from "@/components/ui/stars-background";
+import { TextAnimate } from "@/components/ui/text-animate";
 import { Timeline } from "@/components/ui/timeline";
 
 const CompaniesSection = () => {
@@ -77,12 +78,20 @@ const CompaniesSection = () => {
       <StarsBackground />
 
       <div>
-        <h2 className="text-neutral-400 text-2xl font-light leading-2 text-center">
+        <TextAnimate
+          animation="slideUp"
+          by="character"
+          className="text-neutral-400 text-2xl font-light leading-2 text-center"
+        >
           Minhas
-        </h2>
-        <h1 className="text-6xl font-bold text-neutral-100 text-center">
+        </TextAnimate>
+        <TextAnimate
+          animation="slideUp"
+          by="character"
+          className="text-6xl font-bold text-neutral-100 text-center"
+        >
           Experiências
-        </h1>
+        </TextAnimate>
       </div>
 
       <Timeline data={timeline} />

@@ -1,5 +1,6 @@
 import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
+import { TextAnimate } from "@/components/ui/text-animate";
 
 const EducationSection = () => {
   const projects = [
@@ -28,12 +29,20 @@ const EducationSection = () => {
     <div className="bg-neutral-950 py-20 relative overflow-hidden">
       <BackgroundRippleEffect cols={35} rows={15} />
       <div className="z-20 relative">
-        <h2 className="text-neutral-400 text-2xl font-light leading-2 text-center">
+        <TextAnimate
+          animation="slideUp"
+          by="character"
+          className="text-neutral-400 text-2xl font-light leading-2 text-center"
+        >
           Minha
-        </h2>
-        <h1 className="text-6xl font-bold text-neutral-100 text-center">
+        </TextAnimate>
+        <TextAnimate
+          animation="slideUp"
+          by="character"
+          className="text-6xl font-bold text-neutral-100 text-center"
+        >
           Educação
-        </h1>
+        </TextAnimate>
       </div>
 
       <div className="flex justify-center items-center gap-12 max-w-5xl mx-auto px-8">

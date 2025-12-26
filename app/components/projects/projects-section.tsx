@@ -13,6 +13,7 @@ import {
   AnimatePresence,
   useTransform,
 } from "framer-motion";
+import { TextAnimate } from "@/components/ui/text-animate";
 
 const ProjectSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -226,12 +227,20 @@ const ProjectSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-neutral-400 text-2xl font-light leading-0 text-center">
+          <TextAnimate
+            animation="slideUp"
+            by="character"
+            className="text-neutral-400 text-2xl font-light leading-0 text-center"
+          >
             Melhores
-          </h2>
-          <h1 className="text-6xl font-bold text-neutral-100 text-center">
+          </TextAnimate>
+          <TextAnimate
+            animation="slideUp"
+            by="character"
+            className="text-6xl font-bold text-neutral-100 text-center"
+          >
             Projetos
-          </h1>
+          </TextAnimate>
         </motion.div>
 
         <div className="w-3/4 flex flex-col gap-6">
