@@ -58,7 +58,10 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
   const isInView = useInView(ref, { once: false });
 
   const [revealCount, setRevealCount] = useState<number>(0);
-  const [scrambleChars, setScrambleChars] = useState<string[]>([]);
+  // Initialize with gibberish to match SSR/client
+  const [scrambleChars, setScrambleChars] = useState<string[]>(() =>
+    generateGibberishPreservingSpaces(text, charset).split("")
+  );
   const animationFrameRef = useRef<number | null>(null);
   const isAnimatingRef = useRef<boolean>(false);
 
@@ -162,7 +165,7 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
           ? char
           : char === " "
           ? " "
-          : scrambleChars[index] ?? generateRandomCharacter(charset);
+          : scrambleChars[index] || char;
 
         return (
           <span
