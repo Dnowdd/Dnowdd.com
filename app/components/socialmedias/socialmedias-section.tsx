@@ -174,11 +174,11 @@ const SocialmediasSection = () => {
         gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(270, 70%, 65%, .08) 0, hsla(270, 70%, 55%, .02) 50%, hsla(270, 70%, 45%, 0) 80%)"
         gradientSecond="radial-gradient(50% 50% at 50% 50%, hsla(270, 70%, 65%, .06) 0, hsla(270, 70%, 55%, .02) 80%, transparent 100%)"
         gradientThird="radial-gradient(50% 50% at 50% 50%, hsla(270, 70%, 65%, .04) 0, hsla(270, 70%, 45%, .02) 80%, transparent 100%)"
-        className="opacity-5"
+        className="!opacity-70 !z-20"
         only="left"
       />
 
-      <div className="flex flex-col gap-6 pl-30">
+      <div className="flex flex-col gap-6 pl-30 z-30 relative">
         <div className="flex flex-col gap-2">
           <h1 className="text-6xl font-bold text-neutral-100">Redes Sociais</h1>
           <p className="text-neutral-400 text-lg font-light max-w-140">
@@ -188,19 +188,19 @@ const SocialmediasSection = () => {
         </div>
         <div className="flex gap-2">
           <Link target="_blank" href="#">
-            <Button className="bg-[#0077B5] hover:bg-[#005d8f] text-neutral-200 cursor-pointer opacity-50 hover:opacity-100">
+            <Button className="bg-neutral-950 hover:bg-neutral-900 border text-neutral-400 cursor-pointer opacity-90 hover:opacity-100">
               <Linkedin />
               LinkedIn
             </Button>
           </Link>
           <Link target="_blank" href="#">
-            <Button className="bg-neutral-800 hover:bg-neutral-700 text-neutral-400 cursor-pointer opacity-50 hover:opacity-100">
+            <Button className="bg-neutral-950 hover:bg-neutral-900 border text-neutral-400 cursor-pointer opacity-90 hover:opacity-100">
               <Github />
               GitHub
             </Button>
           </Link>
           <Link target="_blank" href="#">
-            <Button className="bg-red-800 hover:bg-red-700 text-neutral-400 cursor-pointer opacity-50 hover:opacity-100">
+            <Button className="bg-neutral-950 hover:bg-neutral-900 border text-neutral-400 cursor-pointer opacity-90 hover:opacity-100">
               <Mail />
               E-mail
             </Button>
@@ -208,7 +208,7 @@ const SocialmediasSection = () => {
         </div>
       </div>
       <div className="h-80">
-        <div className="w-full h-120 -translate-y-20">
+        <div className="w-full h-120 -translate-y-20 z-20 relative">
           <Canvas
             camera={{ position: [0, 0, 8], fov: 50 }}
             gl={{ alpha: true }}
