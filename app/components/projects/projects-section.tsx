@@ -154,7 +154,7 @@ const ProjectSection = () => {
   return (
     <div
       className={cn(
-        "inset-0 bg-neutral-950 py-20 flex flex-col items-center gap-8 relative",
+        "inset-0 bg-neutral-950 py-20 flex flex-col items-center gap-8 relative overflow-hidden",
         "[background-size:10px_10px]",
         "bg-[radial-gradient(rgba(128,51,230,0.3)_1px,transparent_1px)]"
       )}
@@ -170,20 +170,20 @@ const ProjectSection = () => {
           <TextAnimate
             animation="slideUp"
             by="character"
-            className="text-neutral-400 text-2xl font-light leading-0 text-center"
+            className="text-neutral-400 text-xl md:text-2xl font-light leading-0 text-center"
           >
             {texts.projects.subtitle}
           </TextAnimate>
           <TextAnimate
             animation="slideUp"
             by="character"
-            className="text-6xl font-bold text-neutral-100 text-center"
+            className="text-4xl md:text-6xl font-bold text-neutral-100 text-center"
           >
             {texts.projects.title}
           </TextAnimate>
         </motion.div>
 
-        <div className="w-3/4 flex flex-col gap-6">
+        <div className="w-[90%] md:w-3/4 flex flex-col gap-6">
           {/* Carousel */}
           <motion.div
             className="overflow-hidden relative"
@@ -341,7 +341,7 @@ const ProjectSection = () => {
                 stiffness: 300,
                 damping: 30,
               }}
-              className="grid grid-cols-2 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
             >
               <motion.div
                 className="w-full aspect-video"
@@ -385,7 +385,7 @@ const ProjectSection = () => {
                 </div>
 
                 <motion.p
-                  className="text-neutral-400 text-lg line-clamp-7"
+                  className="text-neutral-400 text-sm lg:text-lg line-clamp-7"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}

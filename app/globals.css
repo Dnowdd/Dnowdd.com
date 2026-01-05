@@ -46,6 +46,7 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
+html,
 body {
   margin: 0;
   padding: 0;

@@ -7,7 +7,7 @@ import SocialmediasSection from "./components/socialmedias/socialmedias-section"
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-x-hidden w-full max-w-[100vw]">
       <HeroSection />
 
       <ProjectSection />

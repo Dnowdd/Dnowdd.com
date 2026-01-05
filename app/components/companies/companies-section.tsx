@@ -7,38 +7,46 @@ import texts from "@/content/texts.json";
 const CompaniesSection = () => {
   const timeline = texts.companies.timeline.map((item) => ({
     title: (
-      <div className="flex flex-col items-end">
-        <h1>{item.period.start}</h1>
+      <div className="flex gap-2 md:gap-3 items-end">
+        <h1 className="text-xl md:text-2xl whitespace-nowrap">
+          {item.period.start}
+        </h1>
         <div className="flex items-center gap-3">
           <div className="w-6 h-px bg-neutral-600"></div>
-          <p className="font-light text-lg">{item.period.end}</p>
+          <p className="font-light text-xs md:text-base">{item.period.end}</p>
         </div>
       </div>
     ),
     content: (
       <div className="flex flex-col gap-1">
-        <h1 className="text-3xl font-bold text-neutral-100">{item.position}</h1>
-        <h2 className="text-xl text-neutral-400">{item.company}</h2>
-        <p className="text-sm font-light max-w-2/3 text-neutral-500">
-          {item.description}
-        </p>
-        <div className="flex gap-2">
-          {item.tags.map((tag, index) => (
-            <Badge
-              key={index}
-              variant="outline"
-              className="text-neutral-500 bg-neutral-900/50"
-            >
-              {tag}
-            </Badge>
-          ))}
+        <h1 className="text-xl md:text-3xl xl:text-4xl font-bold text-neutral-100">
+          {item.position}
+        </h1>
+        <h2 className="text-lg md:text-xl xl:text-2xl text-neutral-400">
+          {item.company}
+        </h2>
+        <div className="flex flex-col gap-2">
+          <p className="text-sm md:text-base xl:text-lg font-light text-neutral-500">
+            {item.description}
+          </p>
+          <div className="flex gap-2">
+            {item.tags.map((tag, index) => (
+              <Badge
+                key={index}
+                variant="outline"
+                className="text-neutral-500 bg-neutral-900/50 text-xs md:text-sm"
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
         </div>
       </div>
     ),
   }));
 
   return (
-    <div className="bg-neutral-950 py-20 relative z-10">
+    <div className="bg-neutral-950 py-20 relative z-[-1]">
       <StarsBackground />
 
       <div>
@@ -52,7 +60,7 @@ const CompaniesSection = () => {
         <TextAnimate
           animation="slideUp"
           by="character"
-          className="text-6xl font-bold text-neutral-100 text-center"
+          className="text-4xl md:text-6xl font-bold text-neutral-100 text-center"
         >
           {texts.companies.title}
         </TextAnimate>

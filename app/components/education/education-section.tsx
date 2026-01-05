@@ -20,7 +20,7 @@ const EducationSection = () => {
         <TextAnimate
           animation="slideUp"
           by="character"
-          className="text-6xl font-bold text-neutral-100 text-center"
+          className="text-4xl md:text-6xl font-bold text-neutral-100 text-center"
         >
           {texts.education.title}
         </TextAnimate>
