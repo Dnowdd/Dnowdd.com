@@ -58,12 +58,16 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
   const isInView = useInView(ref, { once: false });
 
   const [revealCount, setRevealCount] = useState<number>(0);
-  // Initialize with gibberish to match SSR/client
-  const [scrambleChars, setScrambleChars] = useState<string[]>(() =>
-    generateGibberishPreservingSpaces(text, charset).split("")
-  );
+  const [isMounted, setIsMounted] = useState(false);
+  // Initialize with empty array to avoid hydration mismatch
+  const [scrambleChars, setScrambleChars] = useState<string[]>([]);
   const animationFrameRef = useRef<number | null>(null);
   const isAnimatingRef = useRef<boolean>(false);
+
+  // Set mounted state after hydration
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     // Cancel any existing animation
@@ -151,6 +155,24 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
   }, [isInView, text, revealDelayMs, charset, flipDelayMs]);
 
   if (!text) return null;
+
+  // During SSR and before mount, show the final revealed text to avoid hydration mismatch
+  if (!isMounted) {
+    return (
+      <motion.span
+        ref={ref}
+        className={cn(className)}
+        aria-label={text}
+        role="text"
+      >
+        {text.split("").map((char, index) => (
+          <span key={index} className={cn(revealedClassName)}>
+            {char}
+          </span>
+        ))}
+      </motion.span>
+    );
+  }
 
   return (
     <motion.span

@@ -1,0 +1,132 @@
+{
+  "hero": {
+    "subtitle": "Queiroz,",
+    "title": "David",
+    "paragraphs": [
+      {
+        "text": "Sou um <strong>desenvolvedor full-stack brasileiro</strong> com experiência prática desde 2020, movido pela curiosidade e pelo desejo de transformar ideias criativas em <strong>soluções tecnológicas eficientes</strong> e <strong>impactantes</strong>. Ao longo da minha trajetória, desenvolvi uma forte paixão por utilizar o código como ferramenta para resolver problemas reais, melhorar processos e gerar valor para pessoas e organizações."
+      },
+      {
+        "text": "Atualmente, atuo como <strong>Desenvolvedor Full-Stack Júnior</strong> na <strong>Genialogic</strong>, cargo que assumi em agosto de 2025, após 1 ano e meio de experiência como estagiário, iniciado em fevereiro de 2024. Nesse período, tive a oportunidade de aprofundar minhas habilidades técnicas, participar ativamente de projetos reais e evoluir tanto no desenvolvimento <strong>frontend</strong> quanto <strong>backend</strong>, sempre com foco em soluções escaláveis e bem estruturadas."
+      },
+      {
+        "text": "Sou <strong>formado</strong> em <strong>Gestão da Tecnologia da Informação</strong> pela <strong>FATEC Campinas</strong>, curso iniciado em 2023 e concluído em dezembro de 2025. Essa formação fortaleceu minha visão estratégica sobre tecnologia, negócios e processos, complementando minha experiência prática como desenvolvedor."
+      }
+    ]
+  },
+  "projects": {
+    "subtitle": "Melhores",
+    "title": "Projetos",
+    "items": [
+      {
+        "title": "Projeto 1",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
+        "image": "https://placehold.co/1920x1080?text=Projeto+1",
+        "tags": ["Next.js", "TypeScript", "TailwindCSS"]
+      },
+      {
+        "title": "Projeto 2",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
+        "image": "https://placehold.co/1920x1080?text=Projeto+2",
+        "tags": ["Next.js", "TypeScript", "TailwindCSS"]
+      },
+      {
+        "title": "Projeto 3",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
+        "image": "https://placehold.co/1920x1080?text=Projeto+3",
+        "tags": ["Next.js", "TypeScript", "TailwindCSS"]
+      },
+      {
+        "title": "Projeto 4",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
+        "image": "https://placehold.co/1920x1080?text=Projeto+4",
+        "tags": ["Next.js", "TypeScript", "TailwindCSS"]
+      },
+      {
+        "title": "Projeto 5",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
+        "image": "https://placehold.co/1920x1080?text=Projeto+5",
+        "tags": ["Next.js", "TypeScript", "TailwindCSS"]
+      },
+      {
+        "title": "Projeto 6",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
+        "image": "https://placehold.co/1920x1080?text=Projeto+6",
+        "tags": ["Next.js", "TypeScript", "TailwindCSS"]
+      },
+      {
+        "title": "Projeto 7",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
+        "image": "https://placehold.co/1920x1080?text=Projeto+6",
+        "tags": ["Next.js", "TypeScript", "TailwindCSS"]
+      }
+    ]
+  },
+  "socialmedias": {
+    "title": "Redes Sociais",
+    "description": "Vamos compartilhar experiências e conexões, você pode me encontrar nas plataformas abaixo.",
+    "links": [
+      {
+        "name": "LinkedIn",
+        "icon": "Linkedin"
+      },
+      {
+        "name": "GitHub",
+        "icon": "Github"
+      },
+      {
+        "name": "E-mail",
+        "icon": "Mail"
+      }
+    ]
+  },
+  "companies": {
+    "subtitle": "Minhas",
+    "title": "Experiências",
+    "timeline": [
+      {
+        "period": {
+          "start": "Ago. 2025",
+          "end": "Atualmente"
+        },
+        "position": "Desenvolvedor Full-stack Júnior",
+        "company": "Genialogic",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit dignissimos fugiat rerum suscipit tenetur eligendi itaque quas reprehenderit, veritatis qui! Est, eaque incidunt laborum odio nam molestias quos delectus sed!",
+        "tags": ["Next.js"]
+      },
+      {
+        "period": {
+          "start": "Fev. 2024",
+          "end": "Ago. 2025"
+        },
+        "position": "Estagiário em desenvolvimento de software",
+        "company": "Genialogic",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit dignissimos fugiat rerum suscipit tenetur eligendi itaque quas reprehenderit, veritatis qui! Est, eaque incidunt laborum odio nam molestias quos delectus sed!",
+        "tags": ["Next.js"]
+      }
+    ]
+  },
+  "education": {
+    "subtitle": "Minha",
+    "title": "Educação",
+    "items": [
+      {
+        "title": "Técnico em Desenvolvimento de Sistemas",
+        "school": "ETEC de Hortolândia",
+        "from": "Jan. 2020",
+        "to": "Dez. 2022",
+        "description": "Curso técnico público voltado para o desenvolvimento de software, programação e análise de sistemas, preparando os alunos para a indústria de TI.",
+        "tags": ["Cursado", "Ensino Técnico", "Tempo Integral"]
+      },
+      {
+        "title": "Gestão da Tecnologia da Informação",
+        "school": "FATEC Campinas",
+        "from": "Fev. 2023",
+        "to": "Dez. 2025",
+        "description": "Curso superior público focado em estratégia de TI, gerenciamento de projetos e soluções empresariais, combinando habilidades técnicas e administrativas.",
+        "link": "https://netflix.com",
+        "tags": ["Graduado", "Curso Superior"]
+      }
+    ]
+  }
+}

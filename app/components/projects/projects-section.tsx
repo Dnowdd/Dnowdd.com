@@ -14,6 +14,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { TextAnimate } from "@/components/ui/text-animate";
+import texts from "@/content/texts.json";
 
 const ProjectSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -26,74 +27,13 @@ const ProjectSection = () => {
 
   const x = useMotionValue(0);
 
-  const projects = [
-    {
-      title: "Projeto 1",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
-      image: "https://placehold.co/1920x1080?text=Projeto+1",
-      links: [
-        { icon: Github, url: "#" },
-        { icon: Globe, url: "#" },
-      ],
-      tags: ["Next.js", "TypeScript", "TailwindCSS"],
-    },
-    {
-      title: "Projeto 2",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
-      image: "https://placehold.co/1920x1080?text=Projeto+2",
-      links: [
-        { icon: Github, url: "#" },
-        { icon: Globe, url: "#" },
-      ],
-      tags: ["Next.js", "TypeScript", "TailwindCSS"],
-    },
-    {
-      title: "Projeto 3",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
-      image: "https://placehold.co/1920x1080?text=Projeto+3",
-      links: [
-        { icon: Github, url: "#" },
-        { icon: Globe, url: "#" },
-      ],
-      tags: ["Next.js", "TypeScript", "TailwindCSS"],
-    },
-    {
-      title: "Projeto 4",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
-      image: "https://placehold.co/1920x1080?text=Projeto+4",
-      links: [
-        { icon: Github, url: "#" },
-        { icon: Globe, url: "#" },
-      ],
-      tags: ["Next.js", "TypeScript", "TailwindCSS"],
-    },
-    {
-      title: "Projeto 5",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
-      image: "https://placehold.co/1920x1080?text=Projeto+5",
-      links: [
-        { icon: Github, url: "#" },
-        { icon: Globe, url: "#" },
-      ],
-      tags: ["Next.js", "TypeScript", "TailwindCSS"],
-    },
-    {
-      title: "Projeto 6",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
-      image: "https://placehold.co/1920x1080?text=Projeto+6",
-      links: [
-        { icon: Github, url: "#" },
-        { icon: Globe, url: "#" },
-      ],
-      tags: ["Next.js", "TypeScript", "TailwindCSS"],
-    },
-  ];
+  const projects = texts.projects.items.map((project) => ({
+    ...project,
+    links: [
+      { icon: Github, url: "#" },
+      { icon: Globe, url: "#" },
+    ],
+  }));
 
   const currentProject = projects[currentSlide];
 
@@ -232,14 +172,14 @@ const ProjectSection = () => {
             by="character"
             className="text-neutral-400 text-2xl font-light leading-0 text-center"
           >
-            Melhores
+            {texts.projects.subtitle}
           </TextAnimate>
           <TextAnimate
             animation="slideUp"
             by="character"
             className="text-6xl font-bold text-neutral-100 text-center"
           >
-            Projetos
+            {texts.projects.title}
           </TextAnimate>
         </motion.div>
 

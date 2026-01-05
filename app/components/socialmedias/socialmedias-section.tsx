@@ -10,6 +10,7 @@ import { Spotlight } from "@/components/ui/spotlight-new";
 import { EncryptedText } from "@/components/ui/encrypted-text";
 import { TextAnimate } from "@/components/ui/text-animate";
 import { useInView } from "motion/react";
+import texts from "@/content/texts.json";
 
 const CHARSET =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-={}[];:,.<>/?";
@@ -288,6 +289,12 @@ const SocialmediasSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
 
+  const socialLinks = {
+    Linkedin,
+    Github,
+    Mail,
+  };
+
   return (
     <div
       ref={sectionRef}
@@ -306,7 +313,7 @@ const SocialmediasSection = () => {
           {/* <h1 className="text-6xl font-bold text-neutral-100">Redes Sociais</h1> */}
           <h1 className="text-6xl font-bold">
             <EncryptedText
-              text="Redes Sociais"
+              text={texts.socialmedias.title}
               encryptedClassName="text-neutral-400"
               revealedClassName="text-neutral-100"
               revealDelayMs={50}
@@ -317,29 +324,21 @@ const SocialmediasSection = () => {
             by="word"
             className="text-neutral-400 text-lg font-light max-w-140"
           >
-            Vamos compartilhar experiências e conexões, você pode me encontrar
-            nas plataformas abaixo.
+            {texts.socialmedias.description}
           </TextAnimate>
         </div>
         <div className="flex gap-2">
-          <Link target="_blank" href="#">
-            <Button className="bg-neutral-950 hover:bg-neutral-900 border text-neutral-400 cursor-pointer opacity-90 hover:opacity-100">
-              <Linkedin />
-              LinkedIn
-            </Button>
-          </Link>
-          <Link target="_blank" href="#">
-            <Button className="bg-neutral-950 hover:bg-neutral-900 border text-neutral-400 cursor-pointer opacity-90 hover:opacity-100">
-              <Github />
-              GitHub
-            </Button>
-          </Link>
-          <Link target="_blank" href="#">
-            <Button className="bg-neutral-950 hover:bg-neutral-900 border text-neutral-400 cursor-pointer opacity-90 hover:opacity-100">
-              <Mail />
-              E-mail
-            </Button>
-          </Link>
+          {texts.socialmedias.links.map((link, index) => {
+            const Icon = socialLinks[link.icon as keyof typeof socialLinks];
+            return (
+              <Link key={index} target="_blank" href="#">
+                <Button className="bg-neutral-950 hover:bg-neutral-900 border text-neutral-400 cursor-pointer opacity-90 hover:opacity-100">
+                  <Icon />
+                  {link.name}
+                </Button>
+              </Link>
+            );
+          })}
         </div>
       </div>
       <div className="h-80">
