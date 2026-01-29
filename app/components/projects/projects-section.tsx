@@ -27,14 +27,12 @@ const ProjectSection = () => {
 
   const x = useMotionValue(0);
 
-  const projects = texts.projects.items.map((project) => ({
-    ...project,
-    links: [
-      { icon: Github, url: "#" },
-      { icon: Globe, url: "#" },
-    ],
-  }));
+  const socialLinks = {
+    Github,
+    Globe,
+  };
 
+  const projects = texts.projects.items;
   const currentProject = projects[currentSlide];
 
   // Calcular largura do container e maxScroll
@@ -371,16 +369,22 @@ const ProjectSection = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 }}
                   >
-                    {currentProject.links.map((link, index) => (
-                      <Link key={index} href={link.url}>
-                        <Button
-                          variant="outline"
-                          className="size-8 cursor-pointer hover:scale-110 transition-transform"
-                        >
-                          <link.icon />
-                        </Button>
-                      </Link>
-                    ))}
+                    {currentProject.links?.map((link, index) => {
+                      const Icon =
+                        socialLinks[link.icon as keyof typeof socialLinks];
+                      if (!Icon) return null;
+
+                      return (
+                        <Link key={index} href={link.url}>
+                          <Button
+                            variant="outline"
+                            className="size-8 cursor-pointer hover:scale-110 transition-transform"
+                          >
+                            <Icon />
+                          </Button>
+                        </Link>
+                      );
+                    })}
                   </motion.div>
                 </div>
 

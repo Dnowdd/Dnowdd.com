@@ -19,45 +19,21 @@
     "title": "Projetos",
     "items": [
       {
-        "title": "Projeto 1",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
+        "title": "DeepChat",
+        "description": "Meu primeiro aplicativo mobile, projetado para ajudar os usuários a monitorar sua ingestão diária de água e se manterem hidratados. Desenvolvido com Flutter, é compatível com as plataformas Android e iOS.",
         "image": "https://placehold.co/1920x1080?text=Projeto+1",
-        "tags": ["Next.js", "TypeScript", "TailwindCSS"]
+        "tags": ["Flutter", "Dart", "Android", "iOS"],
+        "links": [
+          {
+            "icon": "GitHub",
+            "url": "https://github.com/Dnowdd/Hidrata"
+          }
+        ]
       },
       {
         "title": "Projeto 2",
         "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
         "image": "https://placehold.co/1920x1080?text=Projeto+2",
-        "tags": ["Next.js", "TypeScript", "TailwindCSS"]
-      },
-      {
-        "title": "Projeto 3",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
-        "image": "https://placehold.co/1920x1080?text=Projeto+3",
-        "tags": ["Next.js", "TypeScript", "TailwindCSS"]
-      },
-      {
-        "title": "Projeto 4",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
-        "image": "https://placehold.co/1920x1080?text=Projeto+4",
-        "tags": ["Next.js", "TypeScript", "TailwindCSS"]
-      },
-      {
-        "title": "Projeto 5",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
-        "image": "https://placehold.co/1920x1080?text=Projeto+5",
-        "tags": ["Next.js", "TypeScript", "TailwindCSS"]
-      },
-      {
-        "title": "Projeto 6",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
-        "image": "https://placehold.co/1920x1080?text=Projeto+6",
-        "tags": ["Next.js", "TypeScript", "TailwindCSS"]
-      },
-      {
-        "title": "Projeto 7",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos temporibus magni laudantium officiis illo nesciunt ipsa, distinctio dolor, deserunt culpa esse, fuga reprehenderit architecto! Sit placeat eligendi autem odit ut!",
-        "image": "https://placehold.co/1920x1080?text=Projeto+6",
         "tags": ["Next.js", "TypeScript", "TailwindCSS"]
       }
     ]
