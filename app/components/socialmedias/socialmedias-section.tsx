@@ -62,7 +62,7 @@ const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
   const { camera, gl } = useThree();
 
   const [scrambledChars, setScrambledChars] = useState<Map<number, string>>(
-    new Map()
+    new Map(),
   );
   const revealedCharsRef = useRef<Set<number>>(new Set());
   const revealTimesRef = useRef<Map<number, number>>(new Map());
@@ -198,12 +198,12 @@ const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
       // Rotação suave seguindo o mouse (limitado a 30 graus)
       const targetRotationY = Math.max(
         -0.52,
-        Math.min(0.52, mouseRef.current.x * 0.52)
+        Math.min(0.52, mouseRef.current.x * 0.52),
       );
       // Inverter eixo Y para ficar natural
       const targetRotationX = Math.max(
         -0.52,
-        Math.min(0.52, -mouseRef.current.y * 0.52)
+        Math.min(0.52, -mouseRef.current.y * 0.52),
       );
 
       groupRef.current.rotation.y +=
@@ -215,7 +215,7 @@ const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
       const vector = new THREE.Vector3(
         mouseRef.current.x,
         mouseRef.current.y,
-        0
+        0,
       );
       vector.unproject(camera);
 
@@ -298,7 +298,7 @@ const SocialmediasSection = () => {
   return (
     <div
       ref={sectionRef}
-      className="w-full bg-neutral-950 flex flex-col md:grid md:grid-cols-[2fr_1fr] items-center px-4 md:px-8 relative py-20 md:py-0"
+      className="w-full bg-neutral-950 flex flex-col md:grid md:grid-cols-[2fr_1fr] items-center px-4 md:px-8 relative py-20 md:py-0 z-[2]"
     >
       <Spotlight
         gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(270, 70%, 65%, .08) 0, hsla(270, 70%, 55%, .02) 50%, hsla(270, 70%, 45%, 0) 80%)"

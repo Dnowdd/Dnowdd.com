@@ -46,7 +46,7 @@ const CompaniesSection = () => {
   }));
 
   return (
-    <div className="bg-neutral-950 py-20 relative z-[-1]">
+    <div className="bg-neutral-950 py-20 relative z-[1]">
       <StarsBackground />
 
       <div>

@@ -154,7 +154,7 @@ const ProjectSection = () => {
       className={cn(
         "inset-0 bg-neutral-950 py-20 flex flex-col items-center gap-8 relative overflow-hidden",
         "[background-size:10px_10px]",
-        "bg-[radial-gradient(rgba(128,51,230,0.3)_1px,transparent_1px)]"
+        "bg-[radial-gradient(rgba(128,51,230,0.3)_1px,transparent_1px)]",
       )}
     >
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-neutral-950 [mask-image:radial-gradient(ellipse_at_center,transparent,black)]"></div>
@@ -225,7 +225,7 @@ const ProjectSection = () => {
                       // Clamp para respeitar as bordas (não centralizar extremos se não der)
                       const itemTargetX = Math.max(
                         -maxScroll,
-                        Math.min(0, -centerOffset)
+                        Math.min(0, -centerOffset),
                       );
 
                       const distance = Math.abs(target - itemTargetX);
@@ -242,7 +242,7 @@ const ProjectSection = () => {
                     const centerOffset = itemCenter - containerCenter;
                     const snapX = Math.max(
                       -maxScroll,
-                      Math.min(0, -centerOffset)
+                      Math.min(0, -centerOffset),
                     );
 
                     return snapX;
