@@ -17,13 +17,18 @@ import {
 import { TextAnimate } from "@/components/ui/text-animate";
 import texts from "@/content/texts.json";
 
+const AUTOPLAY_INTERVAL_MS = 5000;
+
 const ProjectSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [shouldAutoScroll, setShouldAutoScroll] = useState(false);
   const [containerWidth, setContainerWidth] = useState(0);
+  const [isSectionInView, setIsSectionInView] = useState(false);
+  const [autoplayPausedByUser, setAutoplayPausedByUser] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const dragStartX = useRef(0);
 
   const x = useMotionValue(0);
@@ -67,22 +72,47 @@ const ProjectSection = () => {
     }, black 50%, ${showRight ? "black 90%, transparent 100%" : "black 100%"})`;
   });
 
-  // Autoplay com loop infinito
+  // Intersection Observer: visibilidade da seção + reset do "pause" quando sai da tela
   useEffect(() => {
-    const startAutoplay = () => {
-      autoplayRef.current = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % projects.length);
-      }, 5000);
-    };
+    const el = sectionRef.current;
+    if (!el) return;
 
-    startAutoplay();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        const inView = entry.isIntersecting;
+        setIsSectionInView(inView);
+        if (!inView) setAutoplayPausedByUser(false);
+      },
+      { threshold: 0.2, rootMargin: "0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Autoplay só quando a seção está visível e o usuário não pausou (ex.: clicando numa thumbnail)
+  useEffect(() => {
+    if (!isSectionInView || autoplayPausedByUser) {
+      if (autoplayRef.current) {
+        clearInterval(autoplayRef.current);
+        autoplayRef.current = null;
+      }
+      return;
+    }
+
+    autoplayRef.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % projects.length);
+      setShouldAutoScroll(true);
+    }, AUTOPLAY_INTERVAL_MS);
 
     return () => {
       if (autoplayRef.current) {
         clearInterval(autoplayRef.current);
+        autoplayRef.current = null;
       }
     };
-  }, [projects.length]);
+  }, [isSectionInView, autoplayPausedByUser, projects.length]);
 
   // Atualizar posição do drag quando mudar o slide (só quando clicar, não no drag livre)
   useEffect(() => {
@@ -116,16 +146,12 @@ const ProjectSection = () => {
     if (!isDragging) {
       setCurrentSlide(index);
       setShouldAutoScroll(true);
+      setAutoplayPausedByUser(true);
 
-      // Resetar autoplay quando clicar manualmente
       if (autoplayRef.current) {
         clearInterval(autoplayRef.current);
+        autoplayRef.current = null;
       }
-
-      autoplayRef.current = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % projects.length);
-        setShouldAutoScroll(true);
-      }, 5000);
     }
   };
 
@@ -136,22 +162,14 @@ const ProjectSection = () => {
     dragStartX.current = x.get();
   };
 
-  const handleDragEnd = (_: any, info: any) => {
+  const handleDragEnd = () => {
     setIsDragging(false);
-
-    // Resetar autoplay
-    if (autoplayRef.current) {
-      clearInterval(autoplayRef.current);
-    }
-
-    autoplayRef.current = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % projects.length);
-      setShouldAutoScroll(true);
-    }, 5000);
+    // Autoplay continua ou não conforme isSectionInView e autoplayPausedByUser (efeito cuida disso)
   };
 
   return (
     <div
+      ref={sectionRef}
       className={cn(
         "inset-0 bg-neutral-950 py-20 flex flex-col items-center gap-8 relative overflow-hidden",
         "[background-size:10px_10px]",
@@ -250,9 +268,7 @@ const ProjectSection = () => {
                   },
                 }}
                 onDragStart={handleDragStart}
-                onDragEnd={(e, info) => {
-                  handleDragEnd(e, info);
-                }}
+                onDragEnd={handleDragEnd}
                 style={{ x }}
                 className="flex gap-4 select-none"
               >
