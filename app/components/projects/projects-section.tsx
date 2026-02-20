@@ -1,6 +1,7 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Android } from "@/components/ui/android";
 import { Safari } from "@/components/ui/safari";
 import { cn } from "@/lib/utils";
 import { Github, Globe } from "lucide-react";
@@ -342,15 +343,27 @@ const ProjectSection = () => {
               className="grid grid-cols-1 md:grid-cols-2 gap-6"
             >
               <motion.div
-                className="w-full aspect-video"
+                className={cn(
+                  "w-full",
+                  (currentProject as { mobileApp?: boolean }).mobileApp
+                    ? "flex min-h-[280px] items-center justify-center"
+                    : "aspect-video"
+                )}
                 layoutId="project-preview"
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
-                <Safari
-                  url="https://dnowdd.com"
-                  imageSrc={currentProject.image}
-                  mode="simple"
-                />
+                {(currentProject as { mobileApp?: boolean }).mobileApp ? (
+                  <Android
+                    src={currentProject.image}
+                    className="h-full max-h-[420px] w-auto"
+                  />
+                ) : (
+                  <Safari
+                    url="https://dnowdd.com"
+                    imageSrc={currentProject.image}
+                    mode="simple"
+                  />
+                )}
               </motion.div>
 
               <div className="flex flex-col gap-4">
