@@ -60,7 +60,7 @@
       {
         "title": "Dr. Agenda",
         "description": "Dr. Agenda é um SaaS para gestão de consultas médicas, focado em simplificar o agendamento e a administração de clínicas e consultórios. Desenvolvido em Next.js, o sistema oferece CRUD de médicos, pacientes e agendamentos, dashboard com métricas e autenticação segura. O projeto foi construído durante os estudos no curso FullStackClub, com diversas melhorias autorais, incluindo integração com Stripe para planos e assinaturas.",
-        "image": "https://placehold.co/1920x1080?text=Projeto+2",
+        "image": "/projects/dragenda.png",
         "tags": ["Next.js", "TypeScript", "TailwindCSS", "Stripe"]
       },
       {
@@ -80,7 +80,8 @@
           "TailwindCSS",
           "IA",
           "Ollama",
-          "DeepSeek-R1"
+          "DeepSeek-R1",
+          "Vite"
         ]
       }
     ]
