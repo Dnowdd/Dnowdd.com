@@ -118,8 +118,8 @@
         },
         "position": "Desenvolvedor Full-stack Júnior",
         "company": "Genialogic",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit dignissimos fugiat rerum suscipit tenetur eligendi itaque quas reprehenderit, veritatis qui! Est, eaque incidunt laborum odio nam molestias quos delectus sed!",
-        "tags": ["Next.js"]
+        "description": "Atuo em projetos full-stack de desenvolvimento web com React, TypeScript e Node.js. Minhas responsabilidades incluem implementação e manutenção de funcionalidades escaláveis, integração de serviços externos e escrita de código limpo e testável. Participo ativamente de decisões de arquitetura, revisões de código e cerimônias ágeis, contribuindo para um ambiente colaborativo e de alta performance. Também auxilio na melhoria de ferramentas internas e fluxos de trabalho, garantindo soluções eficientes e de fácil manutenção.",
+        "tags": ["React", "TypeScript", "Node.js", "APIs", "Arquitetura", "Code Review", "Scrum", "Testes", "Integrações"]
       },
       {
         "period": {
@@ -128,8 +128,8 @@
         },
         "position": "Estagiário em desenvolvimento de software",
         "company": "Genialogic",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit dignissimos fugiat rerum suscipit tenetur eligendi itaque quas reprehenderit, veritatis qui! Est, eaque incidunt laborum odio nam molestias quos delectus sed!",
-        "tags": ["Next.js"]
+        "description": "Atuei com foco no desenvolvimento de sistemas web em React e Node.js, atuando como desenvolvedor full-stack em interfaces front-end, APIs e integrações no back-end. Participei de projetos de prova de conceito (POC) e desafios técnicos, explorando outras linguagens e tecnologias para expandir meu conjunto de habilidades. A experiência permitiu desenvolver soluções escaláveis e eficientes em diversos projetos.",
+        "tags": ["React", "Node.js", "APIs", "Full-stack", "POC", "Front-end", "Back-end", "Integrações"]
       }
     ]
   },
