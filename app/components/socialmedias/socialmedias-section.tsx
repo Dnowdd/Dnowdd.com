@@ -331,7 +331,7 @@ const SocialmediasSection = () => {
           {texts.socialmedias.links.map((link, index) => {
             const Icon = socialLinks[link.icon as keyof typeof socialLinks];
             return (
-              <Link key={index} target="_blank" href="#">
+              <Link key={index} target="_blank" href={link.href} rel="noopener noreferrer">
                 <Button className="bg-neutral-950 hover:bg-neutral-900 border text-neutral-400 cursor-pointer opacity-90 hover:opacity-100">
                   <Icon />
                   {link.name}

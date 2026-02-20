@@ -92,15 +92,18 @@
     "links": [
       {
         "name": "LinkedIn",
-        "icon": "Linkedin"
+        "icon": "Linkedin",
+        "href": "https://www.linkedin.com/in/dnowdd"
       },
       {
         "name": "GitHub",
-        "icon": "Github"
+        "icon": "Github",
+        "href": "https://github.com/Dnowdd"
       },
       {
         "name": "E-mail",
-        "icon": "Mail"
+        "icon": "Mail",
+        "href": "mailto:david.queiroz@dnowdd.com"
       }
     ]
   },
