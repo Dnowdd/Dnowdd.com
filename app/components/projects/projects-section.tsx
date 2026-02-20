@@ -2,6 +2,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Android } from "@/components/ui/android";
+import { Lens } from "@/components/ui/lens";
 import { Safari } from "@/components/ui/safari";
 import { cn } from "@/lib/utils";
 import { Github, Globe } from "lucide-react";
@@ -368,18 +369,33 @@ const ProjectSection = () => {
                 layoutId="project-preview"
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
-                {(currentProject as { mobileApp?: boolean }).mobileApp ? (
-                  <Android
-                    src={currentProject.image}
-                    className="h-full max-h-[420px] w-auto"
-                  />
-                ) : (
-                  <Safari
-                    url="https://dnowdd.com"
-                    imageSrc={currentProject.image}
-                    mode="simple"
-                  />
-                )}
+                <Lens
+                  className="size-full"
+                  zoomFactor={1.5}
+                  lensSize={200}
+                >
+                  <div
+                    className={cn(
+                      "size-full",
+                      (currentProject as { mobileApp?: boolean }).mobileApp
+                        ? "flex items-center justify-center"
+                        : ""
+                    )}
+                  >
+                    {(currentProject as { mobileApp?: boolean }).mobileApp ? (
+                      <Android
+                        src={currentProject.image}
+                        className="h-full max-h-[420px] w-auto"
+                      />
+                    ) : (
+                      <Safari
+                        url="https://dnowdd.com"
+                        imageSrc={currentProject.image}
+                        mode="simple"
+                      />
+                    )}
+                  </div>
+                </Lens>
               </motion.div>
 
               <div className="flex flex-col gap-4">
