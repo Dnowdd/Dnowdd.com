@@ -6,7 +6,7 @@ const isStaticAsset = (pathname: string) =>
   pathname.startsWith("/_next") ||
   pathname.startsWith("/api");
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (pathname === "/" || isStaticAsset(pathname)) {
