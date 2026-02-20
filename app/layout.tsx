@@ -16,6 +16,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Dnowdd.com",
   description: "...",
+  icons: {
+    icon: [
+      { url: "/bulb.svg" },
+      { url: "/bulb.svg", media: "(prefers-color-scheme: light)" },
+      { url: "/bulb-light.svg", media: "(prefers-color-scheme: dark)" },
+    ],
+  },
 };
 
 export default function RootLayout({
