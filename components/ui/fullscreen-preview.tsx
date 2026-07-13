@@ -14,6 +14,8 @@ interface FullscreenPreviewProps {
   alt?: string;
   /** Classe no wrapper do trigger */
   className?: string;
+  /** Notifica quando o fullscreen abre/fecha */
+  onOpenChange?: (open: boolean) => void;
 }
 
 export function FullscreenPreview({
@@ -21,10 +23,19 @@ export function FullscreenPreview({
   imageSrc,
   alt = "Preview em tela cheia",
   className,
+  onOpenChange,
 }: FullscreenPreviewProps) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpenState] = useState(false);
 
-  const close = useCallback(() => setOpen(false), []);
+  const setOpen = useCallback(
+    (value: boolean) => {
+      setOpenState(value);
+      onOpenChange?.(value);
+    },
+    [onOpenChange]
+  );
+
+  const close = useCallback(() => setOpen(false), [setOpen]);
 
   useEffect(() => {
     if (!open) return;
