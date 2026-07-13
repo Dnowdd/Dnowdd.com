@@ -143,8 +143,7 @@ function WaveRibbon({
 }
 
 // Main wave component - renders multiple ribbons
-function WaveField() {
-  const totalLines = 120; // Increased for more depth layers
+function WaveField({ totalLines }: { totalLines: number }) {
   const [mousePos] = useState(() => new THREE.Vector2(0, 0));
   const [scrollY, setScrollY] = useState(0);
   const { viewport, camera } = useThree();
@@ -200,15 +199,41 @@ function WaveField() {
 
 export default function FluidWaves() {
   const [mounted, setMounted] = useState(false);
+  const [inView, setInView] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Telas pequenas: menos ribbons e DPR menor para poupar a thread principal
+  const [isMobile] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(max-width: 768px)").matches
+  );
 
   // Only enable global mouse tracking after component mounts (client-side only)
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Pausa o render loop quando o hero sai da tela
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setInView(entry.isIntersecting);
+    });
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="absolute inset-0 w-full h-full pointer-events-none opacity-60">
+    <div
+      ref={containerRef}
+      className="absolute inset-0 w-full h-full pointer-events-none opacity-60"
+    >
       <Canvas
+        frameloop={inView ? "always" : "never"}
         camera={{
           position: [0, 2.2, 5.5], // Lower initial position to show waves higher
           rotation: [0, 0, 0], // No rotation at start
@@ -219,14 +244,14 @@ export default function FluidWaves() {
           alpha: true,
           powerPreference: "high-performance",
         }}
-        dpr={[1, 2]} // Limit DPR to 2 for sharpness without performance hit
+        dpr={isMobile ? [1, 1.5] : [1, 2]} // Limit DPR for sharpness without performance hit
         {...(mounted &&
           typeof document !== "undefined" && {
             eventSource: document.body,
             eventPrefix: "client" as const,
           })}
       >
-        <WaveField />
+        <WaveField totalLines={isMobile ? 48 : 120} />
       </Canvas>
     </div>
   );

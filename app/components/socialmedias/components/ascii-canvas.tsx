@@ -1,6 +1,6 @@
 "use client";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import * as THREE from "three";
 
@@ -64,8 +64,49 @@ type AsciiChar = {
   index: number;
 };
 
+// Parsing puro da arte, feito uma vez em module scope.
+// Normaliza pela bounding box do conteúdo para centralizar a arte no plano.
+const { chars, cols, rows } = (() => {
+  const lines = asciiArt.split("\n");
+  const raw: AsciiChar[] = [];
+
+  lines.forEach((line, row) => {
+    line.split("").forEach((char, col) => {
+      if (char !== " ") {
+        raw.push({ char, col, row, index: 0 });
+      }
+    });
+  });
+
+  const minCol = Math.min(...raw.map((c) => c.col));
+  const maxCol = Math.max(...raw.map((c) => c.col));
+  const minRow = Math.min(...raw.map((c) => c.row));
+  const maxRow = Math.max(...raw.map((c) => c.row));
+  const cols = maxCol - minCol + 1;
+  const rows = maxRow - minRow + 1;
+
+  const chars: AsciiChar[] = raw.map((c, i) => ({
+    char: c.char,
+    col: c.col - minCol,
+    row: c.row - minRow,
+    index: i,
+  }));
+
+  return { chars, cols, rows };
+})();
+
+// Plano com as mesmas proporções da cena original em world units
+const planeW = cols * WORLD_X_STEP;
+const planeH = rows * WORLD_Y_STEP;
+
+type CanvasAssets = {
+  ctx: CanvasRenderingContext2D;
+  texture: THREE.CanvasTexture;
+};
+
 const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
   const groupRef = useRef<THREE.Group>(null);
+  const meshRef = useRef<THREE.Mesh>(null);
   const domCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
   const { camera, gl } = useThree();
@@ -76,53 +117,16 @@ const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
   const startTimeRef = useRef<number>(0);
   const lastFlipTimeRef = useRef<number>(0);
   const isAnimatingRef = useRef(false);
+  const lastDrawnMouseRef = useRef({ x: Infinity, y: Infinity });
 
-  // Prepara os caracteres e a textura 2D uma única vez.
-  // Normaliza pela bounding box do conteúdo para centralizar a arte no plano.
-  const { chars, cols, rows, texture, ctx, planeW, planeH } = useMemo(() => {
-    const lines = asciiArt.split("\n");
-    const raw: AsciiChar[] = [];
-
-    lines.forEach((line, row) => {
-      line.split("").forEach((char, col) => {
-        if (char !== " ") {
-          raw.push({ char, col, row, index: 0 });
-        }
-      });
-    });
-
-    const minCol = Math.min(...raw.map((c) => c.col));
-    const maxCol = Math.max(...raw.map((c) => c.col));
-    const minRow = Math.min(...raw.map((c) => c.row));
-    const maxRow = Math.max(...raw.map((c) => c.row));
-    const cols = maxCol - minCol + 1;
-    const rows = maxRow - minRow + 1;
-
-    const chars: AsciiChar[] = raw.map((c, i) => ({
-      char: c.char,
-      col: c.col - minCol,
-      row: c.row - minRow,
-      index: i,
-    }));
-
-    const canvas = document.createElement("canvas");
-    canvas.width = cols * CELL_W;
-    canvas.height = rows * CELL_H;
-    const ctx = canvas.getContext("2d")!;
-
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.colorSpace = THREE.SRGBColorSpace;
-
-    // Plano com as mesmas proporções da cena original em world units
-    const planeW = cols * WORLD_X_STEP;
-    const planeH = rows * WORLD_Y_STEP;
-
-    return { chars, cols, rows, texture, ctx, planeW, planeH };
-  }, []);
+  // Canvas 2D + textura são criados no primeiro frame e vivem num ref,
+  // já que são objetos gráficos mutados a cada redraw
+  const assetsRef = useRef<CanvasAssets | null>(null);
 
   useEffect(() => {
-    return () => texture.dispose();
-  }, [texture]);
+    const assets = assetsRef;
+    return () => assets.current?.texture.dispose();
+  }, []);
 
   useEffect(() => {
     domCanvasRef.current = gl.domElement;
@@ -164,7 +168,7 @@ const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
     } else {
       isAnimatingRef.current = false;
     }
-  }, [isVisible, chars]);
+  }, [isVisible]);
 
   useFrame(() => {
     // Animação de scramble/reveal
@@ -209,6 +213,34 @@ const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
       groupRef.current.rotation.x +=
         (targetRotationX - groupRef.current.rotation.x) * 0.1;
     }
+
+    // Cria o canvas 2D + textura no primeiro frame e pluga no material
+    if (!assetsRef.current) {
+      const canvas = document.createElement("canvas");
+      canvas.width = cols * CELL_W;
+      canvas.height = rows * CELL_H;
+      const context = canvas.getContext("2d");
+      if (!context) return;
+
+      const canvasTexture = new THREE.CanvasTexture(canvas);
+      canvasTexture.colorSpace = THREE.SRGBColorSpace;
+      assetsRef.current = { ctx: context, texture: canvasTexture };
+
+      if (meshRef.current) {
+        const material = meshRef.current.material as THREE.MeshBasicMaterial;
+        material.map = canvasTexture;
+        material.needsUpdate = true;
+        meshRef.current.visible = true;
+      }
+    }
+    const { ctx, texture } = assetsRef.current;
+
+    // Nada mudou (reveal completo e mouse parado)? Pula o redraw da textura
+    const mouseMoved =
+      Math.abs(mouseRef.current.x - lastDrawnMouseRef.current.x) > 0.001 ||
+      Math.abs(mouseRef.current.y - lastDrawnMouseRef.current.y) > 0.001;
+    if (!isAnimatingRef.current && !mouseMoved) return;
+    lastDrawnMouseRef.current = { ...mouseRef.current };
 
     // Posição do mouse em world space para o glow
     const vector = new THREE.Vector3(mouseRef.current.x, mouseRef.current.y, 0);
@@ -261,9 +293,10 @@ const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
 
   return (
     <group ref={groupRef}>
-      <mesh>
+      {/* Invisível até a textura ser criada no primeiro frame (evita flash branco) */}
+      <mesh ref={meshRef} visible={false}>
         <planeGeometry args={[planeW, planeH]} />
-        <meshBasicMaterial map={texture} transparent side={THREE.DoubleSide} />
+        <meshBasicMaterial transparent side={THREE.DoubleSide} />
       </mesh>
     </group>
   );
@@ -272,10 +305,22 @@ const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
 export default function AsciiCanvas({ isVisible }: { isVisible: boolean }) {
   const prefersReducedMotion = useReducedMotion();
 
-  if (prefersReducedMotion) return null;
+  // Abaixo de xl a cena fica a 30% de opacidade atrás do texto —
+  // custo de GPU/CPU alto demais em mobile para um detalhe quase invisível
+  const [isDesktop] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(min-width: 1280px)").matches
+  );
+
+  if (prefersReducedMotion || !isDesktop) return null;
 
   return (
-    <Canvas camera={{ position: [0, 0, 8], fov: 50 }} gl={{ alpha: true }}>
+    <Canvas
+      frameloop={isVisible ? "always" : "never"}
+      camera={{ position: [0, 0, 8], fov: 50 }}
+      gl={{ alpha: true }}
+    >
       <AsciiScene isVisible={isVisible} />
     </Canvas>
   );
