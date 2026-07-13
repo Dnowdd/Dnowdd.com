@@ -18,6 +18,7 @@ const EducationSection = () => {
           {texts.education.subtitle}
         </TextAnimate>
         <TextAnimate
+          as="h2"
           animation="slideUp"
           by="character"
           className="text-4xl md:text-6xl font-bold text-neutral-100 text-center"

@@ -8,9 +8,9 @@ const CompaniesSection = () => {
   const timeline = texts.companies.timeline.map((item) => ({
     title: (
       <div className="flex gap-2 md:gap-3 items-end">
-        <h1 className="text-xl md:text-2xl whitespace-nowrap">
+        <p className="text-xl md:text-2xl whitespace-nowrap">
           {item.period.start}
-        </h1>
+        </p>
         <div className="flex items-center gap-3">
           <div className="w-6 h-px bg-neutral-600"></div>
           <p className="font-light text-xs md:text-base">{item.period.end}</p>
@@ -19,12 +19,12 @@ const CompaniesSection = () => {
     ),
     content: (
       <div className="flex flex-col gap-1">
-        <h1 className="text-xl md:text-3xl xl:text-4xl font-bold text-neutral-100">
+        <h3 className="text-xl md:text-3xl xl:text-4xl font-bold text-neutral-100">
           {item.position}
-        </h1>
-        <h2 className="text-lg md:text-xl xl:text-2xl text-neutral-400">
+        </h3>
+        <p className="text-lg md:text-xl xl:text-2xl text-neutral-400">
           {item.company}
-        </h2>
+        </p>
         <div className="flex flex-col gap-2">
           <p className="text-sm md:text-base xl:text-lg font-light text-neutral-500">
             {item.description}
@@ -58,6 +58,7 @@ const CompaniesSection = () => {
           {texts.companies.subtitle}
         </TextAnimate>
         <TextAnimate
+          as="h2"
           animation="slideUp"
           by="character"
           className="text-4xl md:text-6xl font-bold text-neutral-100 text-center"

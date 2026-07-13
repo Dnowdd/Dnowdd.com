@@ -59,9 +59,9 @@ export const HoverEffect = ({
             </div>
 
             <div className="my-8">
-              <h1 className="text-2xl font-bold text-neutral-100 text-center w-5/6 mx-auto">
+              <h3 className="text-2xl font-bold text-neutral-100 text-center w-5/6 mx-auto">
                 {item.title}
-              </h1>
+              </h3>
               <p className="text-neutral-500 line-clamp-3 text-center mt-2">
                 {item.description}
               </p>

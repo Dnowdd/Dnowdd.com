@@ -7,6 +7,7 @@ import { Lens } from "@/components/ui/lens";
 import { Safari } from "@/components/ui/safari";
 import { cn } from "@/lib/utils";
 import { Github, Globe } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -157,6 +158,16 @@ const ProjectSection = () => {
     }
   };
 
+  const handleCarouselKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    const delta = event.key === "ArrowLeft" ? -1 : 1;
+    const next = (currentSlide + delta + projects.length) % projects.length;
+    setCurrentSlide(next);
+    setShouldAutoScroll(true);
+    setAutoplayPausedByUser(true);
+  };
+
   const handleDragStart = () => {
     setIsDragging(true);
     // Para animações em andamento quando começar a arrastar
@@ -194,6 +205,7 @@ const ProjectSection = () => {
             {texts.projects.subtitle}
           </TextAnimate>
           <TextAnimate
+            as="h2"
             animation="slideUp"
             by="character"
             className="text-4xl md:text-6xl font-bold text-neutral-100 text-center"
@@ -213,6 +225,9 @@ const ProjectSection = () => {
           >
             <div
               ref={scrollContainerRef}
+              role="listbox"
+              aria-label="Selecionar projeto"
+              onKeyDown={handleCarouselKeyDown}
               className="relative overflow-visible cursor-grab active:cursor-grabbing"
             >
               <motion.div
@@ -279,8 +294,12 @@ const ProjectSection = () => {
                   const distance = Math.abs(index - currentSlide);
 
                   return (
-                    <motion.div
+                    <motion.button
                       key={index}
+                      type="button"
+                      role="option"
+                      aria-selected={isActive}
+                      aria-label={`Ver projeto ${project.title}`}
                       onClick={() => handleProjectClick(index)}
                       className="flex-shrink-0 w-55 aspect-video rounded-sm overflow-hidden cursor-pointer select-none relative"
                       animate={{
@@ -301,10 +320,15 @@ const ProjectSection = () => {
                         perspective: 1000,
                       }}
                     >
-                      <div
-                        className="relative w-full h-full bg-cover bg-center bg-no-repeat"
-                        style={{ backgroundImage: `url(${project.image})` }}
-                      >
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={project.image}
+                          alt={`Captura de tela do projeto ${project.title}`}
+                          fill
+                          sizes="220px"
+                          draggable={false}
+                          className="object-cover"
+                        />
                         <motion.div
                           className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
                           animate={{
@@ -318,9 +342,9 @@ const ProjectSection = () => {
                             opacity: isActive ? 1 : 0.6,
                           }}
                         >
-                          <h3 className="font-bold text-neutral-100 text-base leading-tight">
+                          <p className="font-bold text-neutral-100 text-base leading-tight text-left">
                             {project.title}
-                          </h3>
+                          </p>
                         </motion.div>
 
                         {/* Glow effect on active */}
@@ -339,7 +363,7 @@ const ProjectSection = () => {
                           )}
                         </AnimatePresence>
                       </div>
-                    </motion.div>
+                    </motion.button>
                   );
                 })}
               </motion.div>
@@ -407,14 +431,14 @@ const ProjectSection = () => {
 
               <div className="flex flex-col gap-4">
                 <div className="flex justify-between items-end">
-                  <motion.h2
+                  <motion.h3
                     className="text-neutral-100 text-4xl font-bold"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 }}
                   >
                     {currentProject.title}
-                  </motion.h2>
+                  </motion.h3>
                   <motion.div
                     className="flex gap-2"
                     initial={{ opacity: 0, x: 20 }}
@@ -426,13 +450,24 @@ const ProjectSection = () => {
                         socialLinks[link.icon as keyof typeof socialLinks];
                       if (!Icon) return null;
 
+                      const label =
+                        link.icon === "Github"
+                          ? `Repositório de ${currentProject.title} no GitHub`
+                          : `Site do projeto ${currentProject.title}`;
+
                       return (
-                        <Link key={index} href={link.url}>
+                        <Link
+                          key={index}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={label}
+                        >
                           <Button
                             variant="outline"
                             className="size-8 cursor-pointer hover:scale-110 transition-transform"
                           >
-                            <Icon />
+                            <Icon aria-hidden />
                           </Button>
                         </Link>
                       );
