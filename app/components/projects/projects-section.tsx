@@ -29,6 +29,8 @@ const ProjectSection = () => {
   const [containerWidth, setContainerWidth] = useState(0);
   const [isSectionInView, setIsSectionInView] = useState(false);
   const [autoplayPausedByUser, setAutoplayPausedByUser] = useState(false);
+  const [isPreviewHovered, setIsPreviewHovered] = useState(false);
+  const [isFullscreenOpen, setIsFullscreenOpen] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -94,9 +96,16 @@ const ProjectSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Autoplay só quando a seção está visível e o usuário não pausou (ex.: clicando numa thumbnail)
+  // Autoplay só quando a seção está visível e nada está pausando:
+  // clique do usuário (thumbnail/teclado), mouse sobre o preview ou fullscreen aberto
   useEffect(() => {
-    if (!isSectionInView || autoplayPausedByUser) {
+    const paused =
+      !isSectionInView ||
+      autoplayPausedByUser ||
+      isPreviewHovered ||
+      isFullscreenOpen;
+
+    if (paused) {
       if (autoplayRef.current) {
         clearInterval(autoplayRef.current);
         autoplayRef.current = null;
@@ -115,7 +124,13 @@ const ProjectSection = () => {
         autoplayRef.current = null;
       }
     };
-  }, [isSectionInView, autoplayPausedByUser, projects.length]);
+  }, [
+    isSectionInView,
+    autoplayPausedByUser,
+    isPreviewHovered,
+    isFullscreenOpen,
+    projects.length,
+  ]);
 
   // Atualizar posição do drag quando mudar o slide (só quando clicar, não no drag livre)
   useEffect(() => {
@@ -385,19 +400,17 @@ const ProjectSection = () => {
               className="grid grid-cols-1 md:grid-cols-2 gap-6"
             >
               <motion.div
-                className={cn(
-                  "w-full",
-                  (currentProject as { mobileApp?: boolean }).mobileApp
-                    ? "flex min-h-[280px] items-center justify-center"
-                    : "aspect-video"
-                )}
+                className="w-full aspect-video"
                 layoutId="project-preview"
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                onMouseEnter={() => setIsPreviewHovered(true)}
+                onMouseLeave={() => setIsPreviewHovered(false)}
               >
                 <FullscreenPreview
                   imageSrc={currentProject.image}
                   alt={currentProject.title}
                   className="size-full"
+                  onOpenChange={setIsFullscreenOpen}
                 >
                   <Lens
                     className="size-full"
@@ -415,7 +428,7 @@ const ProjectSection = () => {
                       {(currentProject as { mobileApp?: boolean }).mobileApp ? (
                         <Android
                           src={currentProject.image}
-                          className="h-full max-h-[420px] w-auto"
+                          className="h-full w-auto"
                         />
                       ) : (
                         <Safari
