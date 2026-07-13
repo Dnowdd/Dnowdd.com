@@ -8,7 +8,7 @@ export function FooterSection() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="w-full py-8 border-t border-white/5 bg-background confirm-footer"
+      className="w-full py-8 border-white/5 bg-background confirm-footer"
     >
       <div className="container mx-auto flex flex-col items-center justify-center gap-2">
         <motion.div
@@ -16,7 +16,7 @@ export function FooterSection() {
           animate={{ opacity: [0.3, 0.6, 0.3], scaleX: [0.8, 1.2, 0.8] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />
-        <p className="text-xs text-muted-foreground/60 font-medium tracking-widest transition-colors hover:text-muted-foreground">
+        <p className="text-xs text-muted-foreground/90 font-light tracking-widest transition-colors hover:text-muted-foreground">
           Designed & Developed by Dnowdd
         </p>
       </div>
