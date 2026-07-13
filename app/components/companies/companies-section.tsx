@@ -26,7 +26,7 @@ const CompaniesSection = () => {
           {item.company}
         </p>
         <div className="flex flex-col gap-2">
-          <p className="text-sm md:text-base xl:text-lg font-light text-neutral-500">
+          <p className="text-sm md:text-base xl:text-lg font-light text-neutral-400">
             {item.description}
           </p>
           <div className="flex gap-2">
@@ -34,7 +34,7 @@ const CompaniesSection = () => {
               <Badge
                 key={index}
                 variant="outline"
-                className="text-neutral-500 bg-neutral-900/50 text-xs md:text-sm"
+                className="text-neutral-400 bg-neutral-900/50 text-xs md:text-sm"
               >
                 {tag}
               </Badge>

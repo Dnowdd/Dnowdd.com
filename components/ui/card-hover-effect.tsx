@@ -51,7 +51,7 @@ export const HoverEffect = ({
           <Card className="bg-neutral-950 !border-neutral-900 shadow shadow-neutral-900 select-none">
             <div className="flex flex-col items-center text-center">
               <p className="text-neutral-400 font-semibold">{item.school}</p>
-              <div className="flex gap-2 items-center text-neutral-500">
+              <div className="flex gap-2 items-center text-neutral-400">
                 <p>{item.from}</p>
                 <div className="w-4 h-px bg-neutral-500"></div>
                 <p>{item.to ?? "Atualmente"}</p>
@@ -62,7 +62,7 @@ export const HoverEffect = ({
               <h3 className="text-2xl font-bold text-neutral-100 text-center w-5/6 mx-auto">
                 {item.title}
               </h3>
-              <p className="text-neutral-500 line-clamp-3 text-center mt-2">
+              <p className="text-neutral-400 line-clamp-3 text-center mt-2">
                 {item.description}
               </p>
             </div>
@@ -72,7 +72,7 @@ export const HoverEffect = ({
                 {item.tags.map((tag, tagIdx) => (
                   <Badge
                     variant="outline"
-                    className="text-neutral-500 bg-neutral-900/50"
+                    className="text-neutral-400 bg-neutral-900/50"
                     key={tagIdx}
                   >
                     {tag}
