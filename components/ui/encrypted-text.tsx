@@ -55,7 +55,7 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
   revealedClassName,
 }) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: false });
+  const isInView = useInView(ref, { once: true });
 
   const [revealCount, setRevealCount] = useState<number>(0);
   const [isMounted, setIsMounted] = useState(false);

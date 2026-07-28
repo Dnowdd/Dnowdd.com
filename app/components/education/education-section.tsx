@@ -7,7 +7,7 @@ const EducationSection = () => {
   const projects = texts.education.items;
 
   return (
-    <div className="bg-neutral-950 py-20 relative overflow-hidden">
+    <div id="educacao" className="bg-neutral-950 py-20 relative overflow-hidden">
       <BackgroundRippleEffect cols={35} rows={15} />
       <div className="z-20 relative">
         <TextAnimate

@@ -28,6 +28,7 @@ const SocialmediasSection = () => {
   return (
     <div
       ref={sectionRef}
+      id="redes-sociais"
       className="w-full bg-neutral-950 flex flex-col md:grid md:grid-cols-[2fr_1fr] items-center px-4 md:px-8 relative py-20 md:py-0 z-[2]"
     >
       <Spotlight

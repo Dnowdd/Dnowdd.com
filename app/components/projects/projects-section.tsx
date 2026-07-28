@@ -198,6 +198,7 @@ const ProjectSection = () => {
   return (
     <div
       ref={sectionRef}
+      id="projetos"
       className={cn(
         "inset-0 bg-neutral-950 py-20 flex flex-col items-center gap-8 relative overflow-hidden",
         "[background-size:10px_10px]",

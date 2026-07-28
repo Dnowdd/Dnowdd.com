@@ -2,6 +2,15 @@
   "hero": {
     "subtitle": "Queiroz,",
     "title": "David",
+    "tagline": "Desenvolvedor <strong>Full-Stack</strong> com experiência prática desde 2020, hoje construindo soluções web na <strong>Genialogic</strong>.",
+    "cta": {
+      "primary": { "label": "Ver Projetos", "href": "#projetos" },
+      "secondary": { "label": "Baixar Currículo", "href": "/curriculum/curriculo-david-queiroz.pdf" }
+    }
+  },
+  "about": {
+    "subtitle": "Um pouco",
+    "title": "Sobre mim",
     "paragraphs": [
       {
         "text": "Sou um <strong>desenvolvedor full-stack brasileiro</strong> com experiência prática desde 2020, movido pela curiosidade e pelo desejo de transformar ideias criativas em <strong>soluções tecnológicas eficientes</strong> e <strong>impactantes</strong>. Ao longo da minha trajetória, desenvolvi uma forte paixão por utilizar o código como ferramenta para resolver problemas reais, melhorar processos e gerar valor para pessoas e organizações."
@@ -20,13 +29,13 @@
     "items": [
       {
         "title": "ADigital Multinível",
-        "description": "ADigital Multinível é uma plataforma completa de gestão imobiliária com sistema de comissões multinível, desenvolvida em Next.js e TypeScript. Permite gerenciar imóveis, vendas e afiliados com comissões em até 3 gerações, além de CRM integrado ao WhatsApp Business, IA para criação de anúncios, marketplace de imóveis e dashboards em tempo real. Projeto freelance focado em performance, escalabilidade e automação para o mercado imobiliário.",
+        "description": "Gestão imobiliária completa com comissões em até 3 gerações — esse foi o desafio por trás do ADigital Multinível, plataforma freelance construída em Next.js e TypeScript. Além do controle de imóveis, vendas e afiliados, o sistema integra CRM ao WhatsApp Business, gera anúncios com IA e centraliza tudo em dashboards em tempo real, com foco em performance e automação para o mercado imobiliário.",
         "image": "/projects/adigital.webp",
         "tags": ["Next.js", "TypeScript", "Meta API", "IA"]
       },
       {
         "title": "Abafit",
-        "description": "Abafit é uma plataforma fitness moderna que centraliza registro de treinos de musculação, acompanhamento de evolução, foco e performance em um único ecossistema. O sistema permite competir com amigos, compartilhar playlists de treino e manter a consistência com uma experiência fluida e intuitiva. Desenvolvido em Next.js, o projeto foca em design moderno, engajamento e motivação contínua para quem leva treino a sério.",
+        "description": "Treino registrado, evolução acompanhada e amigos motivando: essa é a proposta do Abafit, plataforma fitness que desenvolvi em Next.js para centralizar treinos de musculação, progresso e foco em um só ecossistema. Dá pra competir com amigos, compartilhar playlists de treino e manter a consistência com uma experiência fluida — pensado para quem leva treino a sério.",
         "image": "/projects/abafit.webp",
         "tags": [
           "Next.js",
@@ -39,7 +48,7 @@
       },
       {
         "title": "S.O.P.A",
-        "description": "S.O.P.A (Sistema Orientado a Processos Alimentícios) é um sistema completo desenvolvido como projeto de graduação em Gestão da Tecnologia da Informação na FATEC Campinas. A solução unifica ERP, WMS, TMS e CRM para centralizar pedidos, estoque, rotas, vendas e indicadores. Desenvolvido em Next.js, o projeto foca em automação de processos, redução de erros operacionais, otimização logística e visão estratégica para gestores.",
+        "description": "Meu projeto de graduação em Gestão da Tecnologia da Informação na FATEC Campinas: o S.O.P.A (Sistema Orientado a Processos Alimentícios) unifica ERP, WMS, TMS e CRM em uma única solução, construída em Next.js, para centralizar pedidos, estoque, rotas, vendas e indicadores. O foco foi automação de processos, redução de erros operacionais, otimização logística e visão estratégica para gestores.",
         "image": "/projects/sopa.webp",
         "tags": [
           "Next.js",
@@ -53,7 +62,7 @@
       },
       {
         "title": "Dr. Agenda",
-        "description": "Dr. Agenda é um SaaS para gestão de consultas médicas, focado em simplificar o agendamento e a administração de clínicas e consultórios. Desenvolvido em Next.js, o sistema oferece CRUD de médicos, pacientes e agendamentos, dashboard com métricas e autenticação segura. O projeto foi construído durante os estudos no curso FullStackClub, com diversas melhorias autorais, incluindo integração com Stripe para planos e assinaturas.",
+        "description": "Agendamento e administração de clínicas simplificados: o Dr. Agenda é um SaaS que construí em Next.js durante os estudos no curso FullStackClub, com diversas melhorias autorais — CRUD completo de médicos, pacientes e agendamentos, dashboard com métricas, autenticação segura e assinaturas via Stripe.",
         "image": "/projects/dragenda.webp",
         "tags": ["Next.js", "TypeScript", "TailwindCSS", "Stripe"],
         "links": [
@@ -65,7 +74,7 @@
       },
       {
         "title": "Hidrata+",
-        "description": "Hidrata+ é um aplicativo mobile para controle de ingestão diária de água, desenvolvido em Flutter para Android e iOS. Permite definir metas personalizadas e registrar o consumo de forma rápida e prática. O projeto marca meu primeiro aplicativo em Flutter, focado em usabilidade, simplicidade e incentivo a hábitos saudáveis no dia a dia.",
+        "description": "Meu primeiro aplicativo em Flutter: o Hidrata+ ajuda a controlar a ingestão diária de água no Android e iOS, com metas personalizadas e registro rápido de consumo. O foco foi usabilidade e simplicidade, incentivando hábitos mais saudáveis no dia a dia.",
         "image": "/projects/hidrata+.webp",
         "mobileApp": true,
         "tags": ["Flutter", "Dart", "Android", "iOS"],
@@ -78,7 +87,7 @@
       },
       {
         "title": "DeepChat",
-        "description": "DeepChat é um chatbot local com interface web moderna, desenvolvido em Next.js e integrado ao modelo de IA DeepSeek-R1 via Ollama. O projeto permite executar IA totalmente local, com suporte a múltiplos idiomas, interface responsiva e controle em tempo real da geração de respostas. Focado em privacidade, performance e experimentação com modelos de linguagem open-source.",
+        "description": "IA rodando 100% local, sem depender de nuvem: o DeepChat é um chatbot que desenvolvi em Next.js, integrado ao modelo DeepSeek-R1 via Ollama, com suporte a múltiplos idiomas, interface responsiva e controle em tempo real da geração de respostas. Um projeto de privacidade, performance e experimentação com LLMs open-source.",
         "image": "/projects/deepchat.webp",
         "tags": [
           "Next.js",

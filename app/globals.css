@@ -53,6 +53,7 @@ body {
   background: #000000;
   color: #ffffff;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 * {
