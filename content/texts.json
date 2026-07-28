@@ -116,6 +116,11 @@
         "name": "E-mail",
         "icon": "Mail",
         "href": "mailto:david.queiroz@dnowdd.com"
+      },
+      {
+        "name": "Currículo",
+        "icon": "FileText",
+        "href": "/curriculum/curriculo-david-queiroz.pdf"
       }
     ]
   },

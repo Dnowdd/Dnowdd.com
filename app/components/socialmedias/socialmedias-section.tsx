@@ -2,8 +2,7 @@
 import { useRef } from "react";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail } from "lucide-react";
-import Link from "next/link";
+import { Github, Linkedin, Mail, FileText } from "lucide-react";
 import { Spotlight } from "@/components/ui/spotlight-new";
 import { EncryptedText } from "@/components/ui/encrypted-text";
 import { TextAnimate } from "@/components/ui/text-animate";
@@ -23,6 +22,7 @@ const SocialmediasSection = () => {
     Linkedin,
     Github,
     Mail,
+    FileText,
   };
 
   return (
@@ -59,13 +59,23 @@ const SocialmediasSection = () => {
         <div className="flex gap-2 pointer-events-auto">
           {texts.socialmedias.links.map((link, index) => {
             const Icon = socialLinks[link.icon as keyof typeof socialLinks];
+            const isDownload = link.href.endsWith(".pdf");
             return (
-              <Link key={index} target="_blank" href={link.href} rel="noopener noreferrer">
-                <Button className="bg-neutral-950 hover:bg-neutral-900 border text-neutral-400 cursor-pointer opacity-90 hover:opacity-100">
+              <Button
+                key={index}
+                asChild
+                className="bg-neutral-950 hover:bg-neutral-900 border text-neutral-400 cursor-pointer opacity-90 hover:opacity-100"
+              >
+                <a
+                  href={link.href}
+                  target={isDownload ? undefined : "_blank"}
+                  rel={isDownload ? undefined : "noopener noreferrer"}
+                  download={isDownload ? "Currículo - David Queiroz.pdf" : undefined}
+                >
                   <Icon />
                   {link.name}
-                </Button>
-              </Link>
+                </a>
+              </Button>
             );
           })}
         </div>
