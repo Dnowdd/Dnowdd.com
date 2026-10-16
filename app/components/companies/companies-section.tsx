@@ -29,7 +29,7 @@ const CompaniesSection = () => {
           <p className="text-sm md:text-base xl:text-lg font-light text-neutral-400">
             {item.description}
           </p>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             {item.tags.map((tag, index) => (
               <Badge
                 key={index}

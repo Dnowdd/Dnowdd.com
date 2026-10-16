@@ -51,15 +51,15 @@ export const HoverEffect = ({
           <Card className="bg-neutral-950 !border-neutral-900 shadow shadow-neutral-900 select-none">
             <div className="flex flex-col items-center text-center">
               <p className="text-neutral-400 font-semibold">{item.school}</p>
-              <div className="flex gap-2 items-center text-neutral-400">
+              <div className="flex gap-2 items-center text-neutral-400 whitespace-nowrap">
                 <p>{item.from}</p>
                 <div className="w-4 h-px bg-neutral-500"></div>
                 <p>{item.to ?? "Atualmente"}</p>
               </div>
             </div>
 
-            <div className="my-8">
-              <h3 className="text-2xl font-bold text-neutral-100 text-center w-5/6 mx-auto">
+            <div className="my-6 md:my-8">
+              <h3 className="text-xl md:text-2xl font-bold text-neutral-100 text-center md:w-5/6 mx-auto">
                 {item.title}
               </h3>
               <p className="text-neutral-400 line-clamp-3 text-center mt-2">
@@ -102,7 +102,7 @@ export const Card = ({
       )}
     >
       <div className="relative z-50">
-        <div className="p-4">{children}</div>
+        <div className="p-2 md:p-4">{children}</div>
       </div>
     </div>
   );

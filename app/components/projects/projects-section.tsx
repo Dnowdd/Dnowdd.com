@@ -444,9 +444,9 @@ const ProjectSection = () => {
               </motion.div>
 
               <div className="flex flex-col gap-4">
-                <div className="flex justify-between items-end">
+                <div className="flex justify-between items-end gap-4">
                   <motion.h3
-                    className="text-neutral-100 text-4xl font-bold"
+                    className="text-neutral-100 text-3xl md:text-4xl font-bold"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 }}

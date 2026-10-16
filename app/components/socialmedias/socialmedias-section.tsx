@@ -57,7 +57,7 @@ const SocialmediasSection = () => {
             {texts.socialmedias.description}
           </TextAnimate>
         </div>
-        <div className="flex gap-2 pointer-events-auto">
+        <div className="flex flex-wrap gap-2 pointer-events-auto">
           {texts.socialmedias.links.map((link, index) => {
             const Icon = socialLinks[link.icon as keyof typeof socialLinks];
             const isDownload = link.href.endsWith(".pdf");

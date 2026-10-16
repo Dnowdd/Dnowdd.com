@@ -27,7 +27,7 @@ const EducationSection = () => {
         </TextAnimate>
       </div>
 
-      <div className="flex justify-center items-center gap-12 max-w-5xl mx-auto px-8">
+      <div className="flex justify-center items-center gap-12 max-w-5xl mx-auto px-4 md:px-8">
         <HoverEffect items={projects} />
       </div>
     </div>
