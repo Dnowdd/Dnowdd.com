@@ -26,7 +26,7 @@ export const pad = (n: number) => String(n).padStart(2, "0");
 export const mediaAspect = (project: Project) =>
   project.mobileApp ? 1080 / 2400 : 1600 / 933;
 
-export const projectLinks =(project: Project) => ({
+export const projectLinks = (project: Project) => ({
   repo: project.links?.find((link) => link.icon === "Github")?.url,
   live: project.links?.find((link) => link.icon === "Globe")?.url,
 });

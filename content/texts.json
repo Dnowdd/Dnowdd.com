@@ -4,28 +4,74 @@
     "title": "David",
     "tagline": "Desenvolvedor <strong>Full-Stack</strong> com experiência prática desde 2020, hoje construindo soluções web na <strong>Genialogic</strong>.",
     "cta": {
-      "primary": { "label": "Ver Projetos", "href": "#projetos" },
-      "secondary": { "label": "Baixar Currículo", "href": "/curriculum/curriculo-david-queiroz.pdf" }
+      "primary": {
+        "label": "Ver Projetos",
+        "href": "#projetos"
+      },
+      "secondary": {
+        "label": "Baixar Currículo",
+        "href": "/curriculum/curriculo-david-queiroz.pdf"
+      }
     }
   },
   "about": {
-    "subtitle": "Um pouco",
-    "title": "Sobre mim",
-    "paragraphs": [
+    "label": "Sobre",
+    "title": "Quem sou",
+    "statement": [
       {
-        "text": "Sou um <strong>desenvolvedor full-stack brasileiro</strong> com experiência prática desde 2020, movido pela curiosidade e pelo desejo de transformar ideias criativas em <strong>soluções tecnológicas eficientes</strong> e <strong>impactantes</strong>. Ao longo da minha trajetória, desenvolvi uma forte paixão por utilizar o código como ferramenta para resolver problemas reais, melhorar processos e gerar valor para pessoas e organizações."
+        "text": "Sou desenvolvedor"
       },
       {
-        "text": "Atualmente, atuo como <strong>Desenvolvedor Full-Stack Júnior</strong> na <strong>Genialogic</strong>, cargo que assumi em agosto de 2025, após 1 ano e meio de experiência como estagiário, iniciado em fevereiro de 2024. Nesse período, tive a oportunidade de aprofundar minhas habilidades técnicas, participar ativamente de projetos reais e evoluir tanto no desenvolvimento <strong>frontend</strong> quanto <strong>backend</strong>, sempre com foco em soluções escaláveis e bem estruturadas."
+        "text": "full-stack",
+        "kind": "marker"
       },
       {
-        "text": "Sou <strong>formado</strong> em <strong>Gestão da Tecnologia da Informação</strong> pela <strong>FATEC Campinas</strong>, curso iniciado em 2023 e concluído em dezembro de 2025. Essa formação fortaleceu minha visão estratégica sobre tecnologia, negócios e processos, complementando minha experiência prática como desenvolvedor."
+        "text": "desde 2020. Transformo"
+      },
+      {
+        "text": "ideias",
+        "kind": "circle"
+      },
+      {
+        "text": "em produtos web rápidos, bem estruturados e cuidados em cada"
+      },
+      {
+        "text": "detalhe",
+        "kind": "spark"
+      },
+      {
+        "text": "— da interface ao"
+      },
+      {
+        "text": "banco de dados.",
+        "kind": "underline"
       }
-    ]
+    ],
+    "facts": [
+      {
+        "label": "Experiência",
+        "value": "Desde 2020"
+      },
+      {
+        "label": "Hoje",
+        "value": "Full-Stack Jr. · Genialogic"
+      },
+      {
+        "label": "Formação",
+        "value": "Gestão da TI · FATEC"
+      },
+      {
+        "label": "Stack",
+        "value": "React · TypeScript · Node.js"
+      }
+    ],
+    "books": "Livros lidos",
+    "moreBooks": "ver mais"
   },
   "projects": {
     "subtitle": "Melhores",
     "title": "Projetos",
+    "heading": "Trabalhos selecionados",
     "archive": {
       "title": "Outros projetos",
       "description": "Experimentos, estudos e projetos menores. Clique em qualquer um para abrir o case."
@@ -36,7 +82,12 @@
         "featured": true,
         "description": "Gestão imobiliária completa com comissões em até 3 gerações — esse foi o desafio por trás do ADigital Multinível, plataforma freelance construída em Next.js e TypeScript. Além do controle de imóveis, vendas e afiliados, o sistema integra CRM ao WhatsApp Business, gera anúncios com IA e centraliza tudo em dashboards em tempo real, com foco em performance e automação para o mercado imobiliário.",
         "image": "/projects/adigital.webp",
-        "tags": ["Next.js", "TypeScript", "Meta API", "IA"]
+        "tags": [
+          "Next.js",
+          "TypeScript",
+          "Meta API",
+          "IA"
+        ]
       },
       {
         "title": "Abafit",
@@ -71,7 +122,12 @@
         "title": "Dr. Agenda",
         "description": "Agendamento e administração de clínicas simplificados: o Dr. Agenda é um SaaS que construí em Next.js durante os estudos no curso FullStackClub, com diversas melhorias autorais — CRUD completo de médicos, pacientes e agendamentos, dashboard com métricas, autenticação segura e assinaturas via Stripe.",
         "image": "/projects/dragenda.webp",
-        "tags": ["Next.js", "TypeScript", "TailwindCSS", "Stripe"],
+        "tags": [
+          "Next.js",
+          "TypeScript",
+          "TailwindCSS",
+          "Stripe"
+        ],
         "links": [
           {
             "icon": "Github",
@@ -84,7 +140,12 @@
         "description": "Meu primeiro aplicativo em Flutter: o Hidrata+ ajuda a controlar a ingestão diária de água no Android e iOS, com metas personalizadas e registro rápido de consumo. O foco foi usabilidade e simplicidade, incentivando hábitos mais saudáveis no dia a dia.",
         "image": "/projects/hidrata+.webp",
         "mobileApp": true,
-        "tags": ["Flutter", "Dart", "Android", "iOS"],
+        "tags": [
+          "Flutter",
+          "Dart",
+          "Android",
+          "iOS"
+        ],
         "links": [
           {
             "icon": "Github",
@@ -115,9 +176,90 @@
       }
     ]
   },
-  "socialmedias": {
-    "title": "Redes Sociais",
-    "description": "Vamos compartilhar experiências e conexões, você pode me encontrar nas plataformas abaixo.",
+  "journey": {
+    "label": "Trajetória",
+    "title": "Onde estive",
+    "work": "Experiência",
+    "education": "Formação"
+  },
+  "companies": {
+    "timeline": [
+      {
+        "period": {
+          "start": "Ago. 2025",
+          "end": "Atualmente"
+        },
+        "position": "Desenvolvedor Full-stack Júnior",
+        "company": "Genialogic",
+        "description": "Atuo em projetos full-stack de desenvolvimento web com React, TypeScript e Node.js. Minhas responsabilidades incluem implementação e manutenção de funcionalidades escaláveis, integração de serviços externos e escrita de código limpo e testável. Participo ativamente de decisões de arquitetura, revisões de código e cerimônias ágeis, contribuindo para um ambiente colaborativo e de alta performance. Também auxilio na melhoria de ferramentas internas e fluxos de trabalho, garantindo soluções eficientes e de fácil manutenção.",
+        "tags": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "APIs",
+          "Arquitetura",
+          "Code Review",
+          "Scrum",
+          "Testes",
+          "Integrações"
+        ]
+      },
+      {
+        "period": {
+          "start": "Fev. 2024",
+          "end": "Ago. 2025"
+        },
+        "position": "Estagiário em desenvolvimento de software",
+        "company": "Genialogic",
+        "description": "Atuei com foco no desenvolvimento de sistemas web em React e Node.js, atuando como desenvolvedor full-stack em interfaces front-end, APIs e integrações no back-end. Participei de projetos de prova de conceito (POC) e desafios técnicos, explorando outras linguagens e tecnologias para expandir meu conjunto de habilidades. A experiência permitiu desenvolver soluções escaláveis e eficientes em diversos projetos.",
+        "tags": [
+          "React",
+          "Node.js",
+          "APIs",
+          "Full-stack",
+          "POC",
+          "Front-end",
+          "Back-end",
+          "Integrações"
+        ]
+      }
+    ]
+  },
+  "education": {
+    "items": [
+      {
+        "title": "Técnico em Desenvolvimento de Sistemas",
+        "school": "ETEC de Hortolândia",
+        "from": "Jan. 2020",
+        "to": "Dez. 2022",
+        "description": "Curso técnico público voltado para o desenvolvimento de software, programação e análise de sistemas, preparando os alunos para a indústria de TI.",
+        "tags": [
+          "Cursado",
+          "Ensino Técnico",
+          "Tempo Integral"
+        ]
+      },
+      {
+        "title": "Gestão da Tecnologia da Informação",
+        "school": "FATEC Campinas",
+        "from": "Fev. 2023",
+        "to": "Dez. 2025",
+        "description": "Curso superior público focado em estratégia de TI, gerenciamento de projetos e soluções empresariais, combinando habilidades técnicas e administrativas.",
+        "tags": [
+          "Graduado",
+          "Curso Superior"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "label": "Contato",
+    "title": [
+      "Vamos",
+      "conversar?"
+    ],
+    "copied": "Copiado",
+    "top": "Topo",
     "links": [
       {
         "name": "LinkedIn",
@@ -138,54 +280,6 @@
         "name": "Currículo",
         "icon": "FileText",
         "href": "/curriculum/curriculo-david-queiroz.pdf"
-      }
-    ]
-  },
-  "companies": {
-    "subtitle": "Minhas",
-    "title": "Experiências",
-    "timeline": [
-      {
-        "period": {
-          "start": "Ago. 2025",
-          "end": "Atualmente"
-        },
-        "position": "Desenvolvedor Full-stack Júnior",
-        "company": "Genialogic",
-        "description": "Atuo em projetos full-stack de desenvolvimento web com React, TypeScript e Node.js. Minhas responsabilidades incluem implementação e manutenção de funcionalidades escaláveis, integração de serviços externos e escrita de código limpo e testável. Participo ativamente de decisões de arquitetura, revisões de código e cerimônias ágeis, contribuindo para um ambiente colaborativo e de alta performance. Também auxilio na melhoria de ferramentas internas e fluxos de trabalho, garantindo soluções eficientes e de fácil manutenção.",
-        "tags": ["React", "TypeScript", "Node.js", "APIs", "Arquitetura", "Code Review", "Scrum", "Testes", "Integrações"]
-      },
-      {
-        "period": {
-          "start": "Fev. 2024",
-          "end": "Ago. 2025"
-        },
-        "position": "Estagiário em desenvolvimento de software",
-        "company": "Genialogic",
-        "description": "Atuei com foco no desenvolvimento de sistemas web em React e Node.js, atuando como desenvolvedor full-stack em interfaces front-end, APIs e integrações no back-end. Participei de projetos de prova de conceito (POC) e desafios técnicos, explorando outras linguagens e tecnologias para expandir meu conjunto de habilidades. A experiência permitiu desenvolver soluções escaláveis e eficientes em diversos projetos.",
-        "tags": ["React", "Node.js", "APIs", "Full-stack", "POC", "Front-end", "Back-end", "Integrações"]
-      }
-    ]
-  },
-  "education": {
-    "subtitle": "Minha",
-    "title": "Educação",
-    "items": [
-      {
-        "title": "Técnico em Desenvolvimento de Sistemas",
-        "school": "ETEC de Hortolândia",
-        "from": "Jan. 2020",
-        "to": "Dez. 2022",
-        "description": "Curso técnico público voltado para o desenvolvimento de software, programação e análise de sistemas, preparando os alunos para a indústria de TI.",
-        "tags": ["Cursado", "Ensino Técnico", "Tempo Integral"]
-      },
-      {
-        "title": "Gestão da Tecnologia da Informação",
-        "school": "FATEC Campinas",
-        "from": "Fev. 2023",
-        "to": "Dez. 2025",
-        "description": "Curso superior público focado em estratégia de TI, gerenciamento de projetos e soluções empresariais, combinando habilidades técnicas e administrativas.",
-        "tags": ["Graduado", "Curso Superior"]
       }
     ]
   }

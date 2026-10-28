@@ -6,6 +6,7 @@ import {
   AnimatePresence,
   motion,
   type MotionValue,
+  useMotionTemplate,
   useMotionValue,
   useMotionValueEvent,
   useScroll,
@@ -14,6 +15,7 @@ import {
 } from "framer-motion";
 import { useLenis } from "lenis/react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { SectionHeader } from "@/components/section-header";
 import { ArchiveChapter } from "./archive-chapter";
 import { CaseLinks, CaseOverlay } from "./case-overlay";
 import {
@@ -34,17 +36,34 @@ const LABELS = [
 ].slice(0, CHAPTERS);
 
 const ProjectSection = () => {
-  const [active, setActive] = useState(0);
+  const [chapters, setChapters] = useState({ active: 0, previous: 0 });
+  const active = chapters.active;
   const [open, setOpen] = useState<number | null>(null);
-  const trackRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: trackRef,
     offset: ["start start", "end end"],
   });
 
+  const { scrollYProgress: enterProgress } = useScroll({
+    target: trackRef,
+    offset: ["start end", "start start"],
+  });
+  const inset = useTransform(enterProgress, [0, 1], [1, 0]);
+  const insetY = useTransform(inset, (v) => `${1 + v * 13}%`);
+  const insetX = useTransform(inset, (v) => `${1 + v * 8}%`);
+  const radius = useTransform(inset, (v) => `${20 + v * 8}px`);
+  const windowClip = useMotionTemplate`inset(${insetY} ${insetX} round ${radius})`;
+  const edgeFade = useTransform(enterProgress, [0.75, 1], [0, 1]);
+
   useMotionValueEvent(scrollYProgress, "change", (progress) => {
-    setActive(Math.min(CHAPTERS - 1, Math.floor(progress * CHAPTERS)));
+    const next = Math.min(CHAPTERS - 1, Math.floor(progress * CHAPTERS));
+    setChapters((current) =>
+      current.active === next
+        ? current
+        : { active: next, previous: current.active },
+    );
   });
 
   const pointerX = useMotionValue(0);
@@ -83,7 +102,10 @@ const ProjectSection = () => {
       } else if (
         event.key === "Enter" &&
         active < ARCHIVE_INDEX &&
-        !(event.target instanceof HTMLElement && event.target.closest("a, button"))
+        !(
+          event.target instanceof HTMLElement &&
+          event.target.closest("a, button")
+        )
       ) {
         setOpen(active);
       } else return;
@@ -103,100 +125,140 @@ const ProjectSection = () => {
   const project = featuredProjects[Math.min(active, ARCHIVE_INDEX - 1)];
 
   return (
-    <section
-      ref={trackRef}
-      id="projetos"
-      aria-label={texts.projects.title}
-      className="relative bg-neutral-950"
-      style={{ height: `${CHAPTERS * 100}svh` }}
-    >
+    <section id="projetos" className="relative bg-neutral-950">
+      <div className="mx-auto max-w-7xl px-6 pb-16 pt-32 md:px-10 md:pb-24 md:pt-48">
+        <SectionHeader
+          index="03"
+          label={texts.projects.title}
+          title={texts.projects.heading}
+        />
+      </div>
       <div
-        className="sticky top-0 h-svh overflow-hidden"
-        onPointerMove={onPointerMove}
+        ref={trackRef}
+        className="relative"
+        style={{ height: `${CHAPTERS * 100}svh` }}
       >
-        <AnimatePresence initial={false}>
+        <motion.div
+          className="sticky top-0 h-svh overflow-hidden"
+          style={{ clipPath: windowClip }}
+          onPointerMove={onPointerMove}
+        >
           <motion.div
-            key={isArchive ? "archive" : active}
-            className="absolute inset-0"
-            initial={{ clipPath: "inset(0 0 0 100%)", zIndex: 1 }}
-            animate={{ clipPath: "inset(0 0 0 0%)", zIndex: 1 }}
-            exit={{ zIndex: 0, opacity: 0, transition: { opacity: { delay: 1, duration: 0 } } }}
-            transition={{ duration: 1, ease: EASE_IN_OUT }}
+            className="absolute -inset-8 will-change-transform"
+            style={{ x: parallaxX, y: parallaxY }}
           >
-            {isArchive ? (
-              <div className="absolute inset-0 bg-neutral-950 bg-[radial-gradient(rgba(128,51,230,0.28)_1px,transparent_1px)] [background-size:12px_12px]">
-                <div className="absolute inset-0 bg-neutral-950 [mask-image:radial-gradient(ellipse_at_center,transparent,black_75%)]" />
-              </div>
-            ) : (
-              <motion.div
-                className="absolute -inset-8"
-                style={{ x: parallaxX, y: parallaxY }}
-              >
-                <motion.div
-                  className="relative size-full"
-                  initial={{ scale: 1.3 }}
-                  animate={{ scale: 1.05 }}
-                  transition={{ duration: 7, ease: "linear" }}
-                >
-                  <ProjectMedia
-                    project={project}
-                    sizes="100vw"
-                    priority={active === 0}
-                    decorative
-                  />
-                  <div className="absolute inset-0 bg-neutral-950/70" />
-                </motion.div>
-              </motion.div>
-            )}
-          </motion.div>
-        </AnimatePresence>
-
-        <div className="pointer-events-none absolute inset-0 z-2 bg-linear-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/70" />
-        <div className="pointer-events-none absolute inset-0 z-2 bg-[radial-gradient(ellipse_at_center,transparent_40%,color-mix(in_oklab,var(--color-neutral-950)_80%,transparent)_100%)]" />
-        <div className="film-grain pointer-events-none absolute inset-0 z-2 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-2 h-48 bg-linear-to-b from-neutral-950 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-2 h-48 bg-linear-to-t from-neutral-950 to-transparent" />
-
-        <div className="relative z-3 mx-auto flex h-full max-w-7xl flex-col justify-between gap-6 px-6 pb-10 pt-3 md:px-10 md:pb-14 md:pt-4">
-          <nav aria-label="Capítulos de projetos" className="flex items-center gap-2">
-            {LABELS.map((label, chapter) => (
-              <Segment
+            {LABELS.map((label, layer) => (
+              <BackgroundLayer
                 key={label}
-                chapter={chapter}
-                label={label}
-                active={chapter === active}
-                progress={scrollYProgress}
-                onClick={() => scrollToChapter(chapter)}
+                layer={layer}
+                active={chapters.active}
+                previous={chapters.previous}
               />
             ))}
-          </nav>
+          </motion.div>
 
-          <div
-            className={cn(
-              "flex min-h-0 flex-1 flex-col",
-              isArchive ? "justify-center" : "justify-end",
-            )}
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              {isArchive ? (
-                <ArchiveChapter key="archive" onOpen={setOpen} />
-              ) : (
-                <FeaturedChapter
-                  key={active}
-                  project={project}
-                  onOpen={() => setOpen(active)}
+          <div className="pointer-events-none absolute inset-0 z-2 bg-linear-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/70" />
+          <div className="pointer-events-none absolute inset-0 z-2 bg-[radial-gradient(ellipse_at_center,transparent_40%,color-mix(in_oklab,var(--color-neutral-950)_80%,transparent)_100%)]" />
+          <div className="film-grain pointer-events-none absolute inset-0 z-2 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]" />
+          <motion.div
+            className="pointer-events-none absolute inset-x-0 top-0 z-2 h-48 bg-linear-to-b from-neutral-950 to-transparent"
+            style={{ opacity: edgeFade }}
+          />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-2 h-48 bg-linear-to-t from-neutral-950 to-transparent" />
+
+          <div className="relative z-3 mx-auto flex h-full max-w-7xl flex-col justify-between gap-6 px-6 pb-10 pt-3 md:px-10 md:pb-14 md:pt-4">
+            <nav
+              aria-label="Capítulos de projetos"
+              className="flex items-center gap-2"
+            >
+              {LABELS.map((label, chapter) => (
+                <Segment
+                  key={label}
+                  chapter={chapter}
+                  label={label}
+                  active={chapter === active}
+                  progress={scrollYProgress}
+                  onClick={() => scrollToChapter(chapter)}
                 />
-              )}
-            </AnimatePresence>
-          </div>
+              ))}
+            </nav>
 
-        </div>
+            <div
+              className={cn(
+                "flex min-h-0 flex-1 flex-col",
+                isArchive ? "justify-center" : "justify-end",
+              )}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {isArchive ? (
+                  <ArchiveChapter key="archive" onOpen={setOpen} />
+                ) : (
+                  <FeaturedChapter
+                    key={active}
+                    project={project}
+                    onOpen={() => setOpen(active)}
+                  />
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+        </motion.div>
       </div>
 
       <CaseOverlay index={open} onClose={closeCase} onNavigate={setOpen} />
     </section>
   );
 };
+
+function BackgroundLayer({
+  layer,
+  active,
+  previous,
+}: {
+  layer: number;
+  active: number;
+  previous: number;
+}) {
+  const isActive = layer === active;
+  const project = featuredProjects[layer];
+  const zIndex = isActive ? 2 : layer === previous ? 1 : 0;
+
+  return (
+    <motion.div
+      className="absolute inset-0"
+      style={{ zIndex }}
+      initial={false}
+      animate={
+        isActive
+          ? { clipPath: ["inset(0 0 0 100%)", "inset(0 0 0 0%)"] }
+          : { clipPath: "inset(0 0 0 0%)" }
+      }
+      transition={{ duration: isActive ? 1 : 0, ease: EASE_IN_OUT }}
+    >
+      {project ? (
+        <motion.div
+          className="relative size-full"
+          initial={false}
+          animate={isActive ? { scale: [1.3, 1.05] } : { scale: 1.05 }}
+          transition={{ duration: isActive ? 7 : 0, ease: "linear" }}
+        >
+          <ProjectMedia
+            project={project}
+            sizes="100vw"
+            priority
+            decorative
+            still={!isActive}
+          />
+          <div className="absolute inset-0 bg-neutral-950/70" />
+        </motion.div>
+      ) : (
+        <div className="absolute inset-0 bg-neutral-950 bg-[radial-gradient(rgba(128,51,230,0.28)_1px,transparent_1px)] [background-size:12px_12px]">
+          <div className="absolute inset-0 bg-neutral-950 [mask-image:radial-gradient(ellipse_at_center,transparent,black_75%)]" />
+        </div>
+      )}
+    </motion.div>
+  );
+}
 
 function FeaturedChapter({
   project,
@@ -222,7 +284,9 @@ function FeaturedChapter({
         }}
         className="font-mono text-xs uppercase tracking-widest text-neutral-400"
       >
-        {[project.year, ...project.tags.slice(0, 4)].filter(Boolean).join(" · ")}
+        {[project.year, ...project.tags.slice(0, 4)]
+          .filter(Boolean)
+          .join(" · ")}
       </motion.p>
 
       <h3 className="pb-[0.06em] text-[13vw] font-bold leading-[0.92] tracking-tighter text-neutral-50 md:text-[7.5vw] 2xl:text-[8.5rem]">

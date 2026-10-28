@@ -99,12 +99,41 @@ const { chars, cols, rows } = (() => {
 const planeW = cols * WORLD_X_STEP;
 const planeH = rows * WORLD_Y_STEP;
 
+const BASE_ROW = 24;
+const FILAMENT_ROW = 12;
+
+const mixColor = (a: number[], b: number[], t: number) =>
+  a.map((channel, k) => channel + (b[k] - channel) * t);
+
+function charTone(item: AsciiChar, lit: number): [number[], number] {
+  if (item.row >= BASE_ROW) {
+    const silver = [0.72, 0.72, 0.8, 0.62];
+    return [mixColor(silver, [0.95, 0.85, 0.7, 0.8], lit * 0.4), 0];
+  }
+  const nearFilament = Math.max(0, 1 - Math.abs(item.row - FILAMENT_ROW) / 12);
+  if (item.char !== "+") {
+    const idle = [0.78, 0.72, 0.95, 0.62];
+    const hot = [1.0, 0.66, 0.22, 1.0];
+    return [mixColor(idle, hot, lit), lit];
+  }
+  const t = item.row / BASE_ROW;
+  const glass = mixColor([0.72, 0.62, 1.0, 0.72], [0.92, 0.52, 0.9, 0.72], t);
+  const warmth = lit * (0.55 + nearFilament * 0.25);
+  return [mixColor(glass, [1.0, 0.72, 0.36, 1.0], warmth), warmth * 0.6];
+}
+
 type CanvasAssets = {
   ctx: CanvasRenderingContext2D;
   texture: THREE.CanvasTexture;
 };
 
-const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
+const AsciiScene = ({
+  isVisible,
+  lit,
+}: {
+  isVisible: boolean;
+  lit: boolean;
+}) => {
   const groupRef = useRef<THREE.Group>(null);
   const meshRef = useRef<THREE.Mesh>(null);
   const domCanvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -118,6 +147,7 @@ const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
   const lastFlipTimeRef = useRef<number>(0);
   const isAnimatingRef = useRef(false);
   const lastDrawnMouseRef = useRef({ x: Infinity, y: Infinity });
+  const litRef = useRef({ level: 0, drawn: -1 });
 
   // Canvas 2D + textura são criados no primeiro frame e vivem num ref,
   // já que são objetos gráficos mutados a cada redraw
@@ -239,8 +269,19 @@ const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
     const mouseMoved =
       Math.abs(mouseRef.current.x - lastDrawnMouseRef.current.x) > 0.001 ||
       Math.abs(mouseRef.current.y - lastDrawnMouseRef.current.y) > 0.001;
-    if (!isAnimatingRef.current && !mouseMoved) return;
+    const light = litRef.current;
+    light.level += ((lit ? 1 : 0) - light.level) * 0.08;
+    const lightChanged = Math.abs(light.level - light.drawn) > 0.002;
+    if (
+      !isAnimatingRef.current &&
+      !mouseMoved &&
+      !lightChanged &&
+      light.level < 0.02
+    )
+      return;
     lastDrawnMouseRef.current = { ...mouseRef.current };
+    light.drawn = light.level;
+    const flicker = light.level * (0.88 + Math.random() * 0.12);
 
     // Posição do mouse em world space para o glow
     const vector = new THREE.Vector3(mouseRef.current.x, mouseRef.current.y, 0);
@@ -257,7 +298,7 @@ const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    const glowRadius = 1.5;
+    const glowRadius = 1.6;
 
     chars.forEach((item) => {
       const isRevealed = revealedRef.current.has(item.index);
@@ -274,13 +315,11 @@ const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
       const dist = Math.sqrt(dx * dx + dy * dy);
       const intensity = Math.max(0, 1 - dist / glowRadius);
 
-      // Base cinza (0.64) -> roxo brilhante (0.5, 0.2, 1.0) perto do mouse
-      const r = Math.round((0.64 + (0.5 - 0.64) * intensity) * 255);
-      const g = Math.round((0.64 + (0.2 - 0.64) * intensity) * 255);
-      const b = Math.round((0.64 + (1.0 - 0.64) * intensity) * 255);
-      const alpha = 0.4 + intensity * 0.6;
+      const light = Math.max(flicker, intensity * (0.9 + Math.random() * 0.1));
+      const [color, glowAmount] = charTone(item, light);
+      const alpha = Math.min(1, color[3] + glowAmount * 0.3);
 
-      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+      ctx.fillStyle = `rgba(${Math.round(color[0] * 255)}, ${Math.round(color[1] * 255)}, ${Math.round(color[2] * 255)}, ${alpha})`;
       ctx.fillText(
         displayChar,
         item.col * CELL_W + CELL_W / 2,
@@ -296,13 +335,19 @@ const AsciiScene = ({ isVisible }: { isVisible: boolean }) => {
       {/* Invisível até a textura ser criada no primeiro frame (evita flash branco) */}
       <mesh ref={meshRef} visible={false}>
         <planeGeometry args={[planeW, planeH]} />
-        <meshBasicMaterial transparent side={THREE.DoubleSide} />
+        <meshBasicMaterial transparent side={THREE.DoubleSide} toneMapped={false} />
       </mesh>
     </group>
   );
 };
 
-export default function AsciiCanvas({ isVisible }: { isVisible: boolean }) {
+export default function AsciiCanvas({
+  isVisible,
+  lit = false,
+}: {
+  isVisible: boolean;
+  lit?: boolean;
+}) {
   const prefersReducedMotion = useReducedMotion();
 
   // Abaixo de xl a cena fica a 30% de opacidade atrás do texto —
@@ -310,7 +355,7 @@ export default function AsciiCanvas({ isVisible }: { isVisible: boolean }) {
   const [isDesktop] = useState(
     () =>
       typeof window !== "undefined" &&
-      window.matchMedia("(min-width: 1280px)").matches
+      window.matchMedia("(min-width: 1280px)").matches,
   );
 
   if (prefersReducedMotion || !isDesktop) return null;
@@ -321,7 +366,7 @@ export default function AsciiCanvas({ isVisible }: { isVisible: boolean }) {
       camera={{ position: [0, 0, 8], fov: 50 }}
       gl={{ alpha: true }}
     >
-      <AsciiScene isVisible={isVisible} />
+      <AsciiScene isVisible={isVisible} lit={lit} />
     </Canvas>
   );
 }

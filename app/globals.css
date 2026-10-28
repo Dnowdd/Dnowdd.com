@@ -134,6 +134,10 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  html.custom-cursor,
+  html.custom-cursor * {
+    cursor: none !important;
+  }
 }
 
 @theme inline {

@@ -1,11 +1,10 @@
 import AboutSection from "./components/about/about-section";
-import CompaniesSection from "./components/companies/companies-section";
-import EducationSection from "./components/education/education-section";
-import { FooterSection } from "./components/footer/footer-section";
+import { PersonalShelf } from "./components/about/personal-shelf";
+import ContactSection from "./components/contact/contact-section";
 import HeroSection from "./components/hero/hero-section";
+import JourneySection from "./components/journey/journey-section";
 import ProjectSection from "./components/projects/projects-section";
 import { SectionNav } from "./components/section-nav";
-import SocialmediasSection from "./components/socialmedias/socialmedias-section";
 
 export default function Home() {
   return (
@@ -14,17 +13,15 @@ export default function Home() {
 
       <HeroSection />
 
-      <AboutSection />
+      <AboutSection>
+        <PersonalShelf />
+      </AboutSection>
 
       <ProjectSection />
 
-      <SocialmediasSection />
+      <JourneySection />
 
-      <CompaniesSection />
-
-      <EducationSection />
-
-      <FooterSection />
+      <ContactSection />
     </main>
   );
 }

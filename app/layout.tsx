@@ -5,6 +5,7 @@ import "./globals.css";
 import { Loader } from "@/components/loader";
 import { MotionProvider } from "@/components/motion-provider";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { CustomCursor } from "@/components/custom-cursor";
 import texts from "@/content/texts.json";
 
 const geistSans = Geist({
@@ -179,7 +180,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased dark overflow-x-clip`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark overflow-x-clip font-sans`}
       >
         <script
           type="application/ld+json"
@@ -188,6 +189,7 @@ export default function RootLayout({
         <MotionProvider>
           <SmoothScroll>
             <Loader />
+            <CustomCursor />
             {children}
           </SmoothScroll>
         </MotionProvider>

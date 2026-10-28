@@ -12,6 +12,16 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "books.google.com",
+        pathname: "/books/content/**",
+      },
+      { protocol: "https", hostname: "books.googleusercontent.com" },
+    ],
+  },
   async headers() {
     return [
       {

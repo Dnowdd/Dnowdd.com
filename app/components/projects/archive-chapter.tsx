@@ -80,6 +80,7 @@ export function ArchiveChapter({
               <li key={project.title} className="border-b border-neutral-800">
                 <button
                   type="button"
+                  data-cursor="media"
                   onClick={() => onOpen(featuredProjects.length + i)}
                   onPointerEnter={() => {
                     setHovered(i);

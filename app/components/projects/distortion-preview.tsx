@@ -121,7 +121,8 @@ function DistortionPlane({
   velocityX,
   velocityY,
 }: DistortionPreviewProps) {
-  const meshRef = useRef<THREE.Mesh<THREE.PlaneGeometry, THREE.ShaderMaterial>>(null);
+  const meshRef =
+    useRef<THREE.Mesh<THREE.PlaneGeometry, THREE.ShaderMaterial>>(null);
   const textures = useRef<THREE.Texture[]>([]);
   const transition = useRef({ from: active, to: active, progress: 1 });
   const motionState = useRef({
@@ -177,15 +178,27 @@ function DistortionPlane({
 
     t.progress = Math.min(1, t.progress + delta / 0.8);
     m.opacity = damp(m.opacity, visible ? 1 : 0, 9, delta);
-    m.bendX = damp(m.bendX, THREE.MathUtils.clamp(velocityX.get() / 2500, -1, 1), 10, delta);
-    m.bendY = damp(m.bendY, THREE.MathUtils.clamp(velocityY.get() / 2500, -1, 1), 10, delta);
+    m.bendX = damp(
+      m.bendX,
+      THREE.MathUtils.clamp(velocityX.get() / 2500, -1, 1),
+      10,
+      delta,
+    );
+    m.bendY = damp(
+      m.bendY,
+      THREE.MathUtils.clamp(velocityY.get() / 2500, -1, 1),
+      10,
+      delta,
+    );
     m.width = damp(m.width, sizes[t.to][0], 7, delta);
     m.height = damp(m.height, sizes[t.to][1], 7, delta);
 
     const from = textures.current[t.from];
     const to = textures.current[t.to];
     const eased =
-      t.progress < 0.5 ? 4 * t.progress ** 3 : 1 - (-2 * t.progress + 2) ** 3 / 2;
+      t.progress < 0.5
+        ? 4 * t.progress ** 3
+        : 1 - (-2 * t.progress + 2) ** 3 / 2;
 
     u.uFrom.value = from ?? null;
     u.uTo.value = to ?? null;

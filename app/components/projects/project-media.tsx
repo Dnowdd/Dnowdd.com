@@ -11,6 +11,7 @@ type ProjectMediaProps = {
   className?: string;
   priority?: boolean;
   decorative?: boolean;
+  still?: boolean;
 };
 
 export function ProjectMedia({
@@ -19,11 +20,12 @@ export function ProjectMedia({
   className,
   priority,
   decorative,
+  still,
 }: ProjectMediaProps) {
   const reducedMotion = useReducedMotion();
   const alt = decorative ? "" : `Captura de tela do projeto ${project.title}`;
 
-  if (project.video && !reducedMotion) {
+  if (project.video && !reducedMotion && !still) {
     return (
       <video
         src={project.video}
