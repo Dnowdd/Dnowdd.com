@@ -9,7 +9,7 @@ import SocialmediasSection from "./components/socialmedias/socialmedias-section"
 
 export default function Home() {
   return (
-    <main className="overflow-x-hidden w-full max-w-[100vw]">
+    <main className="overflow-x-clip w-full max-w-[100vw]">
       <SectionNav />
 
       <HeroSection />

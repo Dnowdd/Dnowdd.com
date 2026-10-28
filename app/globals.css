@@ -52,8 +52,6 @@ body {
   padding: 0;
   background: #000000;
   color: #ffffff;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 
 * {
@@ -165,4 +163,27 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+.film-grain {
+  overflow: hidden;
+}
+
+.film-grain::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.05;
+  will-change: transform;
+  animation: film-grain 0.9s steps(6) infinite;
+}
+
+@keyframes film-grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-6%, 4%); }
+  40% { transform: translate(5%, -3%); }
+  60% { transform: translate(-3%, -6%); }
+  80% { transform: translate(6%, 5%); }
+  100% { transform: translate(0, 0); }
 }

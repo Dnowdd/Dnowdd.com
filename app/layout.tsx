@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Loader } from "@/components/loader";
 import { MotionProvider } from "@/components/motion-provider";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import texts from "@/content/texts.json";
 
 const geistSans = Geist({
@@ -178,15 +179,17 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased dark overflow-x-hidden`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark overflow-x-clip`}
       >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <MotionProvider>
-          <Loader />
-          {children}
+          <SmoothScroll>
+            <Loader />
+            {children}
+          </SmoothScroll>
         </MotionProvider>
         <Analytics />
       </body>

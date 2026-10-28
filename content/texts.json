@@ -26,15 +26,21 @@
   "projects": {
     "subtitle": "Melhores",
     "title": "Projetos",
+    "archive": {
+      "title": "Outros projetos",
+      "description": "Experimentos, estudos e projetos menores. Clique em qualquer um para abrir o case."
+    },
     "items": [
       {
         "title": "ADigital Multinível",
+        "featured": true,
         "description": "Gestão imobiliária completa com comissões em até 3 gerações — esse foi o desafio por trás do ADigital Multinível, plataforma freelance construída em Next.js e TypeScript. Além do controle de imóveis, vendas e afiliados, o sistema integra CRM ao WhatsApp Business, gera anúncios com IA e centraliza tudo em dashboards em tempo real, com foco em performance e automação para o mercado imobiliário.",
         "image": "/projects/adigital.webp",
         "tags": ["Next.js", "TypeScript", "Meta API", "IA"]
       },
       {
         "title": "Abafit",
+        "featured": true,
         "description": "Treino registrado, evolução acompanhada e amigos motivando: essa é a proposta do Abafit, plataforma fitness que desenvolvi em Next.js para centralizar treinos de musculação, progresso e foco em um só ecossistema. Dá pra competir com amigos, compartilhar playlists de treino e manter a consistência com uma experiência fluida — pensado para quem leva treino a sério.",
         "image": "/projects/abafit.webp",
         "tags": [
@@ -48,6 +54,7 @@
       },
       {
         "title": "S.O.P.A",
+        "featured": true,
         "description": "Meu projeto de graduação em Gestão da Tecnologia da Informação na FATEC Campinas: o S.O.P.A (Sistema Orientado a Processos Alimentícios) unifica ERP, WMS, TMS e CRM em uma única solução, construída em Next.js, para centralizar pedidos, estoque, rotas, vendas e indicadores. O foco foi automação de processos, redução de erros operacionais, otimização logística e visão estratégica para gestores.",
         "image": "/projects/sopa.webp",
         "tags": [
@@ -87,6 +94,7 @@
       },
       {
         "title": "DeepChat",
+        "featured": true,
         "description": "IA rodando 100% local, sem depender de nuvem: o DeepChat é um chatbot que desenvolvi em Next.js, integrado ao modelo DeepSeek-R1 via Ollama, com suporte a múltiplos idiomas, interface responsiva e controle em tempo real da geração de respostas. Um projeto de privacidade, performance e experimentação com LLMs open-source.",
         "image": "/projects/deepchat.webp",
         "tags": [
