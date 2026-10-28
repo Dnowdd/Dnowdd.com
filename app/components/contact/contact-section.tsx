@@ -2,9 +2,8 @@
 
 import texts from "@/content/texts.json";
 import { AnimatePresence, motion, useInView } from "framer-motion";
-import { ArrowUp, ArrowUpRight, Copy } from "lucide-react";
+import { ArrowUpRight, Copy } from "lucide-react";
 import dynamic from "next/dynamic";
-import { useLenis } from "lenis/react";
 import { useRef, useState } from "react";
 import { RevealText } from "@/components/section-header";
 
@@ -23,7 +22,6 @@ export default function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { amount: 0.2 });
   const [copied, setCopied] = useState(false);
-  const lenis = useLenis();
 
   const copyEmail = async () => {
     if (!EMAIL) return;
@@ -34,11 +32,6 @@ export default function ContactSection() {
     } catch {
       window.location.href = `mailto:${EMAIL}`;
     }
-  };
-
-  const backToTop = () => {
-    if (lenis) lenis.scrollTo(0, { duration: 1.6 });
-    else window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -123,15 +116,9 @@ export default function ContactSection() {
           </ul>
         </div>
 
-        <footer className="flex items-center justify-between border-t border-neutral-900 pt-6 font-mono text-xs uppercase tracking-widest text-neutral-600">
-          <span>© {new Date().getFullYear()} David Queiroz</span>
-          <button
-            type="button"
-            onClick={backToTop}
-            className="flex items-center gap-2 transition-colors hover:text-neutral-200"
-          >
-            {texts.contact.top} <ArrowUp className="size-3" />
-          </button>
+        <footer className="flex flex-col gap-1 font-mono text-[11px] uppercase tracking-widest text-neutral-600 sm:flex-row sm:justify-between">
+          <span>© {new Date().getFullYear()}</span>
+          <span>{texts.contact.credit}</span>
         </footer>
       </div>
     </section>

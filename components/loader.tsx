@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
+import { INTRO_DONE_EVENT } from "./use-intro-done";
 
 const COOKIE_NAME = "dnowdd-intro-seen";
 const COOKIE_MAX_AGE_S = 60 * 60; // 1 hora sem visitar -> intro de novo
@@ -57,6 +58,12 @@ export function Loader() {
       timers.forEach(clearTimeout);
     };
   }, []);
+
+  useEffect(() => {
+    if (isLoading) return;
+    document.documentElement.dataset.intro = "done";
+    window.dispatchEvent(new Event(INTRO_DONE_EVENT));
+  }, [isLoading]);
 
   return (
     <AnimatePresence mode="wait">

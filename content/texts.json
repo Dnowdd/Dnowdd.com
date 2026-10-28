@@ -2,17 +2,36 @@
   "hero": {
     "subtitle": "Queiroz,",
     "title": "David",
-    "tagline": "Desenvolvedor <strong>Full-Stack</strong> com experiência prática desde 2020, hoje construindo soluções web na <strong>Genialogic</strong>.",
+    "tagline": [
+      {
+        "text": "Desenvolvedor "
+      },
+      {
+        "text": "full-stack",
+        "strong": true
+      },
+      {
+        "text": " brasileiro, levando produtos web do zero ao deploy — hoje na "
+      },
+      {
+        "text": "Genialogic",
+        "strong": true
+      },
+      {
+        "text": "."
+      }
+    ],
     "cta": {
       "primary": {
-        "label": "Ver Projetos",
+        "label": "Ver projetos",
         "href": "#projetos"
       },
       "secondary": {
-        "label": "Baixar Currículo",
+        "label": "Currículo",
         "href": "/curriculum/curriculo-david-queiroz.pdf"
       }
-    }
+    },
+    "scroll": "Role"
   },
   "about": {
     "label": "Sobre",
@@ -82,12 +101,7 @@
         "featured": true,
         "description": "Gestão imobiliária completa com comissões em até 3 gerações — esse foi o desafio por trás do ADigital Multinível, plataforma freelance construída em Next.js e TypeScript. Além do controle de imóveis, vendas e afiliados, o sistema integra CRM ao WhatsApp Business, gera anúncios com IA e centraliza tudo em dashboards em tempo real, com foco em performance e automação para o mercado imobiliário.",
         "image": "/projects/adigital.webp",
-        "tags": [
-          "Next.js",
-          "TypeScript",
-          "Meta API",
-          "IA"
-        ]
+        "tags": ["Next.js", "TypeScript", "Meta API", "IA"]
       },
       {
         "title": "Abafit",
@@ -122,12 +136,7 @@
         "title": "Dr. Agenda",
         "description": "Agendamento e administração de clínicas simplificados: o Dr. Agenda é um SaaS que construí em Next.js durante os estudos no curso FullStackClub, com diversas melhorias autorais — CRUD completo de médicos, pacientes e agendamentos, dashboard com métricas, autenticação segura e assinaturas via Stripe.",
         "image": "/projects/dragenda.webp",
-        "tags": [
-          "Next.js",
-          "TypeScript",
-          "TailwindCSS",
-          "Stripe"
-        ],
+        "tags": ["Next.js", "TypeScript", "TailwindCSS", "Stripe"],
         "links": [
           {
             "icon": "Github",
@@ -140,12 +149,7 @@
         "description": "Meu primeiro aplicativo em Flutter: o Hidrata+ ajuda a controlar a ingestão diária de água no Android e iOS, com metas personalizadas e registro rápido de consumo. O foco foi usabilidade e simplicidade, incentivando hábitos mais saudáveis no dia a dia.",
         "image": "/projects/hidrata+.webp",
         "mobileApp": true,
-        "tags": [
-          "Flutter",
-          "Dart",
-          "Android",
-          "iOS"
-        ],
+        "tags": ["Flutter", "Dart", "Android", "iOS"],
         "links": [
           {
             "icon": "Github",
@@ -233,11 +237,7 @@
         "from": "Jan. 2020",
         "to": "Dez. 2022",
         "description": "Curso técnico público voltado para o desenvolvimento de software, programação e análise de sistemas, preparando os alunos para a indústria de TI.",
-        "tags": [
-          "Cursado",
-          "Ensino Técnico",
-          "Tempo Integral"
-        ]
+        "tags": ["Cursado", "Ensino Técnico", "Tempo Integral"]
       },
       {
         "title": "Gestão da Tecnologia da Informação",
@@ -245,21 +245,15 @@
         "from": "Fev. 2023",
         "to": "Dez. 2025",
         "description": "Curso superior público focado em estratégia de TI, gerenciamento de projetos e soluções empresariais, combinando habilidades técnicas e administrativas.",
-        "tags": [
-          "Graduado",
-          "Curso Superior"
-        ]
+        "tags": ["Graduado", "Curso Superior"]
       }
     ]
   },
   "contact": {
     "label": "Contato",
-    "title": [
-      "Vamos",
-      "conversar?"
-    ],
+    "title": ["Vamos", "conversar?"],
     "copied": "Copiado",
-    "top": "Topo",
+    "credit": "Designed & Developed by David Queiroz",
     "links": [
       {
         "name": "LinkedIn",
