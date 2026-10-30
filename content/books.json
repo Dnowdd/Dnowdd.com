@@ -1,6 +1,22 @@
 [
   {
-    "title": "Título do livro",
-    "image": "https://books.google.com/books/content?id=6KwXEAAAQBAJ&printsec=frontcover&img=1&zoom=1"
+    "title": "Grokking Algorithms",
+    "author": "Aditya Y. Bhargava",
+    "image": "grokking.jpg"
+  },
+  {
+    "title": "Harry Potter e a Câmara Secreta",
+    "author": "J.K. Rowling",
+    "image": "camarasecreta.jpg"
+  },
+  {
+    "title": "A Metamorfose",
+    "author": "Franz Kafka",
+    "image": "ametamorfose.jpg"
+  },
+  {
+    "title": "Jogos Vorazes",
+    "author": "Suzanne Collins",
+    "image": "jogosvorazes.jpg"
   }
 ]

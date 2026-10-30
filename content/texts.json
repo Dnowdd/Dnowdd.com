@@ -85,7 +85,8 @@
       }
     ],
     "books": "Livros lidos",
-    "moreBooks": "ver mais"
+    "moreBooks": "ver mais",
+    "trapiche": "ver mais no Trapiche"
   },
   "projects": {
     "subtitle": "Melhores",
