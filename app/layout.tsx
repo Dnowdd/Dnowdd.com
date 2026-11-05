@@ -69,6 +69,7 @@ export const metadata: Metadata = {
     title: "David Queiroz | Dnowdd.com",
     description:
       "Portfólio de David Queiroz — Desenvolvedor Full-Stack. React, TypeScript, Node.js.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
