@@ -1,0 +1,462 @@
+{
+  "meta": {
+    "title": "David Queiroz | Dnowdd.com",
+    "description": "Portfolio of David Queiroz — Full-Stack Developer experienced in React, TypeScript and Node.js. Projects, work at Genialogic and an IT Management degree from FATEC Campinas.",
+    "shortDescription": "Portfolio of David Queiroz — Full-Stack Developer experienced in React, TypeScript and Node.js.",
+    "ogDescription": "Portfolio of David Queiroz — Full-Stack Developer. Projects in React, TypeScript, Node.js and work at Genialogic.",
+    "twitterDescription": "Portfolio of David Queiroz — Full-Stack Developer. React, TypeScript, Node.js.",
+    "ogAlt": "David Queiroz — Full-Stack Developer",
+    "ogLocale": "en_US",
+    "keywords": [
+      "David Queiroz",
+      "full-stack developer",
+      "React developer",
+      "TypeScript",
+      "Node.js",
+      "developer portfolio",
+      "Genialogic",
+      "FATEC Campinas",
+      "Brazilian developer",
+      "front-end",
+      "back-end"
+    ],
+    "jobTitle": "Junior Full-Stack Developer",
+    "personDescription": "Brazilian full-stack developer with hands-on experience since 2020, specialized in React, TypeScript and Node.js.",
+    "knowsAbout": "Full-Stack Development",
+    "projectsList": "Projects by David Queiroz"
+  },
+  "language": {
+    "label": "Language",
+    "names": {
+      "pt-BR": "Português",
+      "en": "English"
+    },
+    "short": {
+      "pt-BR": "PT",
+      "en": "EN"
+    }
+  },
+  "nav": {
+    "label": "Section navigation",
+    "hero": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "journey": "Journey",
+    "contact": "Contact"
+  },
+  "loader": {
+    "first": "Hello,",
+    "second": "and welcome"
+  },
+  "hero": {
+    "subtitle": "Queiroz,",
+    "title": "David",
+    "tagline": [
+      {
+        "text": "Brazilian "
+      },
+      {
+        "text": "full-stack",
+        "strong": true
+      },
+      {
+        "text": " developer, taking web products from zero to deploy — currently at "
+      },
+      {
+        "text": "Genialogic",
+        "strong": true
+      },
+      {
+        "text": "."
+      }
+    ],
+    "cta": {
+      "primary": {
+        "label": "View projects",
+        "href": "#projetos"
+      },
+      "secondary": {
+        "label": "Resume",
+        "href": "/curriculum/curriculo-david-queiroz.pdf"
+      }
+    },
+    "scroll": "Scroll",
+    "srOnly": "David Queiroz — Full-Stack Developer",
+    "resumeFile": "Resume - David Queiroz.pdf"
+  },
+  "about": {
+    "label": "About",
+    "title": "Who I am",
+    "statement": [
+      {
+        "text": "I've been a"
+      },
+      {
+        "text": "full-stack",
+        "kind": "marker"
+      },
+      {
+        "text": "developer since 2020. I turn"
+      },
+      {
+        "text": "ideas",
+        "kind": "circle"
+      },
+      {
+        "text": "into fast, well-structured web products, crafted down to every"
+      },
+      {
+        "text": "detail",
+        "kind": "spark"
+      },
+      {
+        "text": "— from the interface to the"
+      },
+      {
+        "text": "database.",
+        "kind": "underline"
+      }
+    ],
+    "facts": [
+      {
+        "label": "Experience",
+        "value": "Since 2020"
+      },
+      {
+        "label": "Now",
+        "value": "Full-Stack Jr. · Genialogic"
+      },
+      {
+        "label": "Education",
+        "value": "IT Management · FATEC"
+      },
+      {
+        "label": "Stack",
+        "value": "React · TypeScript · Node.js"
+      }
+    ],
+    "books": "Books I've read",
+    "moreBooks": "see more",
+    "bookCover": "Cover of {title}",
+    "moreBooksLabel": "See {count} more books"
+  },
+  "github": {
+    "contributions": "contributions",
+    "repositories": "repositories",
+    "stars": "stars",
+    "streak": "day streak",
+    "profile": "{login}'s GitHub profile",
+    "heatmap": "{count} contributions in the last year",
+    "tooltip": "{count, plural, one {# contribution} other {# contributions}}"
+  },
+  "projects": {
+    "subtitle": "Best",
+    "title": "Projects",
+    "heading": "Selected work",
+    "archive": {
+      "title": "Other projects",
+      "description": "Experiments, studies and smaller projects. Click any of them to open the case."
+    },
+    "items": [
+      {
+        "title": "ADigital Multinível",
+        "featured": true,
+        "summary": "Real-estate platform with 3-tier commissions, WhatsApp CRM and AI-generated listings.",
+        "description": "End-to-end real-estate management with commissions across up to 3 tiers — that was the challenge behind ADigital Multinível, a freelance platform built with Next.js and TypeScript. Beyond managing properties, sales and affiliates, it connects a CRM to WhatsApp Business, generates listings with AI and brings everything together in real-time dashboards, focused on performance and automation for the real-estate market.",
+        "image": "/projects/adigital.webp",
+        "tags": [
+          "Next.js",
+          "TypeScript",
+          "Meta API",
+          "AI"
+        ]
+      },
+      {
+        "title": "Abafit",
+        "featured": true,
+        "summary": "Fitness network to log workouts, track progress and compete with friends.",
+        "description": "Logged workouts, tracked progress and friends keeping you going: that's Abafit, a fitness platform I built with Next.js to bring strength training, progress and focus into a single ecosystem. You can compete with friends, share workout playlists and stay consistent with a smooth experience — made for people who take training seriously.",
+        "image": "/projects/abafit.webp",
+        "tags": [
+          "Next.js",
+          "TypeScript",
+          "TailwindCSS",
+          "Fitness",
+          "AI",
+          "Social network"
+        ]
+      },
+      {
+        "title": "S.O.P.A",
+        "featured": true,
+        "summary": "ERP, WMS, TMS and CRM unified for food businesses. My FATEC capstone.",
+        "description": "My capstone project for the IT Management degree at FATEC Campinas: S.O.P.A (a process-oriented system for food businesses) unifies ERP, WMS, TMS and CRM in a single Next.js solution to centralize orders, inventory, routes, sales and KPIs. The focus was process automation, fewer operational errors, logistics optimization and a strategic view for managers.",
+        "image": "/projects/sopa.webp",
+        "tags": [
+          "Next.js",
+          "ERP",
+          "WMS",
+          "TMS",
+          "CRM",
+          "PostgreSQL",
+          "Supabase"
+        ]
+      },
+      {
+        "title": "Dr. Agenda",
+        "summary": "Clinic scheduling SaaS with dashboards, auth and Stripe subscriptions.",
+        "description": "Clinic scheduling and management made simple: Dr. Agenda is a SaaS I built with Next.js while studying at FullStackClub, with several improvements of my own — full CRUD for doctors, patients and appointments, a metrics dashboard, secure authentication and Stripe subscriptions.",
+        "image": "/projects/dragenda.webp",
+        "tags": [
+          "Next.js",
+          "TypeScript",
+          "TailwindCSS",
+          "Stripe"
+        ],
+        "links": [
+          {
+            "icon": "Github",
+            "url": "https://github.com/Dnowdd/Dr.Agenda"
+          }
+        ]
+      },
+      {
+        "title": "Hidrata+",
+        "summary": "Flutter app to track daily water intake with personalized goals.",
+        "description": "My first Flutter app: Hidrata+ helps you track your daily water intake on Android and iOS, with personalized goals and quick logging. The focus was usability and simplicity, encouraging healthier everyday habits.",
+        "image": "/projects/hidrata+.webp",
+        "mobileApp": true,
+        "tags": [
+          "Flutter",
+          "Dart",
+          "Android",
+          "iOS"
+        ],
+        "links": [
+          {
+            "icon": "Github",
+            "url": "https://github.com/Dnowdd/Hidrata"
+          }
+        ]
+      },
+      {
+        "title": "DeepChat",
+        "featured": true,
+        "summary": "Chatbot with 100% local AI, running DeepSeek-R1 through Ollama.",
+        "description": "AI running 100% locally, no cloud required: DeepChat is a chatbot I built with Next.js, integrated with the DeepSeek-R1 model through Ollama, with multi-language support, a responsive interface and real-time control over response generation. A project about privacy, performance and experimenting with open-source LLMs.",
+        "image": "/projects/deepchat.webp",
+        "tags": [
+          "Next.js",
+          "TypeScript",
+          "TailwindCSS",
+          "AI",
+          "Ollama",
+          "DeepSeek-R1",
+          "Vite"
+        ],
+        "links": [
+          {
+            "icon": "Github",
+            "url": "https://github.com/Dnowdd/DeepChat"
+          }
+        ]
+      }
+    ],
+    "chapters": "Project chapters",
+    "goTo": "Go to {label}",
+    "openCase": "Open case"
+  },
+  "caseStudy": {
+    "label": "Case",
+    "previous": "Previous project",
+    "next": "Next project",
+    "nextLink": "Next project →",
+    "close": "Esc",
+    "role": "Role",
+    "year": "Year",
+    "stack": "Stack",
+    "live": "View live",
+    "source": "Source code"
+  },
+  "journey": {
+    "label": "Journey",
+    "title": "Where I've been",
+    "work": "Experience",
+    "education": "Education",
+    "present": "Present"
+  },
+  "companies": {
+    "timeline": [
+      {
+        "period": {
+          "start": "2025-08",
+          "end": null
+        },
+        "position": "Junior Full-Stack Developer",
+        "company": "Genialogic",
+        "description": "I work on full-stack web projects with React, TypeScript and Node.js. My responsibilities include building and maintaining scalable features, integrating external services and writing clean, testable code. I take an active part in architecture decisions, code reviews and agile ceremonies, contributing to a collaborative, high-performance team. I also help improve internal tools and workflows, keeping solutions efficient and easy to maintain.",
+        "tags": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "APIs",
+          "Architecture",
+          "Code Review",
+          "Scrum",
+          "Testing",
+          "Integrations"
+        ]
+      },
+      {
+        "period": {
+          "start": "2024-02",
+          "end": "2025-08"
+        },
+        "position": "Software Development Intern",
+        "company": "Genialogic",
+        "description": "I focused on building web systems with React and Node.js, working as a full-stack developer across front-end interfaces, APIs and back-end integrations. I took part in proof-of-concept projects and technical challenges, exploring other languages and technologies to broaden my skill set. The experience let me deliver scalable, efficient solutions across several projects.",
+        "tags": [
+          "React",
+          "Node.js",
+          "APIs",
+          "Full-stack",
+          "POC",
+          "Front-end",
+          "Back-end",
+          "Integrations"
+        ]
+      }
+    ]
+  },
+  "education": {
+    "items": [
+      {
+        "title": "Systems Development Technician",
+        "school": "ETEC de Hortolândia",
+        "from": "2020-01",
+        "to": "2022-12",
+        "description": "Public technical program focused on software development, programming and systems analysis, preparing students for the IT industry.",
+        "tags": [
+          "Completed",
+          "Technical school",
+          "Full-time"
+        ]
+      },
+      {
+        "title": "IT Management",
+        "school": "FATEC Campinas",
+        "from": "2023-02",
+        "to": "2025-12",
+        "description": "Public higher-education program focused on IT strategy, project management and business solutions, combining technical and management skills.",
+        "tags": [
+          "Graduated",
+          "Higher education"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "label": "Contact",
+    "title": [
+      "Let's",
+      "talk?"
+    ],
+    "copied": "Copied",
+    "credit": "Designed & Developed by David Queiroz",
+    "links": [
+      {
+        "name": "LinkedIn",
+        "icon": "Linkedin",
+        "href": "https://www.linkedin.com/in/dnowdd"
+      },
+      {
+        "name": "GitHub",
+        "icon": "Github",
+        "href": "https://github.com/Dnowdd"
+      },
+      {
+        "name": "Email",
+        "icon": "Mail",
+        "href": "mailto:david.queiroz@dnowdd.com"
+      },
+      {
+        "name": "Resume",
+        "icon": "FileText",
+        "href": "/curriculum/curriculo-david-queiroz.pdf"
+      }
+    ],
+    "resumeFile": "Resume - David Queiroz.pdf"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "code": "ERROR 404",
+    "description": "The address you tried to reach doesn't exist. How about heading back home?",
+    "back": "Back to the home page"
+  },
+  "readme": {
+    "status": "Open to opportunities",
+    "stack": {
+      "label": "Stack",
+      "title": "What I work with",
+      "groups": [
+        {
+          "label": "Languages",
+          "items": [
+            "TypeScript",
+            "JavaScript",
+            "Python",
+            "PHP",
+            "Dart",
+            "SQL"
+          ]
+        },
+        {
+          "label": "Frontend",
+          "items": [
+            "React",
+            "Next.js",
+            "Tailwind CSS",
+            "shadcn/ui",
+            "Motion",
+            "Three.js",
+            "Vite"
+          ]
+        },
+        {
+          "label": "Backend & data",
+          "items": [
+            "Node.js",
+            "PostgreSQL",
+            "Supabase",
+            "MySQL",
+            "SQLite",
+            "Stripe"
+          ]
+        },
+        {
+          "label": "Mobile & AI",
+          "items": [
+            "Flutter",
+            "OpenCV",
+            "TensorFlow",
+            "LLM APIs"
+          ]
+        },
+        {
+          "label": "Tools",
+          "items": [
+            "Git",
+            "GitHub",
+            "Figma",
+            "Jira",
+            "Blender",
+            "Photoshop"
+          ]
+        }
+      ]
+    },
+    "selectedWork": "Selected work",
+    "allRepositories": "All repositories",
+    "portfolio": "Portfolio"
+  }
+}

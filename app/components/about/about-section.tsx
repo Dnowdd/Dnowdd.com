@@ -9,24 +9,26 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import { useMessages } from "next-intl";
 import { useRef } from "react";
 import { SectionHeader } from "@/components/section-header";
-import texts from "@/content/texts.json";
 
 type Kind = "marker" | "circle" | "spark" | "underline";
 type Segment = { text: string; kind?: Kind };
 
-const STATEMENT = texts.about.statement as Segment[];
-const FACTS = texts.about.facts;
-
 const EASE = [0.76, 0, 0.24, 1] as const;
-const TOTAL_WORDS = STATEMENT.reduce((n, s) => n + s.text.split(" ").length, 0);
 
 export default function AboutSection({
   children,
 }: {
   children?: React.ReactNode;
 }) {
+  const { about } = useMessages();
+  const statement = about.statement as Segment[];
+  const totalWords = statement.reduce(
+    (n, s) => n + s.text.split(" ").length,
+    0,
+  );
   const statementRef = useRef<HTMLParagraphElement>(null);
   const { scrollYProgress } = useScroll({
     target: statementRef,
@@ -64,15 +66,15 @@ export default function AboutSection({
       <div className="relative mx-auto flex max-w-7xl flex-col gap-16 px-6 py-32 md:gap-24 md:px-10 md:py-48">
         <SectionHeader
           index="02"
-          label={texts.about.label}
-          title={texts.about.title}
+          label={about.label}
+          title={about.title}
         />
 
         <p
           ref={statementRef}
           className="max-w-5xl text-3xl font-semibold leading-[1.25] tracking-tight md:text-6xl md:leading-[1.2]"
         >
-          {STATEMENT.map((segment, s) => {
+          {statement.map((segment, s) => {
             const words = segment.text.split(" ").map((word) => {
               const i = wordIndex++;
               return (
@@ -80,7 +82,7 @@ export default function AboutSection({
                   key={i}
                   word={word}
                   progress={scrollYProgress}
-                  range={[i / TOTAL_WORDS, (i + 1) / TOTAL_WORDS]}
+                  range={[i / totalWords, (i + 1) / totalWords]}
                 />
               );
             });
@@ -95,7 +97,7 @@ export default function AboutSection({
         </p>
 
         <dl className="grid grid-cols-2 gap-x-6 gap-y-10 border-t border-neutral-800 pt-10 md:grid-cols-4">
-          {FACTS.map((fact, i) => (
+          {about.facts.map((fact, i) => (
             <motion.div
               key={fact.label}
               initial={{ opacity: 0, y: 16 }}

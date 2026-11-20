@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import texts from "@/content/texts.json";
 import {
   AnimatePresence,
   motion,
@@ -14,28 +13,33 @@ import {
   useTransform,
 } from "framer-motion";
 import { useLenis } from "lenis/react";
+import { useMessages, useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { SectionHeader } from "@/components/section-header";
 import { ArchiveChapter } from "./archive-chapter";
 import { CaseLinks, CaseOverlay } from "./case-overlay";
 import {
-  archiveProjects,
   EASE_IN_OUT,
   EASE_OUT,
-  featuredProjects,
   isTypingTarget,
   type Project,
+  useProjects,
 } from "./data";
 import { ProjectMedia } from "./project-media";
 
-const ARCHIVE_INDEX = featuredProjects.length;
-const CHAPTERS = featuredProjects.length + (archiveProjects.length > 0 ? 1 : 0);
-const LABELS = [
-  ...featuredProjects.map((project) => project.title),
-  texts.projects.archive.title,
-].slice(0, CHAPTERS);
-
 const ProjectSection = () => {
+  const { projects } = useMessages();
+  const t = useTranslations("projects");
+  const { featured: featuredProjects, archive: archiveProjects } =
+    useProjects();
+  const archiveIndex = featuredProjects.length;
+  const chapterCount =
+    featuredProjects.length + (archiveProjects.length > 0 ? 1 : 0);
+  const labels = [
+    ...featuredProjects.map((project) => project.title),
+    projects.archive.title,
+  ].slice(0, chapterCount);
+
   const [chapters, setChapters] = useState({ active: 0, previous: 0 });
   const active = chapters.active;
   const [open, setOpen] = useState<number | null>(null);
@@ -58,7 +62,7 @@ const ProjectSection = () => {
   const edgeFade = useTransform(enterProgress, [0.75, 1], [0, 1]);
 
   useMotionValueEvent(scrollYProgress, "change", (progress) => {
-    const next = Math.min(CHAPTERS - 1, Math.floor(progress * CHAPTERS));
+    const next = Math.min(chapterCount - 1, Math.floor(progress * chapterCount));
     setChapters((current) =>
       current.active === next
         ? current
@@ -81,11 +85,11 @@ const ProjectSection = () => {
       if (!track) return;
       const top = track.getBoundingClientRect().top + window.scrollY;
       const distance = track.offsetHeight - window.innerHeight;
-      const target = top + ((chapter + 0.02) / CHAPTERS) * distance;
+      const target = top + ((chapter + 0.02) / chapterCount) * distance;
       if (lenis) lenis.scrollTo(target, { duration: 1.1 });
       else window.scrollTo({ top: target, behavior: "smooth" });
     },
-    [lenis],
+    [lenis, chapterCount],
   );
 
   useEffect(() => {
@@ -98,10 +102,10 @@ const ProjectSection = () => {
 
       if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
         const delta = event.key === "ArrowRight" ? 1 : -1;
-        scrollToChapter(Math.max(0, Math.min(CHAPTERS - 1, active + delta)));
+        scrollToChapter(Math.max(0, Math.min(chapterCount - 1, active + delta)));
       } else if (
         event.key === "Enter" &&
-        active < ARCHIVE_INDEX &&
+        active < archiveIndex &&
         !(
           event.target instanceof HTMLElement &&
           event.target.closest("a, button")
@@ -113,7 +117,7 @@ const ProjectSection = () => {
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [active, scrollToChapter]);
+  }, [active, scrollToChapter, chapterCount, archiveIndex]);
 
   const onPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
     pointerX.set(event.clientX / window.innerWidth - 0.5);
@@ -121,22 +125,22 @@ const ProjectSection = () => {
   };
 
   const closeCase = useCallback(() => setOpen(null), []);
-  const isArchive = active === ARCHIVE_INDEX;
-  const project = featuredProjects[Math.min(active, ARCHIVE_INDEX - 1)];
+  const isArchive = active === archiveIndex;
+  const project = featuredProjects[Math.min(active, archiveIndex - 1)];
 
   return (
     <section id="projetos" className="relative bg-neutral-950">
       <div className="mx-auto max-w-7xl px-6 pb-16 pt-32 md:px-10 md:pb-24 md:pt-48">
         <SectionHeader
           index="03"
-          label={texts.projects.title}
-          title={texts.projects.heading}
+          label={projects.title}
+          title={projects.heading}
         />
       </div>
       <div
         ref={trackRef}
         className="relative"
-        style={{ height: `${CHAPTERS * 100}svh` }}
+        style={{ height: `${chapterCount * 100}svh` }}
       >
         <motion.div
           className="sticky top-0 h-svh overflow-hidden"
@@ -147,10 +151,11 @@ const ProjectSection = () => {
             className="absolute -inset-8 will-change-transform"
             style={{ x: parallaxX, y: parallaxY }}
           >
-            {LABELS.map((label, layer) => (
+            {labels.map((label, layer) => (
               <BackgroundLayer
                 key={label}
                 layer={layer}
+                project={featuredProjects[layer]}
                 active={chapters.active}
                 previous={chapters.previous}
               />
@@ -168,14 +173,15 @@ const ProjectSection = () => {
 
           <div className="relative z-3 mx-auto flex h-full max-w-7xl flex-col justify-between gap-6 px-6 pb-10 pt-3 md:px-10 md:pb-14 md:pt-4">
             <nav
-              aria-label="Capítulos de projetos"
+              aria-label={t("chapters")}
               className="flex items-center gap-2"
             >
-              {LABELS.map((label, chapter) => (
+              {labels.map((label, chapter) => (
                 <Segment
                   key={label}
                   chapter={chapter}
                   label={label}
+                  chapters={chapterCount}
                   active={chapter === active}
                   progress={scrollYProgress}
                   onClick={() => scrollToChapter(chapter)}
@@ -212,15 +218,16 @@ const ProjectSection = () => {
 
 function BackgroundLayer({
   layer,
+  project,
   active,
   previous,
 }: {
   layer: number;
+  project?: Project;
   active: number;
   previous: number;
 }) {
   const isActive = layer === active;
-  const project = featuredProjects[layer];
   const zIndex = isActive ? 2 : layer === previous ? 1 : 0;
 
   return (
@@ -267,6 +274,7 @@ function FeaturedChapter({
   project: Project;
   onOpen: () => void;
 }) {
+  const t = useTranslations("projects");
   const words = project.title.split(" ");
 
   return (
@@ -351,7 +359,7 @@ function FeaturedChapter({
             onClick={onOpen}
             className="group flex items-center rounded-full bg-neutral-50 px-5 py-2 text-sm font-medium text-neutral-950 transition-transform hover:scale-[1.03]"
           >
-            Abrir case
+            {t("openCase")}
           </button>
           <CaseLinks project={project} />
         </div>
@@ -363,19 +371,22 @@ function FeaturedChapter({
 function Segment({
   chapter,
   label,
+  chapters: chapterCount,
   active,
   progress,
   onClick,
 }: {
   chapter: number;
   label: string;
+  chapters: number;
   active: boolean;
   progress: MotionValue<number>;
   onClick: () => void;
 }) {
+  const t = useTranslations("projects");
   const fill = useTransform(
     progress,
-    [chapter / CHAPTERS, (chapter + 1) / CHAPTERS],
+    [chapter / chapterCount, (chapter + 1) / chapterCount],
     [0, 1],
   );
 
@@ -383,7 +394,7 @@ function Segment({
     <button
       type="button"
       onClick={onClick}
-      aria-label={`Ir para ${label}`}
+      aria-label={t("goTo", { label })}
       aria-current={active ? "step" : undefined}
       className="group min-w-0 flex-1 py-3"
     >

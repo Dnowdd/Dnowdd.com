@@ -1,8 +1,8 @@
 "use client";
 
 import books from "@/content/books.json";
-import texts from "@/content/texts.json";
 import { GITHUB_LOGIN } from "@/lib/github-shared";
+import { useMessages, useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -14,6 +14,8 @@ const COVER_WIDTH = 88;
 const GAP = 16;
 
 export function Bookshelf() {
+  const { about } = useMessages();
+  const t = useTranslations("about");
   const listRef = useRef<HTMLUListElement>(null);
   const [capacity, setCapacity] = useState(5);
 
@@ -36,7 +38,7 @@ export function Bookshelf() {
   return (
     <div className="flex min-w-0 flex-col gap-6">
       <p className="font-mono text-xs uppercase tracking-widest text-neutral-500">
-        {texts.about.books}
+        {about.books}
       </p>
 
       <ul ref={listRef} className="flex gap-4 pb-8">
@@ -50,7 +52,7 @@ export function Bookshelf() {
             <div className="relative aspect-[2/3] overflow-hidden rounded-sm border border-neutral-800 bg-neutral-900 transition-transform duration-500 group-hover:-translate-y-1.5">
               <Image
                 src={book.image}
-                alt={`Capa de ${book.title}`}
+                alt={t("bookCover", { title: book.title })}
                 fill
                 sizes={`${COVER_WIDTH}px`}
                 className="object-cover"
@@ -67,14 +69,14 @@ export function Bookshelf() {
               href={MORE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Ver mais ${remaining} livros`}
+              aria-label={t("moreBooksLabel", { count: remaining })}
               className="group flex aspect-[2/3] flex-col items-center justify-center gap-1 rounded-sm border border-neutral-800 bg-neutral-900/60 transition-colors duration-300 hover:border-primary hover:bg-primary/10"
             >
               <span className="text-2xl font-semibold tracking-tight text-neutral-100">
                 +{remaining}
               </span>
               <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-500 transition-colors group-hover:text-neutral-300">
-                {texts.about.moreBooks}
+                {about.moreBooks}
               </span>
             </a>
           </li>

@@ -1,18 +1,12 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import texts from "@/content/texts.json";
 import { motion, useMotionValue, useSpring, useVelocity } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useMessages } from "next-intl";
 import dynamic from "next/dynamic";
-import { useState } from "react";
-import {
-  archiveProjects,
-  EASE_OUT,
-  featuredProjects,
-  mediaAspect,
-  pad,
-} from "./data";
+import { useMemo, useState } from "react";
+import { EASE_OUT, mediaAspect, pad, useProjects } from "./data";
 
 const DistortionPreview = dynamic(
   () => import("./distortion-preview").then((m) => m.DistortionPreview),
@@ -21,17 +15,27 @@ const DistortionPreview = dynamic(
 
 const SPRING = { stiffness: 150, damping: 20, mass: 0.6 };
 const CANVAS = { width: 640, height: 580 };
-const SOURCES = archiveProjects.map((project) => project.image);
-const SIZES = archiveProjects.map((project): [number, number] => {
-  const width = project.mobileApp ? 200 : 420;
-  return [width, width / mediaAspect(project)];
-});
 
 export function ArchiveChapter({
   onOpen,
 }: {
   onOpen: (index: number) => void;
 }) {
+  const { projects } = useMessages();
+  const { featured: featuredProjects, archive: archiveProjects } =
+    useProjects();
+  const sources = useMemo(
+    () => archiveProjects.map((project) => project.image),
+    [archiveProjects],
+  );
+  const sizes = useMemo(
+    () =>
+      archiveProjects.map((project): [number, number] => {
+        const width = project.mobileApp ? 200 : 420;
+        return [width, width / mediaAspect(project)];
+      }),
+    [archiveProjects],
+  );
   const [hovered, setHovered] = useState<number | null>(null);
   const [shown, setShown] = useState(0);
   const x = useMotionValue(0);
@@ -60,10 +64,10 @@ export function ArchiveChapter({
     >
       <div className="flex flex-col items-center gap-3 text-center">
         <h3 className="text-5xl font-bold tracking-tighter text-neutral-50 md:text-7xl">
-          {texts.projects.archive.title}
+          {projects.archive.title}
         </h3>
         <p className="max-w-lg text-neutral-400">
-          {texts.projects.archive.description}
+          {projects.archive.description}
         </p>
       </div>
 
@@ -128,8 +132,8 @@ export function ArchiveChapter({
           }}
         >
           <DistortionPreview
-            sources={SOURCES}
-            sizes={SIZES}
+            sources={sources}
+            sizes={sizes}
             canvas={CANVAS}
             active={shown}
             visible={hovered !== null}

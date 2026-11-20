@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { INTRO_DONE_EVENT } from "./use-intro-done";
 
@@ -29,6 +30,7 @@ const preloadHeroScene = () => {
 };
 
 export function Loader() {
+  const t = useTranslations("loader");
   const [isLoading, setIsLoading] = useState(true);
   const [showIntro, setShowIntro] = useState(false);
 
@@ -86,7 +88,7 @@ export function Loader() {
                   animate={{ y: 0 }}
                   transition={{ duration: 0.6, ease: "circOut", delay: 0.1 }}
                 >
-                  Com prazer,
+                  {t("first")}
                 </motion.p>
               </div>
 
@@ -98,7 +100,7 @@ export function Loader() {
                   animate={{ y: 0 }}
                   transition={{ duration: 0.6, ease: "circOut", delay: 0.6 }}
                 >
-                  seja bem-vindo
+                  {t("second")}
                 </motion.p>
               </div>
 

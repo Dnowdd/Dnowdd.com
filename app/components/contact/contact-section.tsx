@@ -1,8 +1,8 @@
 "use client";
 
-import texts from "@/content/texts.json";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import { ArrowUpRight, Copy } from "lucide-react";
+import { useMessages } from "next-intl";
 import dynamic from "next/dynamic";
 import { useRef, useState } from "react";
 import { RevealText } from "@/components/section-header";
@@ -11,26 +11,26 @@ const AsciiCanvas = dynamic(() => import("./components/ascii-canvas"), {
   ssr: false,
 });
 
-const EMAIL = texts.contact.links
-  .find((link) => link.href.startsWith("mailto:"))
-  ?.href.replace("mailto:", "");
-const LINKS = texts.contact.links.filter(
-  (link) => !link.href.startsWith("mailto:"),
-);
-
 export default function ContactSection() {
+  const { contact } = useMessages();
+  const email = contact.links
+    .find((link) => link.href.startsWith("mailto:"))
+    ?.href.replace("mailto:", "");
+  const links = contact.links.filter(
+    (link) => !link.href.startsWith("mailto:"),
+  );
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { amount: 0.2 });
   const [copied, setCopied] = useState(false);
 
   const copyEmail = async () => {
-    if (!EMAIL) return;
+    if (!email) return;
     try {
-      await navigator.clipboard.writeText(EMAIL);
+      await navigator.clipboard.writeText(email);
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
-      window.location.href = `mailto:${EMAIL}`;
+      window.location.href = `mailto:${email}`;
     }
   };
 
@@ -56,23 +56,23 @@ export default function ContactSection() {
           >
             <span>05</span>
             <span className="h-px w-12 bg-current" />
-            <span>{texts.contact.label}</span>
+            <span>{contact.label}</span>
           </motion.p>
 
           <h2 className="text-6xl font-bold leading-[0.9] tracking-tighter md:text-[9rem]">
-            {texts.contact.title.map((line, i) => (
+            {contact.title.map((line, i) => (
               <RevealText key={line} text={line} delay={i * 0.15} />
             ))}
           </h2>
 
-          {EMAIL && (
+          {email && (
             <button
               type="button"
               onClick={copyEmail}
               className="group flex w-fit items-center gap-4 text-left text-xl text-neutral-300 transition-colors hover:text-neutral-50 md:text-4xl"
             >
               <span className="relative">
-                {EMAIL}
+                {email}
                 <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-current transition-transform duration-500 group-hover:scale-x-100" />
               </span>
               <span className="relative flex size-10 items-center justify-center rounded-full border border-neutral-700 transition-colors group-hover:border-primary md:size-12">
@@ -86,7 +86,7 @@ export default function ContactSection() {
                     exit={{ opacity: 0, y: -8 }}
                     className="font-mono text-xs uppercase tracking-widest text-primary"
                   >
-                    {texts.contact.copied}
+                    {contact.copied}
                   </motion.span>
                 )}
               </AnimatePresence>
@@ -94,7 +94,7 @@ export default function ContactSection() {
           )}
 
           <ul className="flex flex-wrap gap-x-10 gap-y-4">
-            {LINKS.map((link) => {
+            {links.map((link) => {
               const isDownload = link.href.endsWith(".pdf");
               return (
                 <li key={link.name}>
@@ -103,7 +103,7 @@ export default function ContactSection() {
                     target={isDownload ? undefined : "_blank"}
                     rel={isDownload ? undefined : "noopener noreferrer"}
                     download={
-                      isDownload ? "Currículo - David Queiroz.pdf" : undefined
+                      isDownload ? contact.resumeFile : undefined
                     }
                     className="group flex items-center gap-2 text-lg text-neutral-400 transition-colors hover:text-neutral-50"
                   >
@@ -118,7 +118,7 @@ export default function ContactSection() {
 
         <footer className="flex flex-col gap-1 font-mono text-[11px] uppercase tracking-widest text-neutral-600 sm:flex-row sm:justify-between">
           <span>© {new Date().getFullYear()}</span>
-          <span>{texts.contact.credit}</span>
+          <span>{contact.credit}</span>
         </footer>
       </div>
     </section>

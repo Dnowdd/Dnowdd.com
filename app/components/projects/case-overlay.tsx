@@ -3,15 +3,16 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight, X } from "lucide-react";
 import { useLenis } from "lenis/react";
-import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
+import { useCallback, useEffect, useRef } from "react";
 import {
-  allProjects,
   EASE_IN_OUT,
   EASE_OUT,
   mediaAspect,
   pad,
   type Project,
   projectLinks,
+  useProjects,
 } from "./data";
 import { ProjectMedia } from "./project-media";
 
@@ -21,10 +22,14 @@ type CaseOverlayProps = {
   onNavigate: (index: number) => void;
 };
 
-const total = allProjects.length;
-const wrap = (index: number) => (index + total) % total;
-
 export function CaseOverlay({ index, onClose, onNavigate }: CaseOverlayProps) {
+  const t = useTranslations("caseStudy");
+  const { all: allProjects } = useProjects();
+  const total = allProjects.length;
+  const wrap = useCallback(
+    (value: number) => (value + total) % total,
+    [total],
+  );
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const isOpen = index !== null;
@@ -64,7 +69,7 @@ export function CaseOverlay({ index, onClose, onNavigate }: CaseOverlayProps) {
 
     window.addEventListener("keydown", onKeyDown, true);
     return () => window.removeEventListener("keydown", onKeyDown, true);
-  }, [index, onClose, onNavigate]);
+  }, [index, onClose, onNavigate, allProjects, wrap]);
 
   return (
     <AnimatePresence>
@@ -83,18 +88,18 @@ export function CaseOverlay({ index, onClose, onNavigate }: CaseOverlayProps) {
         >
           <header className="sticky top-0 z-10 flex items-center justify-between bg-linear-to-b from-neutral-950 to-transparent px-6 py-5 font-mono text-xs uppercase tracking-widest text-neutral-500 md:px-10">
             <span>
-              Case <span className="text-neutral-100">{pad(index + 1)}</span> /{" "}
+              {t("label")} <span className="text-neutral-100">{pad(index + 1)}</span> /{" "}
               {pad(total)}
             </span>
             <div className="flex items-center gap-2">
               <IconButton
-                label="Projeto anterior"
+                label={t("previous")}
                 onClick={() => onNavigate(wrap(index - 1))}
               >
                 <ArrowLeft className="size-4" />
               </IconButton>
               <IconButton
-                label="Próximo projeto"
+                label={t("next")}
                 onClick={() => onNavigate(wrap(index + 1))}
               >
                 <ArrowRight className="size-4" />
@@ -105,7 +110,7 @@ export function CaseOverlay({ index, onClose, onNavigate }: CaseOverlayProps) {
                 onClick={onClose}
                 className="ml-2 flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-950 py-2 pl-3 pr-2 text-neutral-400 transition-colors hover:border-neutral-600 hover:text-neutral-100"
               >
-                Esc <X className="size-4" />
+                {t("close")} <X className="size-4" />
               </button>
             </div>
           </header>
@@ -167,10 +172,11 @@ export function CaseOverlay({ index, onClose, onNavigate }: CaseOverlayProps) {
 }
 
 function CaseMeta({ project }: { project: Project }) {
+  const t = useTranslations("caseStudy");
   const rows = [
-    project.role && { label: "Papel", value: project.role },
-    project.year && { label: "Ano", value: project.year },
-    { label: "Stack", value: project.tags.join(" · ") },
+    project.role && { label: t("role"), value: project.role },
+    project.year && { label: t("year"), value: project.year },
+    { label: t("stack"), value: project.tags.join(" · ") },
   ].filter((row): row is { label: string; value: string } => Boolean(row));
 
   return (
@@ -186,13 +192,14 @@ function CaseMeta({ project }: { project: Project }) {
 }
 
 export function CaseLinks({ project }: { project: Project }) {
+  const t = useTranslations("caseStudy");
   const { repo, live } = projectLinks(project);
   if (!repo && !live) return null;
 
   return (
     <div className="flex flex-wrap gap-3">
-      {live && <LinkPill href={live} label="Ver ao vivo" shortcut="L" />}
-      {repo && <LinkPill href={repo} label="Código fonte" shortcut="G" />}
+      {live && <LinkPill href={live} label={t("live")} shortcut="L" />}
+      {repo && <LinkPill href={repo} label={t("source")} shortcut="G" />}
     </div>
   );
 }
@@ -229,6 +236,7 @@ function NextProject({
   project: Project;
   onClick: () => void;
 }) {
+  const t = useTranslations("caseStudy");
   return (
     <button
       type="button"
@@ -236,7 +244,7 @@ function NextProject({
       className="group relative mt-10 flex flex-col items-start gap-3 overflow-hidden border-t border-neutral-900 pt-10 text-left"
     >
       <span className="font-mono text-xs uppercase tracking-widest text-neutral-600">
-        Próximo projeto →
+        {t("nextLink")}
       </span>
       <span className="text-4xl font-bold tracking-tighter text-neutral-700 transition-colors duration-500 group-hover:text-neutral-50 md:text-7xl">
         {project.title}

@@ -1,9 +1,9 @@
 "use client";
 
 import { SectionHeader } from "@/components/section-header";
-import texts from "@/content/texts.json";
 import { cn } from "@/lib/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useFormatter, useMessages } from "next-intl";
 import { useRef } from "react";
 
 type Kind = "work" | "education";
@@ -18,53 +18,42 @@ type Entry = {
   tags: string[];
 };
 
-const MONTHS = [
-  "jan",
-  "fev",
-  "mar",
-  "abr",
-  "mai",
-  "jun",
-  "jul",
-  "ago",
-  "set",
-  "out",
-  "nov",
-  "dez",
-];
-
-const toMonthIndex = (label: string) => {
-  const [month, year] = label.toLowerCase().replace(".", "").split(" ");
-  return Number(year) * 12 + Math.max(0, MONTHS.indexOf(month));
-};
-
-const KIND_LABEL: Record<Kind, string> = {
-  work: texts.journey.work,
-  education: texts.journey.education,
-};
-
-const ENTRIES: Entry[] = [
-  ...texts.companies.timeline.map((item) => ({
-    kind: "work" as const,
-    start: item.period.start,
-    period: `${item.period.start} — ${item.period.end}`,
-    title: item.position,
-    org: item.company,
-    description: item.description,
-    tags: item.tags,
-  })),
-  ...texts.education.items.map((item) => ({
-    kind: "education" as const,
-    start: item.from,
-    period: `${item.from} — ${item.to}`,
-    title: item.title,
-    org: item.school,
-    description: item.description,
-    tags: item.tags,
-  })),
-].sort((a, b) => toMonthIndex(b.start) - toMonthIndex(a.start));
+const toDate = (month: string) => new Date(`${month}-01T12:00:00Z`);
 
 export default function JourneySection() {
+  const { journey, companies, education } = useMessages();
+  const format = useFormatter();
+  const formatMonth = (month: string | null) =>
+    month
+      ? `${format.dateTime(toDate(month), { month: "short", timeZone: "UTC" })} ${month.slice(0, 4)}`
+      : journey.present;
+
+  const kindLabel: Record<Kind, string> = {
+    work: journey.work,
+    education: journey.education,
+  };
+
+  const entries: Entry[] = [
+    ...companies.timeline.map((item) => ({
+      kind: "work" as const,
+      start: item.period.start,
+      period: `${formatMonth(item.period.start)} — ${formatMonth(item.period.end)}`,
+      title: item.position,
+      org: item.company,
+      description: item.description,
+      tags: item.tags,
+    })),
+    ...education.items.map((item) => ({
+      kind: "education" as const,
+      start: item.from,
+      period: `${formatMonth(item.from)} — ${formatMonth(item.to)}`,
+      title: item.title,
+      org: item.school,
+      description: item.description,
+      tags: item.tags,
+    })),
+  ].sort((a, b) => b.start.localeCompare(a.start));
+
   const timelineRef = useRef<HTMLOListElement>(null);
   const { scrollYProgress } = useScroll({
     target: timelineRef,
@@ -80,14 +69,14 @@ export default function JourneySection() {
       <div className="mx-auto flex max-w-7xl flex-col gap-16 px-6 py-32 md:px-10 md:py-48">
         <SectionHeader
           index="04"
-          label={texts.journey.label}
-          title={texts.journey.title}
+          label={journey.label}
+          title={journey.title}
         />
 
         <div className="hidden grid-cols-[1fr_3rem_1fr] border-b border-neutral-800 pb-4 font-mono text-xs uppercase tracking-[0.3em] text-neutral-500 lg:grid">
-          <span className="text-right">{KIND_LABEL.work}</span>
+          <span className="text-right">{kindLabel.work}</span>
           <span />
-          <span>{KIND_LABEL.education}</span>
+          <span>{kindLabel.education}</span>
         </div>
 
         <ol
@@ -104,7 +93,7 @@ export default function JourneySection() {
             style={{ scaleY: line }}
           />
 
-          {ENTRIES.map((entry) => {
+          {entries.map((entry) => {
             const isWork = entry.kind === "work";
             return (
               <motion.li
@@ -132,7 +121,7 @@ export default function JourneySection() {
                 >
                   <p className="font-mono text-xs uppercase tracking-widest text-neutral-500">
                     <span className="lg:hidden">
-                      {KIND_LABEL[entry.kind]} ·{" "}
+                      {kindLabel[entry.kind]} ·{" "}
                     </span>
                     {entry.period}
                   </p>

@@ -1,4 +1,53 @@
 {
+  "meta": {
+    "title": "David Queiroz | Dnowdd.com",
+    "description": "Portfólio de David Queiroz — Desenvolvedor Full-Stack com experiência em React, TypeScript e Node.js. Projetos, experiência na Genialogic e formação em Gestão da TI pela FATEC Campinas.",
+    "shortDescription": "Portfólio de David Queiroz — Desenvolvedor Full-Stack com experiência em React, TypeScript e Node.js.",
+    "ogDescription": "Portfólio de David Queiroz — Desenvolvedor Full-Stack. Projetos em React, TypeScript, Node.js e experiência na Genialogic.",
+    "twitterDescription": "Portfólio de David Queiroz — Desenvolvedor Full-Stack. React, TypeScript, Node.js.",
+    "ogAlt": "David Queiroz — Desenvolvedor Full-Stack",
+    "ogLocale": "pt_BR",
+    "keywords": [
+      "David Queiroz",
+      "desenvolvedor full-stack",
+      "desenvolvedor React",
+      "TypeScript",
+      "Node.js",
+      "portfólio desenvolvedor",
+      "Genialogic",
+      "FATEC Campinas",
+      "desenvolvedor brasileiro",
+      "front-end",
+      "back-end"
+    ],
+    "jobTitle": "Desenvolvedor Full-Stack Júnior",
+    "personDescription": "Desenvolvedor full-stack brasileiro com experiência prática desde 2020, especializado em React, TypeScript e Node.js.",
+    "knowsAbout": "Desenvolvimento Full-Stack",
+    "projectsList": "Projetos de David Queiroz"
+  },
+  "language": {
+    "label": "Idioma",
+    "names": {
+      "pt-BR": "Português",
+      "en": "English"
+    },
+    "short": {
+      "pt-BR": "PT",
+      "en": "EN"
+    }
+  },
+  "nav": {
+    "label": "Navegação por seções",
+    "hero": "Início",
+    "about": "Sobre",
+    "projects": "Projetos",
+    "journey": "Trajetória",
+    "contact": "Contato"
+  },
+  "loader": {
+    "first": "Com prazer,",
+    "second": "seja bem-vindo"
+  },
   "hero": {
     "subtitle": "Queiroz,",
     "title": "David",
@@ -31,7 +80,9 @@
         "href": "/curriculum/curriculo-david-queiroz.pdf"
       }
     },
-    "scroll": "Role"
+    "scroll": "Role",
+    "srOnly": "David Queiroz — Desenvolvedor Full-Stack",
+    "resumeFile": "Currículo - David Queiroz.pdf"
   },
   "about": {
     "label": "Sobre",
@@ -85,7 +136,18 @@
       }
     ],
     "books": "Livros lidos",
-    "moreBooks": "ver mais"
+    "moreBooks": "ver mais",
+    "bookCover": "Capa de {title}",
+    "moreBooksLabel": "Ver mais {count} livros"
+  },
+  "github": {
+    "contributions": "contribuições",
+    "repositories": "repositórios",
+    "stars": "estrelas",
+    "streak": "dias seguidos",
+    "profile": "Perfil de {login} no GitHub",
+    "heatmap": "{count} contribuições no último ano",
+    "tooltip": "{count, plural, one {# contribuição} other {# contribuições}}"
   },
   "projects": {
     "subtitle": "Melhores",
@@ -99,13 +161,20 @@
       {
         "title": "ADigital Multinível",
         "featured": true,
+        "summary": "Plataforma imobiliária com comissões em 3 gerações, CRM no WhatsApp e anúncios gerados por IA.",
         "description": "Gestão imobiliária completa com comissões em até 3 gerações — esse foi o desafio por trás do ADigital Multinível, plataforma freelance construída em Next.js e TypeScript. Além do controle de imóveis, vendas e afiliados, o sistema integra CRM ao WhatsApp Business, gera anúncios com IA e centraliza tudo em dashboards em tempo real, com foco em performance e automação para o mercado imobiliário.",
         "image": "/projects/adigital.webp",
-        "tags": ["Next.js", "TypeScript", "Meta API", "IA"]
+        "tags": [
+          "Next.js",
+          "TypeScript",
+          "Meta API",
+          "IA"
+        ]
       },
       {
         "title": "Abafit",
         "featured": true,
+        "summary": "Rede fitness para registrar treinos, acompanhar a evolução e competir com amigos.",
         "description": "Treino registrado, evolução acompanhada e amigos motivando: essa é a proposta do Abafit, plataforma fitness que desenvolvi em Next.js para centralizar treinos de musculação, progresso e foco em um só ecossistema. Dá pra competir com amigos, compartilhar playlists de treino e manter a consistência com uma experiência fluida — pensado para quem leva treino a sério.",
         "image": "/projects/abafit.webp",
         "tags": [
@@ -120,6 +189,7 @@
       {
         "title": "S.O.P.A",
         "featured": true,
+        "summary": "ERP, WMS, TMS e CRM unificados para o setor alimentício. Meu TCC na FATEC.",
         "description": "Meu projeto de graduação em Gestão da Tecnologia da Informação na FATEC Campinas: o S.O.P.A (Sistema Orientado a Processos Alimentícios) unifica ERP, WMS, TMS e CRM em uma única solução, construída em Next.js, para centralizar pedidos, estoque, rotas, vendas e indicadores. O foco foi automação de processos, redução de erros operacionais, otimização logística e visão estratégica para gestores.",
         "image": "/projects/sopa.webp",
         "tags": [
@@ -134,9 +204,15 @@
       },
       {
         "title": "Dr. Agenda",
+        "summary": "SaaS de agendamento para clínicas com dashboard, autenticação e assinaturas via Stripe.",
         "description": "Agendamento e administração de clínicas simplificados: o Dr. Agenda é um SaaS que construí em Next.js durante os estudos no curso FullStackClub, com diversas melhorias autorais — CRUD completo de médicos, pacientes e agendamentos, dashboard com métricas, autenticação segura e assinaturas via Stripe.",
         "image": "/projects/dragenda.webp",
-        "tags": ["Next.js", "TypeScript", "TailwindCSS", "Stripe"],
+        "tags": [
+          "Next.js",
+          "TypeScript",
+          "TailwindCSS",
+          "Stripe"
+        ],
         "links": [
           {
             "icon": "Github",
@@ -146,10 +222,16 @@
       },
       {
         "title": "Hidrata+",
+        "summary": "App em Flutter para controlar a ingestão diária de água, com metas personalizadas.",
         "description": "Meu primeiro aplicativo em Flutter: o Hidrata+ ajuda a controlar a ingestão diária de água no Android e iOS, com metas personalizadas e registro rápido de consumo. O foco foi usabilidade e simplicidade, incentivando hábitos mais saudáveis no dia a dia.",
         "image": "/projects/hidrata+.webp",
         "mobileApp": true,
-        "tags": ["Flutter", "Dart", "Android", "iOS"],
+        "tags": [
+          "Flutter",
+          "Dart",
+          "Android",
+          "iOS"
+        ],
         "links": [
           {
             "icon": "Github",
@@ -160,6 +242,7 @@
       {
         "title": "DeepChat",
         "featured": true,
+        "summary": "Chatbot com IA 100% local, rodando o DeepSeek-R1 via Ollama.",
         "description": "IA rodando 100% local, sem depender de nuvem: o DeepChat é um chatbot que desenvolvi em Next.js, integrado ao modelo DeepSeek-R1 via Ollama, com suporte a múltiplos idiomas, interface responsiva e controle em tempo real da geração de respostas. Um projeto de privacidade, performance e experimentação com LLMs open-source.",
         "image": "/projects/deepchat.webp",
         "tags": [
@@ -178,20 +261,36 @@
           }
         ]
       }
-    ]
+    ],
+    "chapters": "Capítulos de projetos",
+    "goTo": "Ir para {label}",
+    "openCase": "Abrir case"
+  },
+  "caseStudy": {
+    "label": "Case",
+    "previous": "Projeto anterior",
+    "next": "Próximo projeto",
+    "nextLink": "Próximo projeto →",
+    "close": "Esc",
+    "role": "Papel",
+    "year": "Ano",
+    "stack": "Stack",
+    "live": "Ver ao vivo",
+    "source": "Código fonte"
   },
   "journey": {
     "label": "Trajetória",
     "title": "Onde estive",
     "work": "Experiência",
-    "education": "Formação"
+    "education": "Formação",
+    "present": "Atualmente"
   },
   "companies": {
     "timeline": [
       {
         "period": {
-          "start": "Ago. 2025",
-          "end": "Atualmente"
+          "start": "2025-08",
+          "end": null
         },
         "position": "Desenvolvedor Full-stack Júnior",
         "company": "Genialogic",
@@ -210,8 +309,8 @@
       },
       {
         "period": {
-          "start": "Fev. 2024",
-          "end": "Ago. 2025"
+          "start": "2024-02",
+          "end": "2025-08"
         },
         "position": "Estagiário em desenvolvimento de software",
         "company": "Genialogic",
@@ -234,24 +333,34 @@
       {
         "title": "Técnico em Desenvolvimento de Sistemas",
         "school": "ETEC de Hortolândia",
-        "from": "Jan. 2020",
-        "to": "Dez. 2022",
+        "from": "2020-01",
+        "to": "2022-12",
         "description": "Curso técnico público voltado para o desenvolvimento de software, programação e análise de sistemas, preparando os alunos para a indústria de TI.",
-        "tags": ["Cursado", "Ensino Técnico", "Tempo Integral"]
+        "tags": [
+          "Cursado",
+          "Ensino Técnico",
+          "Tempo Integral"
+        ]
       },
       {
         "title": "Gestão da Tecnologia da Informação",
         "school": "FATEC Campinas",
-        "from": "Fev. 2023",
-        "to": "Dez. 2025",
+        "from": "2023-02",
+        "to": "2025-12",
         "description": "Curso superior público focado em estratégia de TI, gerenciamento de projetos e soluções empresariais, combinando habilidades técnicas e administrativas.",
-        "tags": ["Graduado", "Curso Superior"]
+        "tags": [
+          "Graduado",
+          "Curso Superior"
+        ]
       }
     ]
   },
   "contact": {
     "label": "Contato",
-    "title": ["Vamos", "conversar?"],
+    "title": [
+      "Vamos",
+      "conversar?"
+    ],
     "copied": "Copiado",
     "credit": "Designed & Developed by David Queiroz",
     "links": [
@@ -275,6 +384,79 @@
         "icon": "FileText",
         "href": "/curriculum/curriculo-david-queiroz.pdf"
       }
-    ]
+    ],
+    "resumeFile": "Currículo - David Queiroz.pdf"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "code": "ERRO 404",
+    "description": "O endereço que você tentou acessar não existe. Que tal voltar para o início?",
+    "back": "Voltar para a página inicial"
+  },
+  "readme": {
+    "status": "Aberto a oportunidades",
+    "stack": {
+      "label": "Stack",
+      "title": "Com o que trabalho",
+      "groups": [
+        {
+          "label": "Linguagens",
+          "items": [
+            "TypeScript",
+            "JavaScript",
+            "Python",
+            "PHP",
+            "Dart",
+            "SQL"
+          ]
+        },
+        {
+          "label": "Frontend",
+          "items": [
+            "React",
+            "Next.js",
+            "Tailwind CSS",
+            "shadcn/ui",
+            "Motion",
+            "Three.js",
+            "Vite"
+          ]
+        },
+        {
+          "label": "Backend & dados",
+          "items": [
+            "Node.js",
+            "PostgreSQL",
+            "Supabase",
+            "MySQL",
+            "SQLite",
+            "Stripe"
+          ]
+        },
+        {
+          "label": "Mobile & IA",
+          "items": [
+            "Flutter",
+            "OpenCV",
+            "TensorFlow",
+            "APIs de LLM"
+          ]
+        },
+        {
+          "label": "Ferramentas",
+          "items": [
+            "Git",
+            "GitHub",
+            "Figma",
+            "Jira",
+            "Blender",
+            "Photoshop"
+          ]
+        }
+      ]
+    },
+    "selectedWork": "Trabalho selecionado",
+    "allRepositories": "Todos os repositórios",
+    "portfolio": "Portfólio"
   }
 }

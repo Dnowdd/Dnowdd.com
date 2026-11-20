@@ -2,6 +2,7 @@
 
 import { GITHUB_LOGIN, type GithubStats } from "@/lib/github-shared";
 import { useInView } from "framer-motion";
+import { useFormatter, useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 
 const LEVELS = [
@@ -28,9 +29,10 @@ const magnify = (distance: number) => {
   return 1;
 };
 
-const formatNumber = (value: number) => value.toLocaleString("pt-BR");
-
 export function GithubCard({ stats }: { stats: GithubStats }) {
+  const t = useTranslations("github");
+  const format = useFormatter();
+  const formatNumber = (value: number) => format.number(value);
   const gridRef = useRef<HTMLDivElement>(null);
   const inView = useInView(gridRef, { once: true, amount: 0.4 });
   const [hovered, setHovered] = useState<{ week: number; day: number } | null>(
@@ -41,10 +43,10 @@ export function GithubCard({ stats }: { stats: GithubStats }) {
   const hoveredCount = hovered ? stats.weeks[hovered.week][hovered.day] : null;
 
   const numbers = [
-    { label: "contribuições", value: stats.contributions },
-    { label: "repositórios", value: stats.repositories },
-    { label: "estrelas", value: stats.stars },
-    { label: "dias seguidos", value: stats.longestStreak },
+    { label: t("contributions"), value: stats.contributions },
+    { label: t("repositories"), value: stats.repositories },
+    { label: t("stars"), value: stats.stars },
+    { label: t("streak"), value: stats.longestStreak },
   ];
 
   return (
@@ -52,7 +54,7 @@ export function GithubCard({ stats }: { stats: GithubStats }) {
       href={`https://github.com/${GITHUB_LOGIN}`}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`Perfil de ${GITHUB_LOGIN} no GitHub`}
+      aria-label={t("profile", { login: GITHUB_LOGIN })}
       className="group/card flex min-w-0 flex-col gap-6"
     >
       <dl className="grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
@@ -71,7 +73,7 @@ export function GithubCard({ stats }: { stats: GithubStats }) {
           ref={gridRef}
           role="img"
           data-cursor="default"
-          aria-label={`${formatNumber(stats.contributions)} contribuições no último ano`}
+          aria-label={t("heatmap", { count: formatNumber(stats.contributions) })}
           className="grid grid-flow-col grid-rows-7 gap-[2px]"
           style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
           onPointerLeave={() => setHovered(null)}
@@ -112,8 +114,7 @@ export function GithubCard({ stats }: { stats: GithubStats }) {
               top: `calc(${(hovered.day / 7) * 100}% - 8px)`,
             }}
           >
-            {hoveredCount}{" "}
-            {hoveredCount === 1 ? "contribuição" : "contribuições"}
+            {t("tooltip", { count: hoveredCount })}
           </span>
         )}
       </div>

@@ -1,9 +1,11 @@
-import texts from "@/content/texts.json";
+import { useMessages } from "next-intl";
+import { useMemo } from "react";
 
 export type ProjectLink = { icon: string; url: string };
 
 export type Project = {
   title: string;
+  summary?: string;
   description: string;
   image: string;
   video?: string;
@@ -15,11 +17,15 @@ export type Project = {
   links?: ProjectLink[];
 };
 
-const items = texts.projects.items as Project[];
-
-export const featuredProjects = items.filter((project) => project.featured);
-export const archiveProjects = items.filter((project) => !project.featured);
-export const allProjects = [...featuredProjects, ...archiveProjects];
+export function useProjects() {
+  const { projects } = useMessages();
+  return useMemo(() => {
+    const items = projects.items as Project[];
+    const featured = items.filter((project) => project.featured);
+    const archive = items.filter((project) => !project.featured);
+    return { featured, archive, all: [...featured, ...archive] };
+  }, [projects]);
+}
 
 export const pad = (n: number) => String(n).padStart(2, "0");
 

@@ -1,21 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const SECTIONS = [
-  { id: "hero", label: "Início" },
-  { id: "sobre", label: "Sobre" },
-  { id: "projetos", label: "Projetos" },
-  { id: "trajetoria", label: "Trajetória" },
-  { id: "contato", label: "Contato" },
-];
+  { id: "hero", key: "hero" },
+  { id: "sobre", key: "about" },
+  { id: "projetos", key: "projects" },
+  { id: "trajetoria", key: "journey" },
+  { id: "contato", key: "contact" },
+] as const;
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
 export function SectionNav() {
-  const [active, setActive] = useState(SECTIONS[0].id);
+  const t = useTranslations("nav");
+  const [active, setActive] = useState<string>(SECTIONS[0].id);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,11 +39,12 @@ export function SectionNav() {
 
   return (
     <nav
-      aria-label="Navegação por seções"
+      aria-label={t("label")}
       className="hidden lg:flex flex-col gap-2 fixed right-5 top-1/2 -translate-y-1/2 z-50"
     >
-      {SECTIONS.map(({ id, label }, index) => {
+      {SECTIONS.map(({ id, key }, index) => {
         const isActive = active === id;
+        const label = t(key);
         return (
           <a
             key={id}
